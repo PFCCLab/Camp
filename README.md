@@ -2,7 +2,7 @@
 **[🚀 飞桨开源框架](https://github.com/PaddlePaddle/Paddle) | [🧰 飞桨开发套件](https://github.com/PaddlePaddle/PaddleOCR) | [⛵ 飞桨护航计划集训营](https://github.com/PaddlePaddle/Paddle/issues/57264)**
 
 ☘️ **我们为什么需要这个 repo ？**
-- 本 repo 用于「飞桨护航计划集训营」的学员周报提交、资料管理、会议记录保存和技术方案探讨（使用方法详见本文档的 [护航计划规则](https://github.com/PFCCLab/Camp/edit/main/README.md#%E6%8A%A4%E8%88%AA%E8%AE%A1%E5%88%92%E8%A7%84%E5%88%99)）。希望这个 repo 能记录你乘风破浪解决各种难题的印记，或是留下你由浅入深不断成长的足迹， enjoy it 😄
+- 本 repo 用于「飞桨护航计划集训营」的学员周报提交、资料管理、会议记录保存和技术方案探讨（使用方法详见本文档的 [护航计划规则](https://github.com/PFCCLab/Camp/tree/main/README.md#%E6%8A%A4%E8%88%AA%E8%AE%A1%E5%88%92%E8%A7%84%E5%88%99)）。希望这个 repo 能记录你乘风破浪解决各种难题的印记，或是留下你由浅入深不断成长的足迹， enjoy it 😄
 
 🏡 **请问这个 repo 的文件夹都有什么内容？**
 - `Docs/` : 存放各学员参与「飞桨护航计划集训营」项目时的过程文档。包括但不限于**学习资料**、**代码阅读笔记**和**设计文档**等
