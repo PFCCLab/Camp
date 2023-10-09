@@ -15,7 +15,7 @@
 
 学生通过申请后，将由专属的百度资深工程师带教进行**为期 3 个月**的开源项目开发。顺利结项后，会获得百度的技术认证证书 📄 和丰厚的奖励 🎁。
 
-随时随地都能使用 🔧 的线上 V100 开发环境（申请方式看这里 ➡️ [飞桨线上开发环境——AI Studio](https://github.com/PaddlePaddle/community/tree/master/pfcc/call-for-contributions#%E9%A3%9E%E6%A1%A8%E7%BA%BF%E4%B8%8A%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83ai-studio)），可以灵活安排的日常工作时间 ⌚️，正式实习和就业的绿色通道 🚥，~~耐心技术力超强的高颜值 RD 🧑🏻‍💻~~……你，心动了吗？💓 心动的话快来加入我们吧～～
+随时随地都能使用 🔧 的线上 V100 开发环境（申请方式看这里 ➡️ [飞桨线上开发环境——AI Studio](https://github.com/PaddlePaddle/community/tree/master/pfcc/call-for-contributions#%E9%A3%9E%E6%A1%A8%E7%BA%BF%E4%B8%8A%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83ai-studio)），可以灵活安排的日常工作时间 ⌚️，正式实习和就业的绿色通道 🚥，~~耐心高颜值技术力超强的 RD 🧑🏻‍💻~~……你，心动了吗？💓 心动的话快来加入我们吧～～
 
 ## 报名参与流程
 
