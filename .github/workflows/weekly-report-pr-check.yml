@@ -41,7 +41,7 @@ jobs:
 
       - name: Check Weekly Report
         run: |
-          DEFAULT_VALUE="待填写"
+          DEFAULT_VALUE="请联系导师填写"
 
           weeklyReports=()
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
