@@ -1,0 +1,98 @@
+name: Weekly Report Mentor Comment Check
+
+on:
+  pull_request:
+    branches:
+        - main
+
+permissions:
+  contents: write
+
+jobs:
+  check-mentor-comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Check Filenames without White Space
+        run: |
+          # Find all files with spaces in their names
+          files_with_spaces=$(find . -name "* *" -type f)
+
+          # If any files with spaces are found, output an error message and fail the job
+          if [ -n "$files_with_spaces" ]; then
+            echo "Error: The following files have spaces in their names:"
+            echo "$files_with_spaces"
+            exit 1
+          fi
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v14.6
+
+      - name: List all changed files
+        run: |
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            echo "$file was changed"
+          done
+
+      - name: Check Weekly Report
+        run: |
+          DEFAULT_VALUE="请联系导师填写"
+
+          weeklyReports=()
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+              file_basename=$(basename $file)
+              echo "file_basename="${file_basename}
+              if [[ "$file_basename" =~ \[WeeklyReport\] ]]; then
+                  weeklyReports+=("$file")
+              fi
+          done
+          
+          if [ ${#weeklyReports[@]} -eq 0 ]; then
+              echo "没有周报文件, 或周报文件不符合命名要求: ${{ steps.changed-files.outputs.all_changed_files }}"
+              exit 0
+          fi
+          
+          # 检查文件是否包含 "### 导师点评" 字段以及该字段所在行下面的内容是否为空或者为 ${DEFAULT_VALUE}
+          function check_tutor_review() {
+              if grep -q "### 导师点评" "$1"; then
+                  line_number=$(grep -n "### 导师点评" "$1" | cut -d ":" -f 1)
+                  
+                  count=1
+                  while [ $count -le 5 ]
+                  do
+                      next_line=$(($line_number + $count))
+                      next_line_content=$(sed -n "${next_line}p" "$1" | tr -d '[:space:]')
+                      if [[ -n "$next_line_content" && "$next_line_content" != ${DEFAULT_VALUE} ]]; then
+                          return 0
+                      fi
+          
+                      count=$((count+1))
+                  done
+          
+                  echo "failed: $1 \"### 导师点评\" 字段下面${count}行内容为空"
+                  return 1
+              else
+                  echo "failed: $1 没有字段 \"### 导师点评\""
+                  return 1
+              fi
+          }
+          
+          
+          # 检查所有文件
+          for file in ${weeklyReports}; do
+              if check_tutor_review "$file"; then
+                  echo "$file 符合要求"
+              else
+                  echo "$file 导师点评内容缺失."
+                  echo "如有疑问, 请联系助教 MarioLulab"
+                  exit 1
+              fi
+          done
+          
+          echo "所有文件都符合要求"
+          exit 0
