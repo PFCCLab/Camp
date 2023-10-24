@@ -53,5 +53,7 @@
 
 1. 在Vit模型的优化中还存在一些问题，比如`transpose/reshape`等操作，让cuda kernel之间存在特别大的间隙，对Vit encoder进行重写，消除其中的gap
 
+<img src="./imgs/2023.10.10~2023.10.24_0.jpg" alt="2023.10.10~2023.10.24_0" style="zoom:50%;" />
+
 ### 导师点评
 请联系导师填写
