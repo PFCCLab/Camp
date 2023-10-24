@@ -24,7 +24,7 @@
 
 (3) 如何确定异常发生的位置？
 
-解决: 首先确定是哪个单测错了，然后再确定这个单测在测试什么，这个需要熟悉op_test.py中的_check_ir_output，_check_ir_grad_output测试逻辑以及相关调用。所有日志都打开，确定抛出异常的位置，一般来说报错代码在中断位置附近。
+解决方法: 首先确定是哪个单测错了，然后再确定这个单测在测试什么，这个需要熟悉op_test.py中的_check_ir_output，_check_ir_grad_output测试逻辑以及相关调用。所有日志都打开，确定抛出异常的位置，一般来说报错代码在中断位置附近。
 
 (5) The kernel with key (CPU, Undefined(AnyLayout), int64) of kernel `seed` is not registered. 
 
