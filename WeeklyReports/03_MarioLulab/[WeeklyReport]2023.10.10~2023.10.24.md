@@ -8,9 +8,9 @@
 
 1. **整理统计第三期的 PIR 待迁移的API**
 
-	* 负责统计使用频次 < 40 次的待迁移 paddle API，目前已经完成初步统计，包括但不限于 activation.py, math.py, manupulation.py, logic.py, distribution.py 文件内的 API。对于 quant 层，sparse 算子，分布式算子，与 paddle 内部研发人员讨论后，决定放在以后的专项任务中去推全验证，第三期 PIR 迁移工作暂不迁移这部分 API
+    * 负责统计使用频次 < 40 次的待迁移 paddle API，目前已经完成初步统计，包括但不限于 activation.py, math.py, manupulation.py, logic.py, distribution.py 文件内的 API。对于 quant 层，sparse 算子，分布式算子，与 paddle 内部研发人员讨论后，决定放在以后的专项任务中去推全验证，第三期 PIR 迁移工作暂不迁移这部分 API
 	
-    * 发布和维护第三期的 PIR API 迁移任务：
+    * 正式发布第三期的 PIR API 迁移任务：
         https://github.com/PaddlePaddle/Paddle/issues/58067
     
     * 维护 PIR 迁移任务的 bug 修复手册：
@@ -20,12 +20,15 @@
 2. **推进 API PIR 下的推全验证工作**
 
 	* 完成 pr:
-		1. round: https://github.com/PaddlePaddle/Paddle/pull/58005
-		2. sin: https://github.com/PaddlePaddle/Paddle/pull/58094
-		3. cos: https://github.com/PaddlePaddle/Paddle/pull/58137
+        1. round: https://github.com/PaddlePaddle/Paddle/pull/58005
+        2. sin: https://github.com/PaddlePaddle/Paddle/pull/58094
+        3. cos: https://github.com/PaddlePaddle/Paddle/pull/58137
         4. dot: https://github.com/PaddlePaddle/Paddle/pull/57990 和 https://github.com/PaddlePaddle/Paddle/pull/58081
         5. floor: https://github.com/PaddlePaddle/Paddle/pull/58093
         6. nn.Sigmoid: https://github.com/PaddlePaddle/Paddle/pull/58144
+        7. nn.LeakyReLU: https://github.com/PaddlePaddle/Paddle/pull/58340
+        8. nn.MSELoss: https://github.com/PaddlePaddle/Paddle/pull/58352
+        9. log10: https://github.com/PaddlePaddle/Paddle/pull/58363
 
 3. **问题疑惑与解答**
 
