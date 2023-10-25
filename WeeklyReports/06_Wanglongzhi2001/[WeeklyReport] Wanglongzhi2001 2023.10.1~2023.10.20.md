@@ -26,7 +26,7 @@
 
 6. **问题疑惑与解答**
 - Paddle TRT 是如何识别到输入的计算图是一个量化后的计算图
-    答：以 int8 举例，在 ConvertBlockToTRTEngine 函数中会调用 FreezeNetwork 函数，这个函数当识别到 precision_ 为 int8 时，先调用 infer_builder_config_->setFlag(nvinfer1::BuilderFlag::kINT8) 来开启 int8 layer，并且当我们指定了不使用 Int8Calibrator（PaddleSlim已经帮我们做了这一工作）时，会对 netowrk 中的 layer 的输入 tensor 调用 TRT 的 API setDynamicRange 来将 (-InputScale, InputScale) 设置到 DynamicRange.
+    答：以 int8 举例，在 ConvertBlockToTRTEngine 函数中会调用 FreezeNetwork 函数，这个函数当识别到 precision_ 为 int8 时，先调用 infer_builder_config_->setFlag(nvinfer1::BuilderFlag::kINT8) 来开启 int8 layer，并且当我们指定了不使用 Int8Calibrator时，会对 netowrk 中的 layer 的输入 tensor 调用 TRT 的 API setDynamicRange 来将 (-InputScale, InputScale) 设置到 DynamicRange（隐式量化），然后后面 TRT 的 engine 就可以调用到 对应的 int8 算子.
 
 ### 下周工作
 
