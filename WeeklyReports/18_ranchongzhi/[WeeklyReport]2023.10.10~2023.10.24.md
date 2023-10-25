@@ -34,4 +34,7 @@ Github ID：[ranchongzhi](https://github.com/ranchongzhi)
 
 ### 导师点评
 
-请联系导师填写
+1. 从分割套件入手，明确了对于模型套件中加入ACT压缩工具的流程，并且通过积累PaddleSlim和Paddle Inference相关的文档解除多个压缩推理中性能和精度相关的bug。
+2. 期待后续积累的Paddle Inference 套件，并加入串讲和大家分享。
+3. 在对Paddle Inference熟悉后，可以更好地打通压缩模型到推理模型报错的问题，实现现有套件重点模型的量化蒸馏压缩能力的全覆盖。
+期待你的后续表现，加油～
