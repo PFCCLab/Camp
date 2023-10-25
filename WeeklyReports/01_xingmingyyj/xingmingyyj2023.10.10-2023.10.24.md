@@ -15,7 +15,7 @@
 #### 4.尝试修复部分算子
 尝试修复了test_dpsgd_op、test_exponential_op、test_norm_all等算子，相关进度在[#issue58266](https://github.com/PaddlePaddle/Paddle/issues/58266)中
 #### 5.问题疑惑与解答
-(1) xpoential op和 randint op测试精度失败问题
+(1) expoential op和 randint op测试精度失败问题
 
 解决方法：是使用随机数导致的新旧ir下两次测试不一致。分析op_test.py中_check_ir_output的实现，引入新的flag，执行exponential和randint时打开该flag，执行空的check_method，在cmake中设置flag可以参考pr #55117和#55857
 
@@ -40,4 +40,4 @@ exponential，randint，real_imag, seed_op, sparse_momentum，repeat_interleave
 #### 2.继续熟悉算子执行流程
 
 ### 导师点评
-请联系导师填写
+新明同学本周解决了之前遇到的一些复杂问题，进一步熟悉了相关代码，干的不错。注意目前只是为后续迁移80多个算子积累经验，要注重总结。
