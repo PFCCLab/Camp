@@ -167,5 +167,7 @@ FLAGS_auto_parallel_profiler=1 GLOG_v=0 ctest -R test_pipeline_scheduler $VV
 
 
 ### 导师点评
-
-请联系导师填写
+夏令营第一周能快速掌握分布式流水并行相关基础知识，准确理解项目开发需求，细致地设计实现方案并编码验证，总体表现不错。
+后续工作按计划推进，以下几点建议可以关注：
+1. 命令行参数开关实现可以参考[auto_config](https://github.com/PaddlePaddle/PaddleNLP/blob/develop/model_zoo/gpt-3/ppfleetx/utils/auto_config.py)和[auto_parallel.strategy](https://github.com/PaddlePaddle/Paddle/blob/develop/python/paddle/distributed/auto_parallel/strategy.py)
+2. 可以考虑不同job执行时间有交集的情况
