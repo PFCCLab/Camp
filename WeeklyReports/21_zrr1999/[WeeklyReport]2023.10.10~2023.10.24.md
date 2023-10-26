@@ -27,4 +27,5 @@ PIR 核心组件建设与机制完善
 1. 迁移 expand、solve、diag、linspce 等算子到 PIR。
 
 ### 导师点评
+荣瑞这周完成了多个python api的pir迁移适配工作，对pir有了更多的了解，接下来再接再厉
 
