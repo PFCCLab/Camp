@@ -188,6 +188,9 @@ paddle::dialect::ReluOp::name()
 pir::YieldOp::name()
 ```
 
+3. 完成 `LeakyReLU` 和 `swish` 的 PIR Python API适配升级
+
+- https://github.com/PaddlePaddle/Paddle/pull/58394
 
 
 ### 下周工作
