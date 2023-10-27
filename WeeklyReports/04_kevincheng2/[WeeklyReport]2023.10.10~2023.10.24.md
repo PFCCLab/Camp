@@ -19,13 +19,8 @@
 	
 	* 理解 call_vjp 调用规则 -- todo
 	
-	  ![48afe88f743f4ddfa095019702db95ba](C:\Users\dell\Documents\vsCode\Camp\WeeklyReports\04_kevincheng2\assets\48afe88f743f4ddfa095019702db95ba-1698204944186-2.png)
-	
 3. **熟悉新IR下的前向拆解规则**
-	
 	* 学习PR [[Prim][PIR] Sink Forward Prim](https://github.com/PaddlePaddle/Paddle/pull/58130) 中算子拆解下沉实现，理解 call_decomp 调用规则 -- todo
-	
-	  ![image](https://user-images.githubusercontent.com/116002591/275771637-1c70c9ba-3fdf-4d41-9e63-ff6559cf9a21.png)
 	
 	* 参考PR中的mean算子，实现relu的前向拆解下沉 -- todo
 	
