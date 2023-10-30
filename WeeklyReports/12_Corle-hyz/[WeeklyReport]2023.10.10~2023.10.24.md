@@ -42,3 +42,4 @@ Github ID：[Corle-hyz](https://github.com/Corle-hyz)
 1. 明确Llama相较于Transformer修改的地方，仿照[《Reducing Activation Recomputation in Large Transformer Models》](https://arxiv.org/abs/2205.05198)的方式，从理论推导给出Llama的激活内存模型。
 
 ### 导师点评
+咏哲同学基础扎实，能够快速适应全自动并行任务，本周在显存建模工作中提出不错的想法，需要进一步结合已有的工业实践进一步完善建模工作，达到可大范围推广的目标。期待咏哲的下一步的工作成果。
