@@ -157,6 +157,7 @@ C++ Traceback (most recent call last):
 ### 下周工作
 
 1. 动转静单测机制推全
+2. pir 动转静推全验证
 
 ### 导师点评
 
