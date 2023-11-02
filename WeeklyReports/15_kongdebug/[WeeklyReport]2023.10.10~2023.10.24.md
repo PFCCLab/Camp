@@ -20,7 +20,7 @@ Github ID：[kongdebug](https://github.com/kongdebug)
 
 3. **问题疑惑与解答**
     - 问题a: NuScenes完整数据集接近500G大小，目前推进该项目是使用mini版的NuScenes数据进行代码测试，而之后训练复现需要使用完整数据，已经超过AI Studio的磁盘大小，该如何进行训练？
-      答：
+      答：可以先基于mini NuScenes数据集做前反向对齐，我们再协调下机器资源。
 
 
 ### 下周工作
@@ -29,4 +29,4 @@ Github ID：[kongdebug](https://github.com/kongdebug)
 2. 完成Fast-BEV的NuScenes数据集类的定义
 
 ### 导师点评
-
+计划清晰，正常推进
