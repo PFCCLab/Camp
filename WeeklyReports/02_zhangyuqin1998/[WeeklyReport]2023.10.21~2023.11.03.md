@@ -67,3 +67,4 @@ T* DeviceContext::Alloc(TensorBase* tensor,
 找到 DeviceContext 为什么会发生这个问题
 
 ### 导师点评
+11-03：本周开发工作有一定难度，钰钦能够很快解决遇到的各种问题，点赞！
