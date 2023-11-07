@@ -64,13 +64,6 @@
         
         答：可以采用 monkey patch 的方法对 pir 体系下的 Block 和 Program 做方法补全。比如这个 PR https://github.com/PaddlePaddle/Paddle/pull/58660 , 补全了 Program 的 global_seed 方法
 
-	* paddle/phi/api/yaml/op_compat.yaml 的具体作用, 比如:
-        > \- op : bilinear (bilinear_tensor_product)
-        
-        在哪里完成了具体的算子映射?
-
-        答：...
-
      * 为什么 `Attribute` 和 `OpInfo` 都会在 `IrContext` ，不独立拆开来写？
 
         答：...
@@ -115,6 +108,26 @@
         > ```
 
         \_legacy_C_ops 和 \_C_ops, 前者老动态图，后者新动态图。老动态图里有些代码和逻辑依然在用，所以保留了 \_legacy_C_ops 下来
+
+	* paddle/phi/api/yaml/op_compat.yaml 的具体作用, 为什么在 op_compat.yaml 里存在如下用括号起来的 "别名":
+        > \- op : bilinear (bilinear_tensor_product)
+        
+        在哪里完成了具体的算子映射?
+
+        答：paddle 的静态图 op 定义简单分为两种体系，一种是旧体系，手动编写 OpMaker 等函数并调用 REGISTER_OPERATOR 手动注册；一种是新体系，使用 yaml 来定义。所以 op_compat.yaml 的主要功能是在代码自动生成时，完成参数名字映射和增加一些原始 ops.yaml 中没有的信息，确保生成的Op和原始手写的文件一致。具体来说 generate_op.py 的 add_compat_name::get_phi_and_fluid_op_name 完成了这种别名的映射
+
+
+    * kernel_sig 的作用是什么？
+
+        答：首先明确源码中的两种 kernel_signature:
+        1. C++ class `KernelSignature`: 在静态图和旧动态图下，用于拿到 kernel 的输入，输出，属性信息，也就是所谓的签名，辅助 kernel 分发。查找对应的 kernel signature 的方法是：`paddle/phi/ops/compat/generated_static_sig.cc` 会注册诸如 `MatmulV2OpArgumentMapping` 的 mapping function，然后在需要的时候通过 `GetExpectedPhiKernelArgs` 查表找到对应的 mapping function，然后构造得到 `KernelSignature`
+        
+        2. 新动态图下的函数指针类型 `kernel_signature`: 在新动态图下，该函数指针类型是通过 api_gen.py 读取 ops.yaml 和 legacy_ops.yaml 自动生成的。比如 paddle/phi/api/lib/api.cc::matmul 函数里:
+
+        ```c++
+        using kernel_signature = void(*)(const phi::DeviceContext&, const phi::DenseTensor&, const phi::DenseTensor&, bool, bool, phi::DenseTensor*);
+        ```
+        该行代码指定的函数指针类型是 api_gen.py 读取里 legacy_ops.yaml 对应的 matmul 定义生成的
 
 ### 下周工作
 
