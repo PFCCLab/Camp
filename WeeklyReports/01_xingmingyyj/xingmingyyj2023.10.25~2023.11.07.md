@@ -46,7 +46,7 @@ PR链接：https://github.com/PaddlePaddle/Paddle/pull/58379
 PR链接：https://github.com/PaddlePaddle/Paddle/pull/58543
 ### 下周工作
 #### 1.修复下述算子
-尝试修复的算子名单中还剩下uniform_random_op,unique,uniform_random_bf16_op未修复，计划完成修复
+尝试修复的算子名单中还剩下real_imag,uniform_random_op,unique,uniform_random_bf16_op未修复，计划完成修复
 #### 2.编写文档
 编写pir算子修复文档，将推全任务发布社区
 #### 3.修复推全名单中的部分算子
