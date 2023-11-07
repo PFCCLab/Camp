@@ -101,7 +101,7 @@ def process_step_log(log_data, device_id):
 
 2、完善可视化工具的使用文档
 
-3、着手开始下一阶段的工作：优化分布式流水并行的性能
+3、适配新IR
 
 
 ### 导师点评
