@@ -9,7 +9,7 @@ PIR 适配 AI 编译器 CINN
 ### 本周工作
 
 
-#### 1. [遗留工作] matmul 转写PR的合入完成
+#### 1. [遗留工作] matmul 转写PR的合入&&优化完成
 
 - https://github.com/PaddlePaddle/Paddle/pull/56550
 - https://github.com/PaddlePaddle/Paddle/pull/58517
@@ -53,18 +53,28 @@ ctest -VV -R test_pir_build_cinn_pass
 
 #### 5. 新IR Python API适配升级
 
-新IR Python API适配升级：178, 169, 137, 34, 129, 152, 187, 197, 219-221, 225, 227
+新IR Python API适配升级
+- https://github.com/PaddlePaddle/Paddle/pull/58394
+- https://github.com/PaddlePaddle/Paddle/pull/58445
+- https://github.com/PaddlePaddle/Paddle/pull/58629
+- https://github.com/PaddlePaddle/Paddle/pull/58670
+- https://github.com/PaddlePaddle/Paddle/pull/58675
+- https://github.com/PaddlePaddle/Paddle/pull/58683
+- https://github.com/PaddlePaddle/Paddle/pull/58693
+- https://github.com/PaddlePaddle/Paddle/pull/58699
 
 
-#### 6. 阅读 cinn 单测源码
+#### 6. 阅读 cinn 相关源码
 
-
+- [cinn_source_code_reading_guide](https://github.com/DrRyanHuang/community/blob/master/pfcc/paddle-code-reading/IR_Dialect/)
 
 ### 下周工作
 
 1. 新IR Python API适配升级
 
+160、204、216、23、27、102、140-142
 
+2. 继续进行 cinn 相关源码阅读
 
 
 ### 导师点评
