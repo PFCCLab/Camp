@@ -6,7 +6,7 @@
 #### 1.修复exponential算子
 遇到的问题及解决方法
 
-**问题一**： 在`ops.yaml`中添加dpsgd的注册信息之后，运行报错`  [Hint: Expected param->numel() == sz, but received param->numel():10710 != sz:0.] `,原因是没有给dpsgd配置infermeta,在`paddle/phi/infermeta/ternary.cc`下添加infermeta函数后成功解决.<br>**问题二**：`error: eager_api_dpsgd was not declared in this scope`,添加算子时编译出现该问题需要将算子名称加入
+**问题一**：exponential op的输出值具有随机性，新Ir下的测试逻辑是在旧Ir下运行一次op，新Ir下运行一次op，比较两者的输出结果。因为exponential op的两次输出不相同所以现有的测试逻辑不适用。解决方法是对对于此类op单独创建一个`new_ir_op_test_no_check_list`不对输出结果做相应的检查
 
 PR链接：https://github.com/PaddlePaddle/Paddle/pull/58029
 
