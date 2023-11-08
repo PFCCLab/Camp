@@ -46,24 +46,24 @@ test_train_new_ir__sot_pir: <function TestBert.test_train_new_ir at 0x12975e340>
 [creating TestBert] # 生成单测的类
 Generating test_train_new_ir    # 方法名
 fn_to_static_modes: ToStaticMode.LEGACY_AST|SOT   # 运行测试的动转静模式
-fn_ir_modes: IrMode.PIR   # 运行在哪个 ir 模式下
+fn_ir_modes: IrMode.PIR   # 运行在哪个 IR 模式下
 fn_disabled_test_cases: []
 [showing TestBert] # 生成后的逻辑
 test_train_new_ir__legacy_ast_pir: <function TestBert.test_train_new_ir at 0x12975e200> # 生成后的新名称，以及方法信息
 test_train_new_ir__sot_pir: <function TestBert.test_train_new_ir at 0x12975e340>
 ```
-ir模式: 截止 2023年10月28日 paddle 仓库下存在着两套 ir 模式, 一套叫 pir, 一套叫旧 ir (对应日志显示的模式是`LEGACY_PROGRAM`)
+IR模式: 截止 2023年10月28日 paddle 仓库下存在着两套 IR 模式, 一套叫 PIR, 一套叫旧 IR (对应日志显示的模式是`LEGACY_PROGRAM`)
 
 动转静模式: 截止 2023年10月28日 paddle 仓库下存在着两套 动转静模式, 一套叫 AST(基于语法树), 一套叫 SOT(基于字节码)
 
 生成后新名字的逻辑:
 ```python
-f"{方法名}__{动转静模式}_{ir模式}"
+f"{方法名}__{动转静模式}_{IR模式}"
 ```
 
-这样的话我们就有四种单测情况: (`pir + sot`) + (`pir + ast`) + (`legacy_program + sot`) + (`legacy_program + ast`) = 4
+这样的话我们就有四种单测情况: (`PIR + SOT`) + (`PIR + AST`) + (`legacy_program + SOT`) + (`legacy_program + AST`) = 4
 
-其中`legacy_program + ast`就是最最最原始的单测机制，而`Dy2StTestBase`继承的默认情况会是 (`legacy_program + sot`) + (`legacy_program + ast`) 
+其中`legacy_program + AST`就是最最最原始的单测机制，而`Dy2StTestBase`继承的默认情况会是 (`legacy_program + SOT`) + (`legacy_program + AST`) 
 
 ##### 遇到的一些问题:
 
@@ -155,10 +155,10 @@ C++ Traceback (most recent call last):
 
 原来 opresult 在 C++ 端 bind 了一套 eq 方法，现在我们在 python 端写了一套 eq 方法把原来的覆盖了。而 set 的 & 操作会调用到 OpResult 的 __eq__ 方法，导致 set 在 & 的时候有问题。
 
-后续修复思路：修改pir backward的代码逻辑
+后续修复思路：修改 PIR backward 的代码逻辑
 
 
-#### 3. **pir 动转静推全验证 第一阶段: 机制完善**
+#### 3. **PIR 动转静推全验证 第一阶段: 机制完善**
 
 对现有的单测机制进行调整
 
@@ -261,7 +261,7 @@ def test_legacy_and_pir(fn):
 
 ### 下周工作
 
-1. pir 动转静理想态推全验证
+1. PIR 动转静理想态推全验证
 2. OpResult 方法补全
 
 ### 导师点评
@@ -272,6 +272,6 @@ def test_legacy_and_pir(fn):
 
 ### 相关链接
 
-* [pir 文档以及代码规范](https://github.com/PaddlePaddle/community/tree/master/pfcc/paddle-code-reading/IR_Dialect)
+* [PIR 文档以及代码规范](https://github.com/PaddlePaddle/community/tree/master/pfcc/paddle-code-reading/IR_Dialect)
 * [PaddleSOT](https://github.com/paddlepaddle/paddleSOT)，现已移入 paddle 主仓库[#57824](https://github.com/PaddlePaddle/Paddle/pull/57824)
 
