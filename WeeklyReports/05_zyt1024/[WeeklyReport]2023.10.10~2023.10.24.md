@@ -99,4 +99,4 @@ class TestPartialConcatOp2_Complex128(TestPartialConcatOp):
 2. 继续研读 复数自动微分文档
 
 ### 导师点评
-请联系导师填写
+按时完成学习任务及上手任务，期待下周更深入的工作
