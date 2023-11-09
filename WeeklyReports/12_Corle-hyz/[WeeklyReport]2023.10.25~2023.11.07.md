@@ -49,3 +49,5 @@ Github ID：[Corle-hyz](https://github.com/Corle-hyz)
 1. 在单卡模型的基础上，进一步考虑DP、MP、PP、VPP、AccNum、Recompute、Sharding等并行模式，将单卡模型扩展到并行训练中。
 
 ### 导师点评
+
+单卡建模工作取得较大进展，下一步结合分布式并行策略建立多卡下峰值显存模型，后续该工作将能够真正进行应用在大模型套件之中。
