@@ -11,7 +11,7 @@
     * 发布并第三期的 PIR API 迁移任务, 为开发者提供答疑和 pr review, 推进迁移任务进行：
         https://github.com/PaddlePaddle/Paddle/issues/58067
 	
-    * review PR：
+    * review PR, 并解决开发者问题, 总结共性问题至 「PIR 迁移任务的 bug 修复手册」：
         1. https://github.com/PaddlePaddle/Paddle/pull/58699
         2. https://github.com/PaddlePaddle/Paddle/pull/58699
         3. https://github.com/PaddlePaddle/Paddle/pull/58683
@@ -48,6 +48,9 @@
         1. nn.initializer.Uniform: https://github.com/PaddlePaddle/Paddle/pull/58642
         2. cosh: https://github.com/PaddlePaddle/Paddle/pull/58608
         3. group_norm: https://github.com/PaddlePaddle/Paddle/pull/58608
+        4. logsumexp: https://github.com/PaddlePaddle/Paddle/pull/58843
+        5. lgamma: https://github.com/PaddlePaddle/Paddle/pull/58840
+        6. log1p: https://github.com/PaddlePaddle/Paddle/pull/58840
 
 3. **问题疑惑与解答**
 
