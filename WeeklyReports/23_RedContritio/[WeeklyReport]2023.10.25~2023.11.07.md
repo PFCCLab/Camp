@@ -49,6 +49,7 @@ Github ID: [RedContritio](https://github.com/RedContritio)
     2. 对于每个 api （如 `torch.a.b.c`）的测试代码，其必须包含该 api 的一个全字匹配非空后缀，如 `torch.a.b.c`、`a.b.c`、`b.c`、`c`，否则报 `ValueError`。
     3. 当前假设所有 api 均为函数调用（包括类、方法等），匹配其第一个匹配后的括号内内容作为参数，如果匹配失败则报 `ValueError`。
     4. 验证时读入所有的 `args` 和 `kwargs`，并基于其 api_mapping 数据，进行以上四种测试。特别的，目前支持了 `*` 置入参数列表，其表明后面的参数不可作为位置参数。尚无支持 `/`，`*args`，`**kwargs` 这三种参数。
+    5. （未来规划）对于 api_mapping.json 或 api_alias 中出现的 api，都需要存在对应单测。
 
     目前已初步完成工具的开发，并基于该工具进行验证，修复 53 个不符合规范的单元测试与约 10 项 `api_mapping` 映射数据。
 
@@ -63,3 +64,6 @@ Github ID: [RedContritio](https://github.com/RedContritio)
 4. 参考现有 ci 流程，将映射文档检查流程加入到 ci 流程中；
 
 ### 导师点评
+
+刘宇博同学设计了单测的多样性检测工具，通过patch方式记录历史存量单测，体现了主动思考方案的能力，后续还需要在具体检查的内容上进一步完善细节。
+未来期待从 **单测->Matcher->映射文档->映射文档主页** 这条链路前行，全面的规范化、正确化 PaConvert的历史存量代码，期待工作成果的最终全面落地。
