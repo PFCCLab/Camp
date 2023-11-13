@@ -30,4 +30,4 @@ PIR 核心组件建设与机制完善
 3. 迁移 index_select、index_sample、multiplex、floor_mod、renorm、repeat_interleave、rad2deg 算子到 PIR 。
 
 ### 导师点评
-
+荣瑞本周持续参数pir api迁移工作，下周会参与到pir机制修复补全的工作，再接再厉~
