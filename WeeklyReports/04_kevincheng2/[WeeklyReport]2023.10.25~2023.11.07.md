@@ -17,13 +17,13 @@
 	
 	* 理解 call_vjp 调用规则
 	
-	  ![whiteboard_exported_image](https://github.com/kevincheng2/Camp/blob/kevincheng2/WeeklyReport/WeeklyReports/04_kevincheng2/assets/whiteboard_exported_image.png)
+	  ![whiteboard_exported_image](https://github.com/kevincheng2/Camp/blob/kevincheng2/WeeklyReport/WeeklyReports/04_kevincheng2/assets/backward.png)
 	
 3. **熟悉新IR下的前向拆解规则** -- 进度 8/10
 	
 	* 学习PR [[Prim][PIR] Sink Forward Prim](https://github.com/PaddlePaddle/Paddle/pull/58130) 中算子拆解下沉实现，理解 call_decomp 调用规则
 	
-	  ![whiteboard_exported_image (1)](https://github.com/kevincheng2/Camp/blob/kevincheng2/WeeklyReport/WeeklyReports/04_kevincheng2/assets/whiteboard_exported_image%20(1).png)
+	  ![whiteboard_exported_image (1)](https://github.com/kevincheng2/Camp/blob/kevincheng2/WeeklyReport/WeeklyReports/04_kevincheng2/assets/forward.png)
 	
 3. **问题疑惑与解答**
 
