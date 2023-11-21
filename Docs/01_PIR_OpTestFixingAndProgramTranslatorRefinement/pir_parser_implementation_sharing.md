@@ -1,5 +1,5 @@
 # Pir Parser实现分享
-本文档对Pir的Parser的实现思路进行介绍，Parser主要完成读取一个描述计算图的文本串在构建出对应计算图对象的工作.阅读本文档的收获：
+本文档对Pir的Parser的实现思路进行介绍，Parser主要完成读取一个描述计算图的文本串在构建出对应计算图对象的工作.<br>阅读本文档的收获：
 - 加深了解PIR体系设计
 - 熟悉PIR下各个组件中API的使用
 - 了解Dialect机制
@@ -10,27 +10,27 @@ Pir体系下的`Program`主要由计算图`graphs`和权重参数`weights`组成
 实现`Parser`可能更关心的是组成`graphs`的文法.因为文法描述了语言中的基本元素以及它们之间的组合关系.通过文法可以确定`Parser`要处理的基本元素，以及`Parser`必须有哪些模块，它们直接如如何相互调用完成工作的.
 
 >**ModuleOp/Program**<br>
-Program  ::= [ ParameterList ] ModuleOp; <br>
-ModuleOp ::= { Region };<br>
-<br>
-ParameterList ::= { Parameter };<br>
-Parameter ::= Stringidentifier ":" Type "\n";<br><br>
-**Region/Block** <br>
-Region ::= { Block }; <br>
-Block ::= "{" { Operation } "}" ;<br><br>
-**Operation**<br>
-Operation ::= OpResultList? "=" (GenericOperation | CustomOperation)<br>
-GenericOperation ::= OpName "("OperandList? ")" AttributeMap ":" FunctionType<br>
-OpName::= "\"" StringIdentifier "." StringIdentifier "\""<br>
-CustomOperation::= CustomOperationFormat<br>
-OpResultList  ::= ValueList<br>
-OperandList::= ValueList<br>
-ValueList ::= ValueId ("," ValueId)*<br>
-ValueId::= "%" Digits<br>
-AttributeMap::= "[" (AttributeEntry ("," AttributeEntry)* ) ")"<br>
-AttributeEntry::= StringIdentifier ":" Attribute<br>
-FunctionType::= TypeList  '->'  TypeList<br>
-TypeList ::= Type (",", Type)*
+> Program  ::= [ ParameterList ] ModuleOp; <br>
+> ModuleOp ::= { Region };<br>
+> <br>
+> ParameterList ::= { Parameter };<br>
+> Parameter ::= Stringidentifier ":" Type "\n";<br><br>
+> **Region/Block** <br>
+> Region ::= { Block }; <br>
+> Block ::= "{" { Operation } "}" ;<br><br>
+> **Operation**<br>
+> Operation ::= OpResultList? "=" (GenericOperation | CustomOperation)<br>
+> GenericOperation ::= OpName "("OperandList? ")" AttributeMap ":" FunctionType<br>
+> OpName::= "\"" StringIdentifier "." StringIdentifier "\""<br>
+> CustomOperation::= CustomOperationFormat<br>
+> OpResultList  ::= ValueList<br>
+> OperandList::= ValueList<br>
+> ValueList ::= ValueId ("," ValueId)*<br>
+> ValueId::= "%" Digits<br>
+> AttributeMap::= "[" (AttributeEntry ("," AttributeEntry)* ) ")"<br>
+> AttributeEntry::= StringIdentifier ":" Attribute<br>
+> FunctionType::= TypeList  '->'  TypeList<br>
+> TypeList ::= Type (",", Type)*
 
 文法为了配合后面的`Parser`设计有一些改动.
 
