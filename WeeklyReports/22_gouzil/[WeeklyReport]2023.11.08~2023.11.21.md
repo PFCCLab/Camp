@@ -29,6 +29,7 @@ pr: [#59115](https://github.com/PaddlePaddle/Paddle/pull/59115)
 ### 下周工作
 
 1. PIR 动转静组件单测问题排查
+2. PIR 最终态适配
 
 
 ### 导师点评
