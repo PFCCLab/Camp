@@ -1,4 +1,4 @@
-![img_3.png](img_3.png)
+![Dy2Stat.png](Dy2Stat.png)
 
 目前我们通过动态图组网 -> AST翻译 -> 静态图表示 -> ProgramTranslator -> 新IR下的静态图表示 -> NewIRInterpreter 这样的路径支持了在新IR下飞桨的动转静功能。
 
@@ -94,7 +94,7 @@ def get_concrete_program(self, *args, **kwargs):
      return concrete_program, partial_program
 ```
 4. ConcreteProgram 主要负责组网阶段，首先将原本的动态图代码转为抽象语法树（AST），可以通过对树的节点进行替换或修改，将动态图代码改为符合静态图执行的代码，
-![img.png](img.png)
+![AST.png](AST.png)
 同时组网阶段并不读入实际数据，所以在静态图中还需要一种特殊的变量来表示输入数据，一般称为“占位符”，动转静提供了 InputSpec 接口配置该“占位符”，用于表示输入数据的描述信息。
 并以此作为编译期的 InferShape 推导起点，即用于推导输出 Tensor 的 shape。
 ```
