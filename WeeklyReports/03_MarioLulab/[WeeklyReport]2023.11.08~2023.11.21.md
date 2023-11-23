@@ -72,3 +72,6 @@
 3. 完成 code reading 笔记
 
 ### 导师点评
+整体评价：非常优秀！
+
+后续计划：陆琦之前在GitLink开源之夏参与过《PyLayer支持动转静》，其中在旧的IR体系下新增了PyLayerOp和对应静态图API。同时目前在主导《PIR API 第三期迁移工作》，因此对于PyLayer对应的静态图API和底层的算子表示，是否考虑可以迁移到PIR下呢？
