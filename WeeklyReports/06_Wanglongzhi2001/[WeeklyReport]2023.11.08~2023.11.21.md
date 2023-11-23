@@ -19,3 +19,4 @@
 
 ### 导师点评
 
+第一个PR已经顺利合入，补全了paddleslim到paddleinference原生量化推理的关键桥梁；后续quant_linear也需要收敛到PIR当中，所以PIR的掌握和开发至关重要；关于后续工作需要关注具体模型的性能收益，对于PTQ量化我的建议还是以Bert为例子，WINT8量化可以以llama为例，以性能优化为纲领补全或者优化算子。
