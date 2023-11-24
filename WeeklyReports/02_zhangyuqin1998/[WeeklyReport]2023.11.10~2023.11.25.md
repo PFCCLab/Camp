@@ -19,5 +19,6 @@ https://github.com/yuanlehome/Hackathon/wiki/%E5%B8%B8%E9%87%8F%E6%8A%98%E5%8F%A
 提交pr并完成了评审 https://github.com/PaddlePaddle/Paddle/pull/59244
 
 ### 下周工作
+完善和验证常量折叠
 
 ### 导师点评
