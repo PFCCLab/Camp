@@ -8,11 +8,10 @@
 
 1. **基于fused VIT完成weight_only_int8/4**
 
-	* 在[PaddleClas](https://github.com/PaddlePaddle/PaddleClas)的fused vit中实现了weight_only_int8/4的推理
+	* 在[PaddleClas](https://github.com/PaddlePaddle/PaddleClas)的fused vit中实现了weight_only_int8的推理
 	* weight_only_int8精度符合预期，加速1.4倍左右（batch_size=1/2，硬件原因没法进行更大的测试）
-	* weight_only_int4精度符合预期，加速1.4倍左右（batch_size=1/2，硬件原因没法进行更大的测试）
 	* 相关PR：https://github.com/PaddlePaddle/PaddleClas/pull/3034
-	* 目前，V100无法进行更深入的wint8/4或者ptq的测试，这部分暂停了
+	* 目前，V100无法进行更深入的wint8或者ptq的测试，这部分暂停了
 
 
 ### 下周工作
