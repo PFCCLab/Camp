@@ -47,6 +47,6 @@ Github ID: [RedContritio](https://github.com/RedContritio)
 ### 下周工作
 
 1. 继续修复完善单测，提高用例覆盖面；
-2. 修复现有的映射表 api_mapping.json；
+2. 补充现有映射表 `api_mapping.json`。
 
 ### 导师点评
