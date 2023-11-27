@@ -28,20 +28,21 @@ Github ID: [RedContritio](https://github.com/RedContritio)
     - [x] 添加了对于抽象方法、可重载方法的标注，当前做跳过处理；
     - [x] 补充约 50 个 api 的映射单元测试用例，以完善覆盖范围。
     
-    PR: https://github.com/PaddlePaddle/PaConvert/pull/330
+    PR:
+    - https://github.com/PaddlePaddle/PaConvert/pull/330
 
 2. **现存 bug 修复**
 
     由于此前转换工具的开发遗留问题，当前 CI 流程或实际功能存在部分 bug，详情与修复如下：
 
-    - [x] 原计划支持 `torch==1.3.0`，现更新支持计划至 `torch==2.1.0`，部分 api 条件检查更加严格导致单测出错；
+    - [x] 原计划支持 `torch==1.3.0`，现更新支持计划至 `torch==2.1.0`，部分 api 条件检查更加严格导致单测出错。
           修复了 `tests/test_nn_utils_clip_grad_value_.py` 中出错的两个用例；
     - [x] `Consistency` CI 中，存在 python 版本硬编码与依赖缺失的问题；修复了对应测试脚本；
     - [x] 当类方法调用时，其实例如果存在链式调用，可能导致其正则解析出错；添加了对应的转义规则。
 
     PR:
-        - https://github.com/PaddlePaddle/PaConvert/pull/330
-        - https://github.com/PaddlePaddle/PaConvert/pull/334
+    - https://github.com/PaddlePaddle/PaConvert/pull/330
+    - https://github.com/PaddlePaddle/PaConvert/pull/334
 
 ### 下周工作
 
