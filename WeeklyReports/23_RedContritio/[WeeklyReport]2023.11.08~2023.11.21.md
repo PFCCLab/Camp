@@ -50,3 +50,5 @@ Github ID: [RedContritio](https://github.com/RedContritio)
 2. 补充现有映射表 `api_mapping.json`。
 
 ### 导师点评
+
+单测数量庞大，亟待全面清理，刘宇博同学思考的自动检测工具极大的提升了效率，期待后续更好的全面摸排并修复庞大且纷繁复杂的单测问题，建设更好的转换工具。
