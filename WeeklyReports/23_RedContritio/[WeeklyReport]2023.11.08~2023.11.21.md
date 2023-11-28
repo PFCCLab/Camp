@@ -24,8 +24,8 @@ Github ID: [RedContritio](https://github.com/RedContritio)
     - [x] 支持属性映射 `ATTRIBUTE_MAPPING` 跳过检查；
     - [x] 移动了约 20 个 `attribute`` 到对应映射关系文件；
     - [x] 支持可变参数 `*args, **kwargs`；
-    - [x] 支持识别 `==`, `lambda` 等运算符、关键字作为参数的识别；
-    - [x] 添加了对于抽象方法、可重载方法的标注，当前做跳过处理；
+    - [x] 支持 `==`, `lambda` 等运算符、关键字作为参数的识别；
+    - [x] 添加了对于抽象方法、可重载方法的标注，当前做特殊标注或跳过处理；
     - [x] 补充约 50 个 api 的映射单元测试用例，以完善覆盖范围。
     
     PR:
