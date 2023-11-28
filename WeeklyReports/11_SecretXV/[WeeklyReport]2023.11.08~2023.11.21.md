@@ -12,19 +12,17 @@ Github ID：SecretXV
 
   `sharding stage3 + dp`卡住问题导致原因为单测中手动创建通信组时建立顺序存在问题。采用`fleet.init`中初始化创建的通信组后无此问题。
 
-  PR链接：
-
 2. **sharding stage2 + dp 梯度累加功能验证d**
 
   完善`sharding stage2 + dp`单测。由于`sharding`采用reduce通信，`dp`默认采用allreduce通信，二者loss无法逐位对齐，因此使用`numpy.test.assert_allclose`替换`numpy.test.assert_array_equal`，绝对误差为`1e-5`(by NVIDIA)。由于gpus流水线没有4卡环境，暂时只在本地验证通过。
 
-  PR链接：
+  PR链接：https://github.com/PaddlePaddle/Paddle/pull/58850
 
 3. **sharding stage3 + dp 梯度累加功能验证**
 
   为`sharding stage3 + dp`添加相关验证单测。由于gpus流水线没有4卡环境，暂时只在本地验证通过。
 
-  PR链接：
+  PR链接：https://github.com/PaddlePaddle/Paddle/pull/59468
 
 
 4. **问题疑惑与解答**
