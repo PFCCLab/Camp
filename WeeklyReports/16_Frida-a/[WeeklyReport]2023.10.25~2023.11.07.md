@@ -27,6 +27,7 @@ Nougat复现及优化
 
 1. 使用PaConvert进行代码转换和debug
 2. 使用PaDiff进行检查和debug
+3. 遇到不能通过的地方使用手动检查
 
 
 ### 导师点评
