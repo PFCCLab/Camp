@@ -29,6 +29,5 @@ Github ID：[xusuyong](https://github.com/xusuyong)
 
 ### 导师点评
 
-请联系导师填写
-
+苏勇调研较为认真充分，调研文档撰写内容合理清晰。
 ​	
