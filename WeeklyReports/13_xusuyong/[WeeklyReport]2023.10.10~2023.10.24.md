@@ -15,7 +15,7 @@ Github ID：[xusuyong](https://github.com/xusuyong)
     - 改造laplace2d案例的代码的代码，使之能使用[Hydra](https://hydra.cc/)库，方便实验管理和解析。PR地址：[modify laplace2d to hydra style](https://github.com/PaddlePaddle/PaddleScience/pull/575)
 2. **学习理解用DDPM算法从低分辨数据重构高分辨率数据**
     - 学习理解DDPM算法，复现文献 **A Physics-informed Diffusion Model for High-fidelity Flow Field Reconstruction** (<a href="https://www.sciencedirect.com/science/article/pii/S0021999123000670">Journal of Computational Physics</a> | <a href="https://arxiv.org/abs/2211.14680">arXiv</a>)，理解作者是如何将物理知识融入DDPM算法，模型预测的结果：
-![](pred.png)
+![](assets/pred.png)
     - 学习使用SU2
 3. **问题疑惑与解答**
     - 问题：原始的DDPM/DDIM采样算法是从输入高斯噪声开始，生成的是随机的图片难以控制，如何让它生成我们想要的高分辨率数据？
