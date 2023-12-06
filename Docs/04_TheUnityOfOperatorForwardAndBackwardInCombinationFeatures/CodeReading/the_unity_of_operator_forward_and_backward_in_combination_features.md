@@ -10,19 +10,23 @@
 
 ### PyTorch 2.x 中的 `torch.compile`
 
--  基于四种新技术 - `TorchDynamo`、`AOTAutograd` 、`PrimTorch` 、`TorchInducto`
+- 基于四种新技术 - `TorchDynamo`、`AOTAutograd` 、`PrimTorch` 、`TorchInducto`
+
 - **TorchDynamo：快速可靠的获取计算图**
   -   TorchDynamo 使用 Python Frame Evaluation Hooks 安全地捕获 PyTorch 程序，这是一项重大创新，用来快速可靠地获取计算图，是研究团队花费 5 年研发的结果。
+  
 - **AOTAutograd：将 Autograd 重用于 ahead-of-time 图**
   -   AOTAutograd 重载 PyTorch 的 autograd 引擎作为一个跟踪 autodiff，用于生成 ahead-of-time 向后跟踪。
+  
 - **PrimTorch: 稳定的原始算子集合**
-  -   通常情况下，为 PyTorch 编写后端是一件复杂工作。PyTorch 有 1200 多个算子，如果考虑每个算子的各种重载，则有 2000 多个。
-  -   将约 2000 多个 PyTorch 算子规范化为一组约 250 个原始算子的闭集，可以将其看作 PyTorch 后端所有算子的子集。使用这种方法，大大降低了编写 PyTorch 特性或后端的障碍。
-  - 
-  -   在 PrimTorch 项目中，研发团队的目标是构建更小且稳定的算子集，并将 PyTorch 程序基于这个较小的算子集进行构建。目标是定义两个算子集：
-  - Prim ops：包含约 250 个相对底层的算子，这些算子底层进行了很多性能优化，同时配合编译器将这些算子进行融合，可以获得良好的性能。
-  - ATen ops：包含约 750 个典型算子 (canonical operator)，适合于直接输出。这些算子适用于传统的动态图，不经过编译后端优化的场景。不需要经过编译器恢复性能。
-  - 
+  - 通常情况下，为 PyTorch 编写后端是一件复杂工作。PyTorch 有 1200 多个算子，如果考虑每个算子的各种重载，则有 2000 多个。
+  
+  - 将约 2000 多个 PyTorch 算子规范化为一组约 250 个原始算子的闭集，可以将其看作 PyTorch 后端所有算子的子集。使用这种方法，大大降低了编写 PyTorch 特性或后端的障碍。
+  
+    
+  
+    
+  
 - **TorchInductor: 使用 define-by-run** **IR** **快速生成代码 [** **对应 paddle 中的 cinn** **]** **[Paddle cinn 传送门](https://github.com/PaddlePaddle/CINN)**
   -   TorchInductor 是一种深度学习编译器，可为多个加速器和后端生成快速代码。对于 NVIDIA GPU，它使用 OpenAI Triton 作为关键构建块。
 
@@ -31,6 +35,22 @@
 ![img](https://github.com/kevincheng2/Camp/blob/kevincheng2/WeeklyReport/Docs/04_TheUnityOfOperatorForwardAndBackwardInCombinationFeatures/imgs/pytorch_compilation_process.png)
 
 ​												The PyTorch compilation process
+
+
+
+Prim 的问题：
+
+1. 只针对静态图下的执行流程，动态图无法进行整图结构优化。
+2. 算子拆解会影响计算图执行性能，需要配合 AI 编译器，提升性能
+
+
+
+在 PrimTorch 项目中，研发团队的目标是构建更小且稳定的算子集，并将 PyTorch 程序基于这个较小的算子集进行构建。目标是定义两个算子集：
+
+-   Prim ops：包含约 250 个相对底层的算子，这些算子底层进行了很多性能优化，同时配合编译器将这些算子进行融合，可以获得良好的性能。
+-   ATen ops：包含约 750 个典型算子 (canonical operator)，适合于直接输出。这些算子适用于传统的动态图，不经过编译后端优化的场景。不需要经过编译器恢复性能。
+
+
 
 ### 图算融合技术  --  静态图框架
 
