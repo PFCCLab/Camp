@@ -28,7 +28,7 @@
 
 
 
-![img](C:\\Users\\dell\\Documents\\vsCode\\Camp\\Docs\\04_TheUnityOfOperatorForwardAndBackwardInCombinationFeatures\\imgs\\pytorch_compilation_process.png)
+![img](https://github.com/kevincheng2/Camp/blob/kevincheng2/WeeklyReport/Docs/04_TheUnityOfOperatorForwardAndBackwardInCombinationFeatures/imgs/pytorch_compilation_process.png)
 
 ​												The PyTorch compilation process
 
@@ -36,7 +36,7 @@
 
 以 MindSpore 的图算融合技术为例，图算融合通过 **算子拆解、算子聚合、算子重建** 三个主要阶段让计算图中的计算更密集，并进一步减少低效的内存访问。
 
-![img](C:\\Users\\dell\\Documents\\vsCode\\Camp\\Docs\\04_TheUnityOfOperatorForwardAndBackwardInCombinationFeatures\\imgs\\aggregation_compute.png)
+![img](https://github.com/kevincheng2/Camp/blob/kevincheng2/WeeklyReport/Docs/04_TheUnityOfOperatorForwardAndBackwardInCombinationFeatures/imgs/aggregation_compute.png)
 
 
 
@@ -86,7 +86,7 @@ Tensor softmax_decomp(const Tensor& x, const int& axis) {
 }
 ```
 
-![img](C:\Users\dell\Documents\vsCode\Camp\Docs\04_TheUnityOfOperatorForwardAndBackwardInCombinationFeatures\imgs\operator_prim.png)
+![img](https://github.com/kevincheng2/Camp/blob/kevincheng2/WeeklyReport/Docs/04_TheUnityOfOperatorForwardAndBackwardInCombinationFeatures/imgs/operator_prim.png)
 
 ### sqrt 算子 - 反向拆解
 
@@ -107,7 +107,7 @@ void sqrt_grad(const Tensor& out, const Tensor& out_grad, Tensor* x_grad) {
 
 ### 算子前向拆解
 
-![img](C:\Users\dell\Documents\vsCode\Camp\Docs\04_TheUnityOfOperatorForwardAndBackwardInCombinationFeatures\imgs\forward_prim.png)
+![img](https://github.com/kevincheng2/Camp/blob/kevincheng2/WeeklyReport/Docs/04_TheUnityOfOperatorForwardAndBackwardInCombinationFeatures/imgs/forward_prim.png)
 
 ```C++
 // /home/aistudio/Paddle/paddle/fluid/pybind/pybind.cc
@@ -198,7 +198,7 @@ Tensor relu_decomp(const Tensor& x) {
 
 ### 算子反向拆解
 
-![img](C:\Users\dell\Documents\vsCode\Camp\Docs\04_TheUnityOfOperatorForwardAndBackwardInCombinationFeatures\imgs\backward_prim.png)
+![img](https://github.com/kevincheng2/Camp/blob/kevincheng2/WeeklyReport/Docs/04_TheUnityOfOperatorForwardAndBackwardInCombinationFeatures/imgs/backward_prim.png)
 
 ```C++
 // /home/aistudio/Paddle/paddle/fluid/pybind/pybind.cc
