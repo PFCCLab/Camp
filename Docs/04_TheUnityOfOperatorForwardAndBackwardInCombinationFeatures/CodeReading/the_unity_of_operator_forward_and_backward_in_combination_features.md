@@ -10,7 +10,7 @@
 
 ### PyTorch 2.x 中的 `torch.compile`
 
-- 基于四种新技术 - `TorchDynamo`、`AOTAutograd` 、`PrimTorch` 、`TorchInducto`
+- 基于四种新技术 - `TorchDynamo`、`AOTAutograd` 、`PrimTorch` 、`TorchInductor`
 
 - **TorchDynamo：快速可靠的获取计算图**
   -   TorchDynamo 使用 Python Frame Evaluation Hooks 安全地捕获 PyTorch 程序，这是一项重大创新，用来快速可靠地获取计算图，是研究团队花费 5 年研发的结果。
