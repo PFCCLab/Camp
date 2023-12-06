@@ -18,7 +18,7 @@
 #### 4.修复 test_matrix_rank_op
 已定位问题，原因该是op根据`ctx`中是否存在`TolTensor`选择`kernel`，还未修复。
 #### 5.修复 test_sgd_op_bf16
-已定位问题，该op的情况和`test_unique`类似，新Ir无法适配`GetSgdExpectedKernelType`，还未修复。
+已定位问题，该op的情况和`test_unique`类似，参考PR59124适配`GetSgdExpectedKernelType`，还未修复。
 #### 6.修复 test_tdm_sampler_op
 本地注册`tdm_sampler`之后，单测执行成功，但是PR CI-Coverage覆盖率未通过，目前确定是FLAG设定存在问题。
 #### 7.修复 test_activation_op
