@@ -141,4 +141,6 @@ pr: [#59300](https://github.com/PaddlePaddle/Paddle/pull/59300)
 
 
 ### 导师点评
-请联系导师填写
+
+PIR 理想态推进迅速，目前一期摸底已经基本完成，接下来二期可以投入到问题修复及相关机制建设之中，LGTMeow 🐾
+
