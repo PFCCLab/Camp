@@ -41,7 +41,7 @@ PIR 动转静组件单测问题摸底收尾:
 1. 新IR Python API适配升级收尾工作
 
 - https://github.com/PaddlePaddle/Paddle/pull/58708 (依赖张师傅前置PR)
-- https://github.com/PaddlePaddle/Paddle/pull/59535 (依赖 assign_value, 仍在调试中)
+- https://github.com/PaddlePaddle/Paddle/pull/59535 (~依赖 assign_value, 仍在调试中~ 已规避这个问题)
 
 2. 继续进行 PIR 动转静理想态单测推全验证
 
