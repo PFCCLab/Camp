@@ -1,0 +1,58 @@
+MPCS 55001 Algorithms Autumn 2023
+
+Homework 7
+
+Test Student
+
+Test ID - 2022
+
+Collaborators: Student A, Student B
+
+**Instructions:** Write up your answers in LaTeX and submit them to Gradescope. We will not grade handwritten homework.
+
+**Collaboration policy:** You may work together with other students on homework. If you do, state it at the beginning of your solution: **give the name(s) of collaborator(s)** and the nature and extent of the collaboration. Giving/receiving a hint counts as collaboration. Note: you must write up solutions **independently without assistance**.
+
+**Internet sources:** You must include the url of any internet source in your homework submission.
+
+## 1 Dynamic MST (13 points)
+
+Suppose that we have a weighted graph \(G=(V,E,w)\) with **distinct** edge weights and an MST \(T\) already computed. We want to update a minimum spanning tree for \(G\) as vertices and edges are added or deleted.
+
+For each part below, write **pseudocode** for an algorithm which takes \(G=(V,E,w)\) and its MST \(T\), the modified graph \(G^{\prime}=(V^{\prime},E^{\prime},w^{\prime})\), and the vertices/edges being modified as inputs, and outputs an MST \(T^{\prime}\) for \(G^{\prime}\).
+
+1. (3 points) \(G^{\prime}\) has the same vertices as \(G\) and one new edge \(e\) is added. Your algorithm must run in \(O(V)\) time. **Prove your solution is correct**, and analyze its running time.
+2. (4 points) \(G^{\prime}\) has the same vertices as \(G\) and one edge \(e\) is removed. You may assume that \(G^{\prime}\) is still connected. Your algorithm must run in \(O(E)\) time. **Prove your solution is correct**, and analyze its running time.
+3. (4 points) \(G^{\prime}\) has one new vertex \(v\) and \(k\) new edges \(e_{1},e_{2},\ldots,e_{k}\) are added connecting \(v\) to vertices in \(G\), where \(1\leq k\leq|V|\). The running time of your algorithm should not depend on \(|E|\), the number of edges in \(G\). **No credit for \(\Omega(E\log V)\) time algorithms.**
+4. (2 points) Show that \(T\) may provide no information about \(T^{\prime}\) when we remove a vertex and the incident edges. Specifically, give an example of \(G=(V,E,w)\) and \(G^{\prime}=G-v\) such that the MST of \(G\) has no edges in common with the MST of \(G^{\prime}\).
+
+## 2 Boruvka's Algorithm (12 points)
+
+Boruvka's MST algorithm (1926) can be described as a distributed version of Kruskal's algorithm. The input is an undirected connected weighted graph \(G=(V,E)\) with edge weight function \(w\). We assume that distinct edges have distinct weights. (Alternatively, the algorithm can be modified to work with arbitrary edge weight functions by adding a tie-breaking rule.)
+
+The algorithm proceeds by phases. In the first phase, we begin by having each vertex mark the edge incident to it whose weight is minimum. (For example, if the graph were a 4-cycle with edges of weights 1, 3, 2, and 4 around the cycle, then two vertices would mark the "1" edge and the other two vertices would mark the "2" edge.) This creates a forest \(F\) of marked edges. In the next phase, each tree \(F_{i}\) in \(F\) marks the minimum weight edge incident to it, i.e., the minimum weight edge having one endpoint in the tree \(F_{i}\) and one endpoint not in \(F_{i}\), creating a new forest \(F^{\prime}\). The algorithm repeats these phases until there is only one tree.
+
+1. (2 points) Given the forest \(F\subseteq E\), write **pseudocode** to compute the connected components \(F_{i}\) in \(O(V+E)\) time.
+2. (3 points) Write **pseudocode** for Boruvka's algorithm.
+3. (3 points) **Prove** that each phase can be implemented in \(O(V+E)\) time. **Prove** that Boruvka's algorithm has at most \(O(\lg V)\) phases. This gives a running time of \(O((V+E)\lg V)\) for the entire algorithm.
+4. (4 points) **Prove** the correctness of the algorithm by arguing that \(E(F)\) is always contained in the MST. Conclude that the constructed graph \(F\) never has any cycles. [Hint: use induction]
+
+## 3 Lightest Branch Spanning Tree (17 points)
+
+Let \(G=(V,E,w)\) be an undirected weighted graph. The **heaviest branch** of a spanning tree \(T\) is an edge which has the highest weight in \(T\). Moreover, we refer to this weight as the **heaviest branch value**. A **lightest branch spanning tree** (LBST) is a spanning tree that has the least possible **heaviest branch value**.
+
+For example, in the graph above, the tree given by \(T_{1}=\{(A,B),(B,F),(C,D),(D,E),(E,F),(E,G),(G,H)\}\) is an LBST with the heaviest branch being \((A,B)\) and value 14.
+
+The tree given by \(T_{2}=\{(A,B),(B,C),(C,D),(D,E),(E,F),(E,G),(G,H)\}\) has \((B,C)\) as the heaviest branch with weight 15; this is **not** an LBST.
+
+1. (3 points) Prove that any minimum spanning tree (MST) is also a lightest branch spanning tree (LBST).
+2. (2 points) Prove or disprove: Every LBST is also an MST.
+3. (2 points) Write **pseudocode** for function LBST_below which takes as input \(G=(V,E,w)\) and a number \(b\) and outputs true if \(G\) has an LBST with heaviest branch value at most \(b\). Else, it outputs false. Justify why your function works and compute its running time.
+4. (2 points) Use the function you wrote in part (c) to write **pseudocode** for an \(O\big{(}(V+E)\log V\big{)}\) time algorithm to compute a LBST. _You may not call Prim or Kruskal_.
+5. (1 point) Prove that if graph \(G_{b}=(V,E_{b})\) where \(E_{b}=\{e:(e\in E)\cap(w(e)\leq b)\}\) is connected then the heaviest branch value of an LBST of \(G\) is at most \(b\).
+6. (1 point) Prove that if graph \(G_{b}=(V,E_{b})\) is disconnected, you can greedily produce a partial LBST of \(G\) missing only the edges between the connected components of \(G_{b}\).
+7. (1 point) Earlier you studied the Quicksort algorithm, a randomized algorithm for sorting an array of numbers. Describe (2-3 sentences is fine) how you would modify Quicksort to instead select the median value in an array of numbers in linear expected time.
+8. (5 points) Combine the results of (e) and (f) with a choice of \(b\) to reduce the edges you need to consider by half in each iteration and reduce the complexity of your algorithm to \(O(V+E)\). Write pseudocode for your algorithm. You may assume that you already have a function to find the median of an unsorted array of numbers in deterministic linear time. Hint: Consider the relationship between the number of nonisolated vertices (i.e., vertices with adjacent vertices) and the number of edges in a graph. How might you be able to leverage this relationship in analyzing the running time of your algorithm?
+
+## 4 Programming: Image Segmentation (20 points)
+
+Follow this GitHub Classroom link to accept the assignment. Your code should be pushed to GitHub; you do not need to include it here.

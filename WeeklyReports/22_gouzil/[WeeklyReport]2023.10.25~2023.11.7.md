@@ -181,7 +181,7 @@ graph TB
     F --> G[PIR]
     G --> H[PIR executor]
 
-    C -->|ProaramTranslator| G
+    C -->|ProgramTranslator| G
 ```
 
 ##### 目标
