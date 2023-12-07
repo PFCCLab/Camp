@@ -44,10 +44,10 @@ PIR 动转静组件单测问题摸底收尾:
 - https://github.com/PaddlePaddle/Paddle/pull/59535 (~依赖 assign_value, 仍在调试中~ 已规避这个问题)
 
 2. 继续进行 PIR 动转静理想态单测推全验证
-
 - https://github.com/PaddlePaddle/Paddle/issues/58633
 
-3. 继续进行 cinn 相关源码阅读
+3. 完成 enable_to_static_guard 推全任务
+- https://github.com/PaddlePaddle/Paddle/issues/59684
 
 
 ### 导师点评
