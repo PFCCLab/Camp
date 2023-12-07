@@ -26,7 +26,7 @@ Github ID：[Corle-hyz](https://github.com/Corle-hyz)
 
         答：Chimera增加一条流水线的操作确实减少了Bubble，但是代价是参数、梯度和优化器状态的显存占用翻倍了，这对于大模型训练来说是不可接受的。Hanayo的做法和Interleaved PP（或者叫VPP）没有太大区别。
     
-    - 问题b：paddle在训练大模型的时候会开量化吗？有的在训练llama的时候会量化到8 bit甚至4 bit（比如https://github.com/ggerganov/llama.cpp），并且paddle里面好像也给了量化的接口。
+    - 问题b：paddle在训练大模型的时候会开量化吗？[有的项目在训练llama的时候会量化到8 bit甚至4 bit](https://github.com/ggerganov/llama.cpp)，并且paddle里面好像也给了量化的接口。
 
         答：训练的时候不开，训练对大厂而言，可能更追求的是模型效果，量化的话一般用8bit，一般会掉精度
 
