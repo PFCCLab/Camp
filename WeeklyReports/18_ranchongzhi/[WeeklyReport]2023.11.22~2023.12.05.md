@@ -55,3 +55,5 @@ CPU测试环境：
 ### 下周计划
 
 完善PaddleClas中两个模型的ACT功能，提交PaddleDetection和PaddleClas对应的PR。
+
+### 导师点评
