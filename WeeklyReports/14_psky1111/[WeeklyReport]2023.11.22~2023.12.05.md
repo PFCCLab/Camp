@@ -8,7 +8,7 @@
 
 1. 修复swin动转静bug ：https://github.com/PaddlePaddle/PaddleClas/pull/3043 
 2. 修复大模型动转静bug：https://github.com/PaddlePaddle/PaddleClas/pull/3032
-3. 修复svr动转静bug：https://github.com/PaddlePaddle/PaddleClas/pull/3037
+3. 修复svtr动转静bug：https://github.com/PaddlePaddle/PaddleClas/pull/3037
 4. RAM,RAM PLUS前向对齐
 
 
@@ -22,4 +22,6 @@
 
 
 ### 导师点评
+对多模态大模型比较熟悉，可以比较快的上手工作。期待下周有问题可以随时沟通，解决多模态模型的训练问题。
+
 
