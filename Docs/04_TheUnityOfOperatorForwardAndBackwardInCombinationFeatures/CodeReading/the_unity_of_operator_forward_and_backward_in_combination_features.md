@@ -10,7 +10,7 @@
 
 ### PyTorch 2.x 中的 `torch.compile`
 
-- 基于四种新技术 - `TorchDynamo`、`AOTAutograd` 、`PrimTorch` 、`TorchInducto`
+- 基于四种新技术 - `TorchDynamo`、`AOTAutograd` 、`PrimTorch` 、`TorchInductor`
 
 - **TorchDynamo：快速可靠的获取计算图**
   -   TorchDynamo 使用 Python Frame Evaluation Hooks 安全地捕获 PyTorch 程序，这是一项重大创新，用来快速可靠地获取计算图，是研究团队花费 5 年研发的结果。
@@ -22,10 +22,6 @@
   - 通常情况下，为 PyTorch 编写后端是一件复杂工作。PyTorch 有 1200 多个算子，如果考虑每个算子的各种重载，则有 2000 多个。
   
   - 将约 2000 多个 PyTorch 算子规范化为一组约 250 个原始算子的闭集，可以将其看作 PyTorch 后端所有算子的子集。使用这种方法，大大降低了编写 PyTorch 特性或后端的障碍。
-  
-    
-  
-    
   
 - **TorchInductor: 使用 define-by-run** **IR** **快速生成代码 [** **对应 paddle 中的 cinn** **]** **[Paddle cinn 传送门](https://github.com/PaddlePaddle/CINN)**
   -   TorchInductor 是一种深度学习编译器，可为多个加速器和后端生成快速代码。对于 NVIDIA GPU，它使用 OpenAI Triton 作为关键构建块。
