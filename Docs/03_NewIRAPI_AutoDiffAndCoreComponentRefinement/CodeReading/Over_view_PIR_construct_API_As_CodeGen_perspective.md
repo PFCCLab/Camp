@@ -1,4 +1,4 @@
-# 从 CodeGen 视角看 PIR 组网 API - 正文
+# 从 CodeGen 视角看 PIR 组网 API
 
 ## 1. Introduction
 
