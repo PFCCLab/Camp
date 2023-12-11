@@ -1,8 +1,11 @@
 # 可视化静态图流水并行时序图工具使用手册
 
-飞桨框架提供了流水并行时序图可视化工具，可以对模型运行过程中流水并行信息进行收集、统计和展示。
+飞桨框架提供了流水并行时序图可视化工具，可以对模型运行过程中流水并行子图的调度信息进行收集、统计和展示。
 
-虽然当下已经存在GPU性能profiler工具如nsight，但当前尚未有一款工具直接提供了在不同GPU设备上执行的各个任务（Job）的精准运行时间区间。nsight等工具是在cpu上打断点，但是由于GPU程序的异步性，cpu端的断点往往无法精准的统计GPU任务的运行区间。
+虽然在GPU设备上可以使用Nsight工具对模型进行性能分析和优化，但在分布式流水并行场景下Nsight工具存在以下不足：
+
+1. 由于GPU程序的异步运行特性，在CPU端针对流水并行子图添加的NVTX标记无法直接与GPU端实际的算子执行区间相对应。在分析流水并行任务时，往往需要从一长串的kernel执行中人工找出每个流水子图的起始和终止算子，才能还原模型实际的流水并行情况。
+2. 流水并行任务往往跨多个机器执行，完整的模型被切分成多个子图，分配给多台机器运行。nsight工具只能单独对每台机器上的调度信息进行采集和展现，无法集中呈现多机之间流水并行的调度全貌。
 
 新开发的可视化工具旨在填补这一空白，通过直接在cuda计算流上插入断点以精准统计GPU任务的运行区间。通过展示流水线并行的时序图，直观呈现了分布式训练中各个GPU设备上不同任务的运行区间。
 
@@ -41,20 +44,27 @@ for i in range(10):
 
 ### 3. PaddleNLP下开启性能分析器
 
-PaddleNLP下，本工具将可视化功能集成到了命令行参数中，以下以 PaddleNLP 中 LLama 训练脚本为例：
+PaddleNLP下，本工具将可视化功能集成到了命令行参数中，以下以 PaddleNLP 中 LLama 训练脚本为例进行说明。
+
+PaddleNLP 中为了方便用户运行测试本模型，提供了处理好的100k条doc的训练样本：
+
+```bash
+wget https://bj.bcebos.com/paddlenlp/models/transformers/llama/data/llama_openwebtext_100k_ids.npy
+wget https://bj.bcebos.com/paddlenlp/models/transformers/llama/data/llama_openwebtext_100k_idx.npz
+```
+
+将所有预处理得到的文件统一放入一个文件夹中，以备训练使用：
+
+```bash
+mkdir data
+mv llama_openwebtext_100k_ids.npy ./data
+mv llama_openwebtext_100k_idx.npz ./data
+```
+
+使用下面脚本,即可在llama-7b的基础上收集模型性能数据：
 
 ```bash
 task_name="llama_7b_pp2_mp4_st"
-rm -rf output/$task_name/
-rm -rf "output/$task_name""_log"
-
-export SOT_LOG_LEVEL=4
-export PYTHONPATH=../../:$PYTHONPATH
-
-export FLAGS_embedding_deterministic=1
-export FLAGS_cudnn_deterministic=1
-
-export CUDA_DEVICE_MAX_CONNECTIONS=1
 
 python -u  -m paddle.distributed.launch \
      --gpus "0,1,2,3" \
@@ -161,4 +171,3 @@ python python/paddle/distributed/auto_parallel/static/profiler_helper_static.py 
 
 - 查看不同设备上的任务运行时间区间。
 - 所展示的事件名字上标注事件所持续的时间，点击具体的事件，可在下方的说明栏中看到更详细的事件信息。通过按键 w、s 可进行放大和缩小，通过a、d可进行左移和右移。
-
