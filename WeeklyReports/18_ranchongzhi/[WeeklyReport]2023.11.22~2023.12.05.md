@@ -57,3 +57,4 @@ CPU测试环境：
 完善PaddleClas中两个模型的ACT功能，提交PaddleDetection和PaddleClas对应的PR。
 
 ### 导师点评
+实现了OCR全部模型和Det部分模型的调通，量化效果优秀，成果突出。
