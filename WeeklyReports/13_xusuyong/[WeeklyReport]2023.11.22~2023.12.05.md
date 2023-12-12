@@ -34,3 +34,4 @@ Github ID：[xusuyong](https://github.com/xusuyong)
 
 ### 导师点评
 
+很快能上手 DeePMD-kit 套件，对齐 dipole-tensor 后可以开始接入自定义算子和跑通 zinc_protein
