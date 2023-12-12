@@ -32,3 +32,5 @@ Github ID: [RedContritio](https://github.com/RedContritio)
 3. 维护设计不合理的 `Matcher`。
 
 ### 导师点评
+
+刘宇博同学在单测和Matcher的维护下，设计了良好可用的单测检查工具，很好减少了人工排查的工作量，同时对于各种corner case分析细致。后续将基于已检查出的各种单测问题，全面地毯式的提升单测质量，从而进一步提升Matcher的质量。期待工作成果的落地。
