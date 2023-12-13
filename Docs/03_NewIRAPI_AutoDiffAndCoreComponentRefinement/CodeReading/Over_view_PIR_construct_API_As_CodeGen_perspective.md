@@ -145,7 +145,7 @@ def sum(x, axis=None, dtype=None, keepdim=False, name=None):
        globals()[name] = getattr(core.eager.ops, name)
        __all__.append(name)
    
-   for name in dir(core.pir.ops):		# <-------- 动静统一 api
+   for name in dir(core.pir.ops):		# <-------- Python-C 转发 api, 大部分是动静统一的
        globals()[name] = getattr(core.pir.ops, name)
        if name not in __all__:
            __all__.append(name)
@@ -422,7 +422,7 @@ PIR 的 OP 定义和组网 API 层的生成执行流程如下：
 
 PIR 的 OP 定义和组网 API 层 CodeGen 执行流程类似，以下分析以 PIR OP 定义层代码生成的执行流程为例：
 
-可以看到，yaml 文件经过 `parse_op.py` 解析后生成静态图规范格式的 yaml 文件，补充原始的yaml配置的缺省配置。解析生成的 yaml 文件会和 `op_compat.yaml` 一起输入给 op_gen.py。`op_compat.yaml` 主要功能是参数名字映射和增加原始 `ops.yaml` 中没有的信息。`op_gen.py` 会根据 `f-string` 规定的模板，生成 PIR OP 定义的具体代码。拿生成的 pd_op.h` 文件举例，其单个 PIR OP 声明的 `f-string` 模板如下：
+可以看到，yaml 文件经过 `parse_op.py` 解析后生成静态图规范格式的 yaml 文件，补充原始的yaml配置的缺省配置。解析生成的 yaml 文件会和 `op_compat.yaml` 一起输入给 op_gen.py。`op_compat.yaml` 主要功能是参数名字映射和增加原始 `ops.yaml` 中没有的信息。`op_gen.py` 会根据 `f-string` 规定的模板，生成 PIR OP 定义的具体代码。拿生成的 `pd_op.h` 文件举例，其单个 PIR OP 声明的 `f-string` 模板如下：
 
 ```python
 // paddle/fluid/pir/dialect/op_generator/op_gen.py
@@ -508,7 +508,7 @@ PIR 的 Python-C 层的代码生成执行流程如下：
        ${op_vjp_source_file_tmp})
    ```
 
-   将 PIR 组网 API 的代码的自动生成置于 cmake 构建时期的原因是：可以在触发实际编译前，就生成包含 op 声明、定义和函数接口的完整代码文件，有效避免了并发编译时依赖文件缺失的问题。
+   将 PIR 组网 API 的代码的自动生成置于 cmake 构建时期的原因是：可以在触发实际编译前，就生成包含 op 声明、定义和函数接口的完整代码文件，有效避免了并发编译时可能出现的依赖文件缺失的问题。
 
 2. 当前的 PIR 组网，就用户的感知而言能做到无缝切换，因为在 python 用户端，用户都是调用 `paddle.xxx`。且 `_C_ops.xxx` 提供了一个动静结合的接口，使大部分 api 都能复用 python 代码，降低了迁移成本
 
