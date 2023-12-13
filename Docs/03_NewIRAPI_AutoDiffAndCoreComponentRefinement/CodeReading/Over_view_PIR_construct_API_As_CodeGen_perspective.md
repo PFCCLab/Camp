@@ -1,4 +1,7 @@
 # 从 CodeGen 视角看 PIR 组网 API
+> 阅读本文你将了解：
+> - PIR 组网 API，从 Python 到 C++ 的调用层次
+> - PIR 组网 API 的代码自动生成
 
 ## 1. Introduction
 
