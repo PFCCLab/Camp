@@ -26,10 +26,10 @@ Paddle作为国内第一的深度学习框架，功能已经十分丰富，代�
 
 对于 PIR 的组网 API 来说，引入 CodeGen 可以根据配置文件，方便地生成：
 
-1. PIR Pyhon-C 转发逻辑 API 生成与 pybind 绑定（ops_api.cc）
-2. PIR Python-C API 生成（static_op_function.cc, static_op_function.h）
-3. PIR 静态图组网接口（pd_api.cc, pd_api.h）
-4. PaddleDialect 的 Op 声明和实现（pd_op.cc, pd_op.h）
+1. PIR Pyhon-C 转发逻辑 API 生成与 pybind 绑定（`ops_api.cc`）
+2. PIR Python-C API 生成（`static_op_function.cc`, `static_op_function.h`）
+3. PIR 静态图组网接口（`pd_api.cc`, `pd_api.h`）
+4. PaddleDialect 的 Op 声明和实现（`pd_op.cc`, `pd_op.h`）
 
 同时，依据 "**yaml配置文件+Python脚本**" 的范式设计自动生成相关代码，提升了代码的可维护性
 
@@ -41,8 +41,9 @@ Paddle作为国内第一的深度学习框架，功能已经十分丰富，代�
 
 除了 PIR 外，Paddle 核心训练框架中，目前主要存在三套 CodeGen 设计体系：即动态图、静态图、旧动态图，但旧动态图在完全退场后，旧动态图的CodeGen体系也预计会被完全清除。
 
-![ops_code_gen](../imgs/1_now_codegen_overview.png)
-
+<p align="center">
+<img src="../imgs/1_now_codegen_overview.png" width=70%>
+</p>
 
 
 ## 2. PIR 组网 API 调用逻辑 (From Python To Cpp)
@@ -60,7 +61,8 @@ paddle.enable_static()		# paddle 默认为动态图, 所以此处需要显式地
 with paddle.pir_utils.IrGuard():	# <---------- 使用 IrGuard 切换至 pir 模式
     main_program = paddle.static.Program()
     startup_program = paddle.static.Program()
-    with paddle.static.program_guard(main_program=main_program, startup_program=startup_program):	# <------- 指定向哪对 main_program 和 startup_program 里添加 op
+    # 指定向哪对 main_program 和 startup_program 里添加 op
+    with paddle.static.program_guard(main_program=main_program, startup_program=startup_program):
         x = paddle.static.data('x', [5, 2], dtype='float32')	# <---- 添加 data op
         out = paddle.sum(x, axis=1, keepdim=True)    			# <---- 添加 sum op
         print(out)
@@ -71,8 +73,8 @@ with paddle.pir_utils.IrGuard():	# <---------- 使用 IrGuard 切换至 pir 模�
 
 >  `paddle.pir_utils.IrGuard()` 的作用有两个：
 >
-> 1. 使能 PIR 组网和执行的环境变量：FLAGS_enable_pir_api, FLAGS_enable_pir_in_executor
-> 2. 替换旧静态图下的相关函数：如 paddle.static.Program 替换为 paddle.pir.Program
+> 1. 使能 PIR 组网和执行的环境变量：`FLAGS_enable_pir_api`, `FLAGS_enable_pir_in_executor`
+> 2. 替换旧静态图下的相关函数：如 `paddle.static.Program` 替换为 `paddle.pir.Program`
 
 通过输出可以看到 PIR 组网结果
 
@@ -94,13 +96,14 @@ OpResult(define_op_name=pd_op.sum, index=0, dtype=pd_op.tensor<5x1xf32>, stop_gr
 
 当我们在静态图的 PIR 模式下，使用 python 调用组网 API `paddle.sum` 时，自顶 (python) 到下 (C++) 发生了如下调用：
 
-![paddle.sum 调用逻辑.drawio](../imgs/2_paddle.sum_call.png)
-
+<p align="center">
+<img src="../imgs/2_paddle.sum_call.png" width=70%>
+</p>
 
 
 #### 2.2.1 Python API 侧
 
-可以在 paddle.sum api 源码里看到，paddle.sum 会调用 \_C\_ops.sum：
+可以在 `paddle.sum` api 源码里看到，`paddle.sum` 会调用 `_C_ops.sum`：
 
 ```python
 # python/paddle/tensor/math.py
@@ -175,7 +178,7 @@ def sum(x, axis=None, dtype=None, keepdim=False, name=None):
    }
    ```
 
-4. `OpsAPI` 为一组函数声明，需要按照 PyModule_AddFunctions 函数的要求进行声明
+4. `OpsAPI` 为一组函数声明，需要按照 `PyModule_AddFunctions` 函数的要求进行声明
 
    ```c++
    // paddle/fluid/pybind/ops_api.cc
@@ -193,7 +196,7 @@ def sum(x, axis=None, dtype=None, keepdim=False, name=None):
 
 #### 2.2.2 Python-C 转发逻辑
 
-在 python api 侧调用 \_c_ops.sum，对应于由 pybind 绑定的位于 `paddle/fluid/pybind/ops_api.cc` 文件下的 C++ 函数 `static PyObject *sum(PyObject *self, PyObject *args, PyObject *kwargs)`
+在 python api 侧调用 `_C_ops.sum`，对应于由 pybind 绑定的位于 `paddle/fluid/pybind/ops_api.cc` 文件下的 C++ 函数 `static PyObject *sum(PyObject *self, PyObject *args, PyObject *kwargs)`
 
 > 注：paddle/fluid/pybind/ops_api.cc 在 cmake 编译构建阶段产生
 
@@ -261,7 +264,7 @@ PyObject *static_api_sum(PyObject *self, PyObject *args, PyObject *kwargs) {
 
 ```
 
-> 注：paddle/fluid/pybind/static_op_function.cc 在 cmake 编译构建阶段产生
+> 注：`paddle/fluid/pybind/static_op_function.cc` 在 cmake 编译构建阶段产生
 
 
 
@@ -283,13 +286,13 @@ pir::OpResult sum(const pir::Value& x,
 }
 ```
 
-抽象出这一层有利于提高代码的复用性。比如在组合算子中，pir 模式下就会复用 paddle::dialect::sum 进行组网
+抽象出这一层有利于提高代码的复用性。比如在组合算子中，pir 模式下就会复用 `paddle::dialect::sum` 进行组网
 
 
 
 #### 2.2.5 pir::Op 生成函数
 
-会调用 infer meta, 并且以此构建 pir::Operation::Create 的需要的 `pir::OperationArgument` 参数
+会调用 infer meta, 并且以此构建 `pir::Operation::Create` 的需要的 `pir::OperationArgument` 参数
 
 ```c++
 // paddle/fluid/pir/dialect/operator/ir/pd_op.cc
@@ -395,7 +398,7 @@ void SumOp::Build(pir::Builder &builder, pir::OperationArgument &argument, pir::
 
 **那么问题来了：在当前的例子中，哪里设置了 op 的初始插入点？**
 
-在 python 侧，我们使用 program_guard 指定组网的 main_program 和 startup_program，program_guard 会调用 C++ 侧的 `set_global_program`, 进而调用 APIBuilder 单例的 `SetProgram` 函数，使用 pir::builder 的 `SetInsertionPointToEnd` 函数设置 op 的初始插入点
+在 python 侧，我们使用 `program_guard` 指定组网的 main_program 和 startup_program，`program_guard` 会调用 C++ 侧的 `set_global_program`, 进而调用 `APIBuilder` 单例的 `SetProgram` 函数，使用 `pir::builder` 的 `SetInsertionPointToEnd` 函数设置 op 的初始插入点
 
 
 
@@ -403,21 +406,23 @@ void SumOp::Build(pir::Builder &builder, pir::OperationArgument &argument, pir::
 
 PIR 组网的执行路径中：Python-C 转发逻辑，Python-C 映射层，PIR OP 组网层，PIR OP 定义层，这些 C++ 代码基本都依赖于代码自动生成，下图分别展示了各个层级中函数代码位置和用于 CodeGen 的脚本路径
 
-![op生成逻辑.drawio](../imgs/3_op_gen_logic.png)
-
+<p align="center">
+<img src="../imgs/3_op_gen_logic.png" width=70%>
+</p>
 
 
 ### 3.1 PIR 定义和组网层生成
 
 PIR 的 OP 定义和组网 API 层的生成执行流程如下：
 
-![pir 层生成.drawio](../imgs/4_pir_layer_gen.png)
-
+<p align="center">
+<img src="../imgs/4_pir_layer_gen.png" width=70%>
+</p>
 
 
 PIR 的 OP 定义和组网 API 层 CodeGen 执行流程类似，以下分析以 PIR OP 定义层代码生成的执行流程为例：
 
-可以看到，yaml 文件经过 parse_op.py 解析后生成静态图规范格式的 yaml 文件，补充原始的yaml配置的缺省配置。解析生成的 yaml 文件会和 op_compat.yaml 一起输入给 op_gen.py。op_compat.yaml 主要功能是参数名字映射和增加原始 ops.yaml 中没有的信息。op_gen.py 会根据 f-string 规定的模板，生成 PIR OP 定义的具体代码。拿生成的 pd_op.h` 文件举例，其单个 PIR OP 声明的 f-string 模板如下：
+可以看到，yaml 文件经过 `parse_op.py` 解析后生成静态图规范格式的 yaml 文件，补充原始的yaml配置的缺省配置。解析生成的 yaml 文件会和 `op_compat.yaml` 一起输入给 op_gen.py。`op_compat.yaml` 主要功能是参数名字映射和增加原始 `ops.yaml` 中没有的信息。`op_gen.py` 会根据 `f-string` 规定的模板，生成 PIR OP 定义的具体代码。拿生成的 pd_op.h` 文件举例，其单个 PIR OP 声明的 `f-string` 模板如下：
 
 ```python
 // paddle/fluid/pir/dialect/op_generator/op_gen.py
@@ -442,18 +447,18 @@ class {op_name} : public pir::Op<{op_name}{interfaces}{traits}> {{
 """
 ```
 
-pd_op.h 生成的执行流程如下
+`pd_op.h` 生成的执行流程如下
 
-1. 实例化 op_compat.yaml 的解析器，便于获取 op 的补充信息
+1. 实例化 `op_compat.yaml` 的解析器，便于获取 op 的补充信息
 2. 从 yaml 中获取所有的 op 的完整配置文件，遍历每一个 op：
    - 获取 op 的完整信息，如输入、输出和属性的名称，属性类型和属性缺省值等
-   - 生成 traits 的列表，生成 interfaces 的列表
-   - 构造 exclusive_interface_str，op_class_name
-   - 构造 get_kernel_type_for_var_declare_str，parse_kernel_key_str
-   - 构造输入输出访问器, 即 get_inputs_and_outputs
-   - 依次构造 build_mutable_attr_is_input，build_attr_num_over_1
+   - 生成 `traits` 的列表，生成 `interfaces` 的列表
+   - 构造 `exclusive_interface_str`, `op_class_name`
+   - 构造 `get_kernel_type_for_var_declare_str`，`parse_kernel_key_str`
+   - 构造输入输出访问器, 即 `get_inputs_and_outputs`
+   - 依次构造 `build_mutable_attr_is_input`，`build_attr_num_over_1`
    - 对于含 inplace 的 op，生成 non-inplace 和 inplace 两种 op 声明
-3. 写入 pd_op.h
+3. 写入 `pd_op.h`
 
 
 
@@ -461,7 +466,9 @@ pd_op.h 生成的执行流程如下
 
 PIR 的 Python-C 层的代码生成执行流程如下：
 
-![python-c 层.drawio](../imgs/5_python_c_gen.png)
+<p align="center">
+<img src="../imgs/5_python_c_gen.png" width=70%>
+</p>
 
 对于 Python-C 映射层，在拥有了 op 完整的配置文件信息后，我们就可以将 `PyObject *args` 和 `PyObject *kwargs` 映射成正确的 C++ 类型。
 
@@ -469,14 +476,14 @@ PIR 的 Python-C 层的代码生成执行流程如下：
 
 1. 不生成 Python-C 转发接口函数的情况：
 
-   * op 不在 ops.parsed.yaml 和 op_compat.yaml 这些配置文件中
+   * op 不在 `ops.parsed.yaml` 和 `op_compat.yaml` 这些配置文件中
 
    - op 的 infer meta 函数不存在且 op_name 不在 `PD_MANUAL_OP_LIST` 名单中
    - op_name 在 `PD_MANUAL_API_LIST` 名单中
    - op_name 以 \_grad, \_grad\_, xpu 结尾
    - op_name 在 `NO_NEED_GEN_STATIC_ONLY_APIS` 名单中
 
-   > `NO_NEED_GEN_STATIC_ONLY_APIS` 名单的 op 不生成 Python-C 转发接口函数的原因是：现在python端还没用到这几个api，所以没有生成，用到的时候应该就就会移除了
+   > `NO_NEED_GEN_STATIC_ONLY_APIS` 名单的 op 不生成 Python-C 转发接口函数的原因是：现在 python 端还没用到这几个api，所以没有生成，用到的时候应该就就会移除了
 
 2. 只生成含有静态图分支的接口转发接口函数的情况：
 
@@ -488,7 +495,7 @@ PIR 的 Python-C 层的代码生成执行流程如下：
 
 ## 4. PIR 组网 API 推全中的一些思考
 
-1. PIR 组网 API 的代码生成触发时机是 **cmake 构建**时期。具体可见 `paddle/fluid/pir/dialect/CMakeLists.txt`，以下是触发 op_gen.py 脚本的代码：
+1. PIR 组网 API 的代码生成触发时机是 **cmake 构建**时期。具体可见 `paddle/fluid/pir/dialect/CMakeLists.txt`，以下是触发 `op_gen.py` 脚本的代码：
 
    ```cmake
    # paddle/fluid/pir/dialect/CMakeLists.txt
@@ -503,7 +510,7 @@ PIR 的 Python-C 层的代码生成执行流程如下：
 
    将 PIR 组网 API 的代码的自动生成置于 cmake 构建时期的原因是：可以在触发实际编译前，就生成包含 op 声明、定义和函数接口的完整代码文件，有效避免了并发编译时依赖文件缺失的问题。
 
-2. 当前的 PIR 组网，就用户的感知而言能做到无缝切换，因为在 python 用户端，用户都是调用 paddle.xxx。且 \_C_ops.xxx 提供了一个动静结合的接口，使大部分 api 都能复用 python 代码，降低了迁移成本
+2. 当前的 PIR 组网，就用户的感知而言能做到无缝切换，因为在 python 用户端，用户都是调用 `paddle.xxx`。且 `_C_ops.xxx` 提供了一个动静结合的接口，使大部分 api 都能复用 python 代码，降低了迁移成本
 
 3. 与旧 IR 组网方式相比，PIR 的组网绝大部分逻辑都下沉至 C++ 进行，包括但不限于数据类型检查，向 block 中插入 op。这样较好的避免了旧 IR 组网时 python 端和 C++ 端同步的问题。同时大多数 C++ 代码都可以通过配置文件的方式，通过 CodeGen 脚本生成，提升了开发效率，也使得维护成本大大降低。
 
