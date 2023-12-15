@@ -69,7 +69,7 @@ task_name="llama_7b_pp2_mp4_st"
 python -u  -m paddle.distributed.launch \
      --gpus "0,1,2,3" \
      --log_dir "output/$task_name""_log" \
-     run_pretrain_auto.py \
+     auto_parallel/run_pretrain_auto.py \
      --model_type "llama" \
      --model_name_or_path "meta-llama/Llama-2-7b" \
      --tokenizer_name_or_path "meta-llama/Llama-2-7b" \
