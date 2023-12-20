@@ -131,11 +131,11 @@ torch.backends.mps.is_available():
 
 	* 问题a 在未完成迁移的api中，torch.backends.mps.is_available()没有搜索到足够资料进行复现，请问paddle有对应的实现或替代示例吗？
 
-        答：
+        答：这个api paddle中暂时没有，但是我理解不影响对齐，不使用mps即可
 
 	* 问题b 通过transformer模块和timm模块导入的api，是否有转换案例可以参考？我在下面设想了一种思路，请问有什么建议吗？
 
-        答：
+        答：基于numpy的部分可以直接直接复用，模型迁移就是常规操作。
 
 ### 下一步工作计划
 
@@ -143,3 +143,5 @@ torch.backends.mps.is_available():
  	* 使用PaDiff排除差异快速对齐
 
 ### 导师点评
+
+可以加速完成前向对齐～
