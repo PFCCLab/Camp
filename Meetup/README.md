@@ -22,16 +22,19 @@
 Camp/
 ├── ...
 ├── Meetup/
-|   ├── xx_xxxxx/
-|   ├── ...
-│   ├── 03_NewIRAPI_AutoDiffAndCoreComponentRefinement/
-|   |   ├── imgs/
-|   |   |   ├── xx.png
-|   |   |   └── ...
-|   |   ├── [Meetup Record]2023.09.15.md
-|   |   ├── [Meetup Record]2023.10.08.md
-│   │   └── README.md
-│   └── ...
+│   ├── 第五期黑客松护航计划
+│   │   ├── xx_xxxxx/
+│   │   ├── ...
+│   │   ├── 03_NewIRAPI_AutoDiffAndCoreComponentRefinement/
+│   │   │   ├── imgs/
+│   │   │   │   ├── xx.png
+│   │   │   │   └── ...
+│   │   │   ├── [Meetup Record]2023.09.15.md
+│   │   │   ├── [Meetup Record]2023.10.08.md
+│   │   │   └── README.md
+│   │   └── ...
+│   ├── 第六期黑客松护航计划
+│   │   ├── ...
 └── ...
 ```
 
