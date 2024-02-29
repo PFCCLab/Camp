@@ -22,7 +22,7 @@
 Camp/
 ├── ...
 ├── Meetup/
-│   ├── 第五期黑客松护航计划
+│   ├── Hackathon_5th
 │   │   ├── xx_xxxxx/
 │   │   ├── ...
 │   │   ├── 03_NewIRAPI_AutoDiffAndCoreComponentRefinement/
@@ -33,7 +33,7 @@ Camp/
 │   │   │   ├── [Meetup Record]2023.10.08.md
 │   │   │   └── README.md
 │   │   └── ...
-│   ├── 第六期黑客松护航计划
+│   ├── Hackathon_6th
 │   │   ├── ...
 └── ...
 ```

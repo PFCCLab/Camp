@@ -28,14 +28,14 @@ Camp/
 ├──  ...
 ├── WeeklyReports
 │   ├── README.md
-│   ├── 第五期黑客松护航计划
+│   ├── Hackathon_5th
 │   │   ├── ...
 │   │   ├── 03_MarioLulab
 │   │   │   ├── README.md
 │   │   │   ├── [WeeklyReport]2023.10.10~2023.10.24.md
 │   │   │   ├── [WeeklyReport]2023.10.25~2023.11.07.md
 │   │   ├── ...
-│   └── 第六期黑客松护航计划
+│   └── Hackathon_6th
 │   │   ├── ...
 └──  ...
 ```
