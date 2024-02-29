@@ -1,4 +1,4 @@
-# 【PaddlePaddle Hackathon 5th】飞桨护航计划集训营周报 & 资料管理
+# 【PaddlePaddle Hackathon 6th】飞桨护航计划集训营周报 & 资料管理
 **[🚀 飞桨开源框架](https://github.com/PaddlePaddle/Paddle) | [🧰 飞桨开发套件](https://github.com/PaddlePaddle/PaddleOCR) | [⛵ 飞桨护航计划集训营](https://github.com/PaddlePaddle/Paddle/issues/57264)**
 
 ☘️ **我们为什么需要这个 repo ？**
