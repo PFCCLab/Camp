@@ -62,7 +62,7 @@ Prim 的问题：
 
 - 计算公式
 
-    $$Softmax(x)_{i} = \frac{e^{x_{i}}}{\sum_{j=1}^{N}e^{x_{j}}}, j=1,2,...,n$$
+    $$Softmax(x)_ {i} = \frac{e^{x_{i}}}{\sum_{j=1}^{N}e^{x_{j}}}, j=1,2,...,n$$
 
 - 上溢出(overflow)和下溢出(underflow)
 
@@ -72,7 +72,7 @@ Prim 的问题：
 
 - 解决方法
 
-    $$Softmax(x)_{i} = \frac{e^{x_{i}} / e^{x_{max}} }{(\sum_{j=1}^{N}e^{x_{j}})/e^{x_{max}}} = \frac{e^{x_{i}-x_{max}}}{\sum_{j=1}^{N}e^{x_{j}-x_{max}}} , j=1,2,...,n$$
+    $$Softmax(x)_ {i} = \frac{e^{x_{i}} / e^{x_{max}} }{(\sum_{j=1}^{N}e^{x_{j}})/e^{x_{max}}} = \frac{e^{x_{i}-x_{max}}}{\sum_{j=1}^{N}e^{x_{j}-x_{max}}} , j=1,2,...,n$$
 
 ​	对于任何一个 $x_{i}$ ，减去 $x_{max}$ 之后，$e$的指数最大值为 `0` ，所以不会出现上溢出情况。同时，分母中至少包含一个值为 1 的项，所以不会下溢出。
 
@@ -126,7 +126,7 @@ void sqrt_grad(const Tensor& out, const Tensor& out_grad, Tensor* x_grad) {
 ![img](https://github.com/kevincheng2/Camp/blob/kevincheng2/WeeklyReport/Docs/04_TheUnityOfOperatorForwardAndBackwardInCombinationFeatures/imgs/forward_prim.png)
 
 ```C++
-// /home/aistudio/Paddle/paddle/fluid/pybind/pybind.cc
+// /Paddle/paddle/fluid/pybind/pybind.cc
 
 void BindDecomp(pybind11::module *m) {
   m->def("call_decomp", [](pir::Operation &fwd_op) {
@@ -141,7 +141,7 @@ void BindDecomp(pybind11::module *m) {
         decomp_interface.Decomp(&fwd_op);
 ```
 ```c++
-// /home/aistudio/Paddle/paddle/fluid/pir/dialect/operator/interface/decomp.h
+// /Paddle/paddle/fluid/pir/dialect/operator/interface/decomp.h
 
 class DecompInterface : public pir::OpInterfaceBase<DecompInterface> {
  public:
@@ -161,7 +161,7 @@ class DecompInterface : public pir::OpInterfaceBase<DecompInterface> {
 };
 ```
 ```c++
-// /home/aistudio/Paddle/paddle/fluid/pir/dialect/operator/ir/pd_op.h
+// /Paddle/build/paddle/fluid/pir/dialect/operator/ir/pd_op.h
 
 class ReluOp : public pir::Op<ReluOp, ... ,paddle::dialect::DecompInterface,paddle::dialect::VjpInterface,paddle::dialect::CustomVjpTrait> {
  public:
@@ -177,7 +177,7 @@ class ReluOp : public pir::Op<ReluOp, ... ,paddle::dialect::DecompInterface,padd
  }
 ```
 ```c++
-// /home/aistudio/Paddle/paddle/fluid/pir/dialect/operator/ir/op_decomp.cc
+// /Paddle/build/paddle/fluid/pir/dialect/operator/ir/op_decomp.cc
 
 std::vector<std::vector<pir::OpResult>> ReluOp::Decomp(pir::Operation* op) {
   VLOG(4) << "Decomp call relu's decomp interface begin";
@@ -204,7 +204,7 @@ std::vector<std::vector<pir::OpResult>> ReluOp::Decomp(pir::Operation* op) {
 }
 ```
 ```c++
-// /home/aistudio/Paddle/paddle/fluid/pir/dialect/operator/ir/op_decomp.cc
+// /Paddle/build/paddle/fluid/pir/dialect/operator/ir/op_decomp.cc
 
 template <typename T>
 Tensor relu_decomp(const Tensor& x) {
@@ -239,7 +239,7 @@ void BindVjp(pybind11::module *m) {
 ......     
 ```
 ```c++
-// /home/aistudio/Paddle/paddle/fluid/pir/dialect/operator/interface/vjp.h
+// /Paddle/paddle/fluid/pir/dialect/operator/interface/vjp.h
 
 class VjpInterface : public pir::OpInterfaceBase<VjpInterface> {
  public:
@@ -269,7 +269,7 @@ class VjpInterface : public pir::OpInterfaceBase<VjpInterface> {
  }
 ```
 ```c++
-// /home/aistudio/Paddle/paddle/fluid/pir/dialect/operator/ir/pd_op_vjp.cc
+// /Paddle/build/paddle/fluid/pir/dialect/operator/ir/pd_op_vjp.cc
 
 std::vector<std::vector<pir::OpResult>> SumOp::Vjp(pir::Operation* op, const std::vector<std::vector<pir::Value>>& inputs_, const std::vector<std::vector<pir::OpResult>>& outputs, const std::vector<std::vector<pir::Value>>& out_grads, const std::vector<std::vector<bool>>& stop_gradients){
 ......
@@ -300,7 +300,7 @@ std::vector<std::vector<pir::OpResult>> SumOp::Vjp(pir::Operation* op, const std
 }
 ```
 ```c++
-// /home/aistudio/Paddle/paddle/fluid/primitive/rule/vjp/generated/generated_vjp.cc
+// /Paddle/build/paddle/fluid/primitive/rule/vjp/generated/generated_vjp.cc
 
 std::vector<std::vector<paddle::Tensor>> sum_vjp(const Tensor& x, const Tensor& out_grad, const Tensor& axis_, bool keepdim, bool reduce_all, const std::vector<std::vector<bool>>& stop_gradients) {
   std::vector<std::vector<paddle::Tensor>> vjp_res;
