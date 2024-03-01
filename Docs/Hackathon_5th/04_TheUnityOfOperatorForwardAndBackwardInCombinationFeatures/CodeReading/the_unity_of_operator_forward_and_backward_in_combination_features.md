@@ -62,7 +62,7 @@ Prim 的问题：
 
 - 计算公式
 
-    $$Softmax(x)_{i} = \frac{e^{x_{i}}}{\sum_{j=1}^{N}e^{x_{j}}}, j=1,2,...,n$$ 
+    $$Softmax(x)_ {i} = \frac{e^{x_{i}}}{\sum_{j=1}^{N}e^{x_{j}}}, j=1,2,...,n$$
 
 - 上溢出(overflow)和下溢出(underflow)
 
@@ -72,7 +72,7 @@ Prim 的问题：
 
 - 解决方法
 
-    $$Softmax(x)_{i} = \frac{e^{x_{i}} / e^{x_{max}} }{(\sum_{j=1}^{N}e^{x_{j}})/e^{x_{max}}} = \frac{e^{x_{i}-x_{max}}}{\sum_{j=1}^{N}e^{x_{j}-x_{max}}} , j=1,2,...,n$$
+    $$Softmax(x)_ {i} = \frac{e^{x_{i}} / e^{x_{max}} }{(\sum_{j=1}^{N}e^{x_{j}})/e^{x_{max}}} = \frac{e^{x_{i}-x_{max}}}{\sum_{j=1}^{N}e^{x_{j}-x_{max}}} , j=1,2,...,n$$
 
 ​	对于任何一个 $x_{i}$ ，减去 $x_{max}$ 之后，$e$的指数最大值为 `0` ，所以不会出现上溢出情况。同时，分母中至少包含一个值为 1 的项，所以不会下溢出。
 
