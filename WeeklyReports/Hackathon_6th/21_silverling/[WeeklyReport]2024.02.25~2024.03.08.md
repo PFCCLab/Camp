@@ -71,7 +71,15 @@ Paddle CMake 治理和编译优化
 
    在编译优化的过程中，发现了部分代码存在重复实现的问题，例如 [affine_grid_kernel.cc](https://github.com/PaddlePaddle/Paddle/blob/1208cd3345113b21821accef9d31acd636b0f74a/paddle/phi/kernels/cpu/affine_grid_kernel.cc#L24C1-L43C3) 和 [affine_grid_grad_kernel.cc](https://github.com/PaddlePaddle/Paddle/blob/1208cd3345113b21821accef9d31acd636b0f74a/paddle/phi/kernels/cpu/affine_grid_grad_kernel.cc#L24C1-L43C3)，这类问题难以批量排查，还需后续开发过程中留意这种情况。
 
-6. 相关PR：
+6. 另外的优化方向：**减少 inline 函数和模板、以及宏的使用**
+
+   使用了 inline 函数和模板、以及宏的代码在编译展开和模板实例化后会增加许多文件体积，这部分需要优化的工作量很多，需要的知识储备也很多，目前还没有做安排。
+
+   本周针对 `kernel_registry.h` 中的 Paddle 算子注册机制进行了初步学习与研究，通过手动展开宏和编译器辅助预处理展开，了解了一些算子的注册机制。例如下图是对 UniqueKernel 的算子注册宏的展开：
+
+   ![PD_REGISTER_KERNEL](./assets/PD_REGISTER_KERNEL.jpg)
+
+7. 相关PR：
 
    本周主要和导师讨论 Paddle 编译架构的设计思路，PR 数量较少，初步基础的 PR 如下：
    - https://github.com/PaddlePaddle/Paddle/pull/62454
