@@ -171,3 +171,11 @@
 1. PaddleSOT Python 3.12 单测适配
 
 ### 导师点评
+
+川子太强了👍，极速推进 SOT Python 3.12 支持，单测基本推全完成，也完成了若干个疑难问题的修复，以一己之力推动 Paddle 领先竞品一个版本～
+
+希望接下来可以沉淀整个 Python 3.12 支持过程中的疑难问题，注重问题的总结，另外最好产出类似[《Python 3.11 核心加速原理——指令特化》](https://nyakku.moe/posts/2023/08/27/python311-instruction-specializing.html)的 3.12 变动以及适配的文档，在之后一起分享
+
+另一方面，可以在任务推进的过程中思考一下如果是你要如何从零规划整个任务，包括阶段划分、任务拆分、分配任务给其他同学等等
+
+LGTMeow <img src="https://www.gstatic.com/android/keyboard/emojikitchen/20230803/u1f44d/u1f44d_u1f43e.png" width="14" alt="🐾"/>
