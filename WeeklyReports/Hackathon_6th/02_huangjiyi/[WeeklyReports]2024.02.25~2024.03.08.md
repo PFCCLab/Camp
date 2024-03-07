@@ -11,7 +11,7 @@ PIR 控制流专项
 1. **修复 PIR 下 PaddleDetection 模型测试 BUG**
 
      相关 PR：
-- https://github.com/PaddlePaddle/PaddleDetection/pull/882。2
+- https://github.com/PaddlePaddle/PaddleDetection/pull/8822
   - 第一个报错修复：增加 PaddleDetection 中 `prior_box` api 对 PIR 模式的支持
   - 遇到的第二个报错：下面的 if 控制流在转化为静态图后会出现 UndefinedVar 相关的报错，经讨论后目前无法支持
     ``` python
