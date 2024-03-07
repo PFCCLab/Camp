@@ -105,4 +105,5 @@ sharding 的这个 pass 在做通信的时候会插入一下reduce去做通信�
 
 
 ### 导师点评
-
+卢畅同学这段时间完成了多项关键的性能优化任务，不仅为VPP适配了send_recv_overlap技术，修复了allreduce_matmul_grad_overlapping和master_grad同时开启时出现的bug，还成功将sharding reduce移动到optimize阶段进一步提升了训练性能，这些优化对于大规模并行训练具有重要意义。
+期待在下周的工作中继续保持这种良好的状态，为项目的成功贡献更多力量。
