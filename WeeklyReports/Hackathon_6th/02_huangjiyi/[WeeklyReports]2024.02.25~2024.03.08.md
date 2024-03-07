@@ -8,9 +8,8 @@ PIR 控制流专项
 
 ### 本周工作
 
-1. **修复 PIR 下 PaddleDetection 模型测试 BUG**
+1. **修复 PIR 控制流模型测试 BUG**
 
-     相关 PR：
 - https://github.com/PaddlePaddle/PaddleDetection/pull/8822
   - 第一个报错修复：增加 PaddleDetection 中 `prior_box` api 对 PIR 模式的支持
   - 遇到的第二个报错：下面的 if 控制流在转化为静态图后会出现 UndefinedVar 相关的报错，经讨论后目前无法支持
@@ -34,8 +33,6 @@ PIR 控制流专项
   - 该 PR 通过避免 expand 算子接收的 shape 参数包含 Value 解决了这个 BUG，后经过讨论近期已经有 PR 解决了 expand 算子返回 Value shape 异常的问题，故关闭该 PR
 
 2. **将 pir::DenseTensorType 从 OperatorDialect 下沉到 BuiltinDialect**
-
-     相关 PR：
 
 - https://github.com/PaddlePaddle/Paddle/pull/62491
   - 将 `OperatorDialect` 下注册的 `DenseTensorType` 移动到 `BuiltinDialect`
