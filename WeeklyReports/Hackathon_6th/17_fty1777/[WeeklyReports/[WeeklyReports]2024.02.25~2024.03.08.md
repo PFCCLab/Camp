@@ -18,7 +18,7 @@ CINN 支持动态 Shape 专项（PIR 部分）
 
 3. **实现SplitOp的符号推导**
 
-	实现SplitOp的符号推导，涉及到pd_op.split和builtin.split，分别涉及到yaml指导代码生成的pd_op和使用concept-model模式AttachInterface完成接口扩展的builtin op，并完成单元测试。
+    实现SplitOp的符号推导，涉及到pd_op.split和builtin.split，分别涉及到yaml指导代码生成的pd_op和使用concept-model模式AttachInterface完成接口扩展的builtin op，并完成单元测试。
 
     PR: https://github.com/PaddlePaddle/Paddle/pull/62394
 
