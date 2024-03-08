@@ -11,7 +11,7 @@ CINN 静态 shape 下鲁棒性和性能优化
 	* 阅读留杰老师的 [CINN 阅读笔记](https://github.com/PaddlePaddle/community/tree/master/pfcc/paddle-code-reading/CINN) ， 熊昆老师的 《CINN Static Group Schedule 分享》 ，
 和自己搜集的一些相关博客（如：[深度学习框架（三）：底层运行机制](https://zhuanlan.zhihu.com/p/435024770)），对 CINN 的基本结构有了初步了解
 	* 阅读 cinn/frontend 与 cinn/hlir 源码，重点阅读 cinn/hlir/framework ，基本熟悉了CINN前端后端流程（CodeGen之前）
-	* 产出相关内容的流程图
+	* 产出相关内容的 [流程图](https://github.com/WintersMontagne10335/Paddle-Code-Camp/tree/master/flow%20chart) 
 
 2. **复习 CUDA 基础知识**
 
@@ -38,7 +38,7 @@ CINN 静态 shape 下鲁棒性和性能优化
 ### 下周工作
 
 1. 修复CINN的框架子图 bug 5-6个
-2. 继续熟悉 CINN 源码，重点阅读 static group schedule 相关内容
+2. 继续熟悉 CINN 源码，重点阅读 static group schedule 相关内容，完善流程图
 
 ### 导师点评
 请联系导师填写
