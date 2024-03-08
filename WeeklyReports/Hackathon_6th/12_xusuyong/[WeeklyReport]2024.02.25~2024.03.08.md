@@ -13,7 +13,7 @@ Github ID：[xusuyong](https://github.com/xusuyong)
 1. **为DeepMD-kit的paddle后端增加 water_tensor polar 案例**
 
    * 跑通tensorflow版本，lcurve输出：
-      ![](assets\lcurve_water_tensor_polar_tf.png)
+      ![](assets/lcurve_water_tensor_polar_tf.png)
    * 跑通paddle版本，lcurve输出：
       ![](assets/lcurve_water_tensor_polar_paddle.png)
    * 将原paddle2分支的代码整理到paddle分支。相关PR：[Add water tensor polar2](https://github.com/HydrogenSulfate/deepmd-kit/pull/6)
