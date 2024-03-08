@@ -20,4 +20,6 @@
 1. 研究`fill_constant`中复数测试存在的问题
 
 ### 导师点评
-xxxxxxxx
+assign_value， fill_constant等支持复数工作较难，需要有比较好的全局意识。
+也希望下周能尽快定位到fill_constant支持复数的困难，能得到问题的全集，从而一一解决
+
