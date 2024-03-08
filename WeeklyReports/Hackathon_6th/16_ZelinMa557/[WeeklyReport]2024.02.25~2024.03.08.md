@@ -19,3 +19,4 @@ CINN 支持动态 Shape 专项（前端方向）
 2. 尝试解决cinn某些单测[（complex symbol shape）](https://github.com/PaddlePaddle/Paddle/blob/develop/test/ir/pir/cinn/symbolic/test_complex_symbol_subgraph.py)无法通过的问题
 
 ### 导师点评
+欣楷当前的工作以熟悉流程为主，CINN前端近期代码更新比较频繁，上手会有一些难度，目前进度基本符合预期。
