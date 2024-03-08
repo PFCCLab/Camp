@@ -24,3 +24,5 @@ Github ID：[xusuyong](https://github.com/xusuyong)
 1. 为paddleScience增加光学案例
 
 ### 导师点评
+
+苏勇这周正常推进DeepMD-kit的案例接入工作👍 ，接下来重点在PaddleScience开一个新的光学领域案例，解决光学领域问题 👀 。
