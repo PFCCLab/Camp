@@ -33,3 +33,4 @@ PIR Python API 升级及机制建设
     - https://github.com/PaddlePaddle/Paddle/pull/62508
 
 ### 导师点评
+荣瑞最近两周完成了两个难度较高的PHI算子迁移和PIR适配，同时例行推进test_errors相关pir单测的适配工作，工作开展较快，望再接再厉~
