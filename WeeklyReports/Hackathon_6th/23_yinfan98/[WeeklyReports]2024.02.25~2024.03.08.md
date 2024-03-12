@@ -20,3 +20,4 @@
 3. 实现fused_bias_act/fused_rms_norm/fused_layer_norm pass
 
 ### 导师点评
+工作主动扎实，能力强，本周工作完成不错，继续加油
