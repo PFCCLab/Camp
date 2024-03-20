@@ -11,13 +11,11 @@ Github ID: [DUCH714](https://github.com/DUCH714)
 #### 汽车外流场仿真：
 
 1. 整理熟悉 GINO 的输入数据和dataloader部分
-2. 尝试搭建环境，选10组数据，跑通训练流程
-3. 跑通大图采样demo（导师提供，管导师要）
 
-#### 高雷诺数湍流图探索：
+#### 文献调研
+1. 阅读CausalPINN
+2. 将CausalPINN代码转为Paddle
 
-1. 尝试根据Allen Cahn方程案例，搭建LDC 2D瞬态的TSONN训练代码
-2. 跑通LDC 2D瞬态有限差分代码（导师提供，管导师要）
 
 ### 下周工作
 
