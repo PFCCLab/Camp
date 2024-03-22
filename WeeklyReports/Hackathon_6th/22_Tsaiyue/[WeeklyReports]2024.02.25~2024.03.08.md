@@ -33,4 +33,4 @@ PaddleMIX 套件能力建设（文图方向）
 
 ### 导师点评
 
-TODO by @westfish
+蔡越在本周围绕着AnimateAnyone展开了一系列任务，完成了前向的对齐、加载逻辑升级、以及相关aistudio项目的编写，相关pr已合入paddlemix，态度积极认真，有很强的学习能力。
