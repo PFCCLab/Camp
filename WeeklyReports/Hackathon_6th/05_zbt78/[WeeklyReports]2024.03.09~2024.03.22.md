@@ -24,3 +24,4 @@ https://github.com/PaddlePaddle/Paddle/pull/62959
 2. 开展新的算子，要加快进度了
 
 ### 导师点评
+稳步按照规划推进，再接再励
