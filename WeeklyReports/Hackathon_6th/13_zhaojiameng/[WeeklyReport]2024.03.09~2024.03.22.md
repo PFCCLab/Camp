@@ -8,15 +8,18 @@
 
 1. **转换paddle代码**
 
-	* 完成原始代码到paddle代码转换
+	* 完成原始代码(https://github.com/BaratiLab/Diffusion-based-Fluid-Super-resolution.git)到paddle代码转换
+	* 部分torch API 如torch.utils.tensorboard.SummaryWriter()，paddle无直接实现
+	* 搭建paddle环境
 
 
 
 ### 下周工作
 
 1. 跑通paddle代码，验证精度
+2. 学习paddleAPI和paddleScienceAPI映射关系
 
 
 
 ### 导师点评
-请联系导师填写
+1. 需要尽快paddle代码，实现精度对齐。
