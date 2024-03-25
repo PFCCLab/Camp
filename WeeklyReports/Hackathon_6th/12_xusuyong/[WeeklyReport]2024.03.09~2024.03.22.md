@@ -48,4 +48,4 @@ Github ID：[xusuyong](https://github.com/xusuyong)
 1. 将NLS-MB系统的单孤子解提交到paddlescience中
 
 ### 导师点评
-
+方程就放到pde/目录下好了，看起来方程可能涉及到复数运算，可以先尝试提交一个新增方程的PR
