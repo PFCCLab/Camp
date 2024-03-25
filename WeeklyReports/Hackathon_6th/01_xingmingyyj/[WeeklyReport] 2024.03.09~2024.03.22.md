@@ -27,3 +27,4 @@ PR链接：https://github.com/PaddlePaddle/Paddle/pull/62801
 2. Review分布式算子注册相关PR
 
 ### 导师点评
+新明本周集中定位了几个比较复杂的问题，在review时也积极回复，后续稳步推进即可。
