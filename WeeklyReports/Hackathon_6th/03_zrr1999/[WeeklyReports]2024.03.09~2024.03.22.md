@@ -35,3 +35,4 @@ PIR Python API 升级及机制建设
 1. 继续推进 PIR test_errors 相关单测适配和 PIR Python API适配升级（第三期）。
 
 ### 导师点评
+荣瑞有序推进了pir方向的多个子线条工作，后面再接再厉~
