@@ -131,6 +131,13 @@ python -u -m paddle.distributed.launch \
 
 - https://github.com/PaddlePaddle/Paddle/pull/62865
 
+
+#### 学习 Zero Bubble 源码中 zb vpp 的实现
+
+笔记：
+
+- https://space.keter.top/docs/high_performance/%E5%88%86%E5%B8%83%E5%BC%8F/zero-bubble-vpp
+
 #### 设计 ZB VPP 的编排实现方案
 
 ZB VPP 是一种根据计算图自动调度任务的并行训练方案，反向计算分为两部分 b 和 w。w 可以用于填充计算图中的空洞，以此来降低 Bubble 率。ZB VPP 会把 Forward 和 Backward 拆分为多个 chunk，然后根据显存占用情况来进行任务调度。
