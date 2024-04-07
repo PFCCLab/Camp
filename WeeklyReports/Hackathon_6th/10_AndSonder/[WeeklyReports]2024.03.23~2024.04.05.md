@@ -13,7 +13,6 @@
 #### 对 ZB H1 进行性能测试并验证模型是否能正常收敛
 
 
-
 Llama2 4卡实际调度结果如下：
 
 ![d378681e1c2a9cdb1d47f971c9836ea7](https://github.com/PaddlePaddle/Paddle/assets/55493212/5c9a9c52-6ea8-4c21-85fc-c02e7ca36f52)
