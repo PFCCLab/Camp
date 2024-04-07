@@ -67,3 +67,7 @@ res = self.exe.run(
 1. 动转静理想态单测收尾
 
 ### 导师点评
+
+0D 单测推全迅速，目前已经只剩半个问题了，下周一起推动剩余动转静单测问题收尾工作，将 PIR 这边工作完全收掉，之后就可以考虑一起参与 CINN 那边的开发了～
+
+LGTMeow <img src="https://www.gstatic.com/android/keyboard/emojikitchen/20231113/u1f9ca/u1f9ca_u1f43e.png" width="14" alt="🐾"/>
