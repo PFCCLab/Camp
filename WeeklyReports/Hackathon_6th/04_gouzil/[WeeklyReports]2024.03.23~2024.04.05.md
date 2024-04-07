@@ -8,6 +8,10 @@ PIR 0 维单测适配
 
 ### 本周工作
 
+#### **SOT Python 3.12 适配分享**
+
+总结: 背景介绍不够，太过于深入源码，对不了解项目的人不够友好
+
 #### **PIR 0 维单测适配**
 
 ##### 遇到的一些小问题
@@ -32,9 +36,9 @@ res = self.exe.run(
 
 修复pr：[#62879](https://github.com/PaddlePaddle/Paddle/pull/62879)
 
-* 在 PIR 下错误的生成更多的反向，导致执行期内部检查错误
+* 在 PIR 下错误的生成更多的反向，导致执行期 infermeta 的输出为空指针
 
-原:
+原多生成反向了`cast`:
 ```bash
 {
     (%0) = "pd_op.full" () {dtype:(pd_op.DataType)int64,place:(pd_op.Place)Place(undefined:0),shape:(pd_op.IntArray)[2,2],stop_gradient:[true],value:(Float)0} : () -> builtin.tensor<2x2xi64>
@@ -45,7 +49,7 @@ res = self.exe.run(
     (%5) = "pd_op.cast" (%4) {dtype:(pd_op.DataType)int64,stop_gradient:[false]} : (builtin.tensor<2x2xf32>) -> <<NULL TYPE>>
 }
 ```
-现:
+现跳过生成反向`cast`:
 ```bash
 {
     (%0) = "pd_op.full" () {dtype:(pd_op.DataType)int64,place:(pd_op.Place)Place(undefined:0),shape:(pd_op.IntArray)[2,2],stop_gradient:[true],value:(Float)0} : () -> builtin.tensor<2x2xi64>
@@ -55,11 +59,11 @@ res = self.exe.run(
     (%4) = "pd_op.full_like" (%2, %3) {dtype:(pd_op.DataType)float32,place:(pd_op.Place)Place(undefined:0),stop_gradient:[false]} : (builtin.tensor<2x2xf32>, builtin.tensor<1xf32>) -> builtin.tensor<2x2xf32>
 }
 ```
-修复 pr: [#63113](https://github.com/PaddlePaddle/Paddle/pull/63113), 在生成反向的时候不要过滤 `inplace` 操作
+修复 pr: [#63113](https://github.com/PaddlePaddle/Paddle/pull/63113), 跳过了全部输入都是 stop_gradient=True 的情况，该情况无需添加反向
 
 
 ### 下周工作
 
-1. PIR 0 维单测适配
+1. 动转静理想态单测收尾
 
 ### 导师点评
