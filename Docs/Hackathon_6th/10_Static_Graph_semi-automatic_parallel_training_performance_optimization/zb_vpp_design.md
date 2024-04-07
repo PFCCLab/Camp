@@ -3,7 +3,7 @@
 
 Zero Bubble 是一种新的流水线并行策略，它是核心思想是将反向计算分为两部分，一部分计算输入的梯度，另一部分计算参数的梯度。ZB VPP 是 Zero Bubble 的 VPP 实现方案，它是一种半自动并行训练性能优化方案。为 Paddle 支持 Zero Bubble 的 Tracking issue 是 [为 Paddle 支持 Zero-Bubble 并行编排 PaddlePaddle/Paddle#62666](https://github.com/PaddlePaddle/Paddle/issues/62666)
 
-ZB VPP 是一种根据计算图自动调度任务的并行训练方案，反向计算分为两部分 b 和 w。w 可以用于填充计算图中的空洞，以此来降低 Bubble 率。
+ZB VPP 是一种根据计算图自动调度任务的并行训练方案，反向计算分为两部分 b 和 w。w 可以用于填充计算图中的空洞，以此来降低 Bubble 率。ZB VPP 会把 Forward 和 Backward 拆分为多个 chunk，然后根据显存占用情况来进行任务调度。
 
 想要实现自动调度任务，需要解决以下问题：
 
