@@ -15,7 +15,7 @@ ZB VPP 是一种根据计算图自动调度任务的并行训练方案，反向�
 
 第一个问题已经在 ZBH1 的实现中已经实现，具体见 [Tracking Issue](https://github.com/PaddlePaddle/Paddle/issues/62666)
 
-ZB_VPP 的手动模拟结果如下图所示：
+ZB VPP 的手动模拟结果如下图所示：
 
 ![picture 0](images/34d96fabc0a3fe6a8984c1ea771c4c8d2af9d42a516e4bb7e689336415f900d4.png)  
 
@@ -28,18 +28,96 @@ Zero Bubble 的 [源码](https://github.com/AndSonder/zero-bubble-pipeline-paral
 
 Paddle 中有一个根据 program 来估计显存占用情况的工具，这个工具在 `Paddle/python/paddle/distributed/auto_parallel/static/cost/estimate_cost.py` 中。其中 `_estimate_max_memory_by_dist_op` 的实现思路是我们可以借鉴的。
 
+`_estimate_max_memory_by_dist_op` 通过统计 program 中所有 op 的内存需求累加到对应进程的内存使用估计中。这包括计算变量的本地大小和根据其数据类型估算的内存大小。此外，代码还考虑了变量是否可以在操作执行后释放内存（基于变量是否为最后一次使用和是否可持久化），并相应地调整内存使用估计。最终，通过对所有进程的最大内存使用进行汇总，得到 Program 的最大显存占用估计。
+
+我们除了需要获取这个 program 的显存占用情况外，还需要获取到 program 结束时候的显存占用情况。这样我们就可以根据这个信息来进行任务调度。
+
+在获取到显存占用情况后，我们可以根据显存占用情况来进行任务调度。在任务调度的过程中，我们可以根据显存占用情况来进行任务的插入，以此来降低 bubble 率。在插入一个任务的时候，我们需要做如下流程：
+
+1. 插入任务前判断插入后是否会超出显存限制：当前卡的显存占用 + 任务的最大显存占用 是否超出显存限制
+2. 插入后更新当前卡的显存占用：当前卡的显存占用 + 任务结束后的显存占用
+3. 如果插入 `backward_w` 任务，在任务结束后需要释放显存：当前卡的显存占用 - 可以 gc 的 vars 显存占用
+
+具体来说我们可以在添加如下功能类，主要功能是根据 program 来估计显存占用情况。
+
+```python
+class ZBVPPMemoryEstimator:
+    def __init__(self, max_mem):
+        self.max_mem = max_mem
+        self.memory_usage = 0 # 当前卡的显存占用
+        # 存储因为是 persistable 而被保留的变量
+        # 在 backward_w 任务结束后需要释放显存
+        self.skip_gc_vars = set()
+
+    def estimate_memory_usage(self, program, dist_context):
+        # 1. 遍历 program 中的所有 op
+        # 2. 根据 op 的输入输出变量来估计显存占用情况
+        # 3. 已经在 skip_gc_vars 中的变量不计入显存占用
+
+    def try_insert_program(self, program, dist_context):
+        # 1. 根据 program 来估计显存占用情况
+        max_memory_usage, memory_usage = self.estimate_memory_usage(program, dist_context)
+        if self.memory_usage + max_memory_usage > self.max_mem:
+            return False
+
+        # 2. 更新显存占用情况
+        self.memory_usage += memory_usage
+        # 3. 更新 skip_gc_vars
+        self.add_skip_gc_vars(program)
+
+        # 4. 如果是 backward_w 任务，需要释放显存
+        if program.type == "backward_w":
+            for var in self.skip_gc_vars:
+                self.memory_usage -= self.get_var_memory(program, var)
+        
+        return True
+
+    # 根据 var 的类型和 shape 来估计显存占用
+    def _get_var_memory(self, program, var_name):
+        pass
+
+    # 该方法可以考虑把 pass_utils 中的代码重构一下，拆分出来这个功能
+    def _add_skip_gc_vars(self, sub_program):
+        for block in program.blocks:
+            for op in block.ops:
+                if op.type in [
+                    "c_sync_comm_stream",
+                    "conditional_block",
+                    "data",
+                    "nop",
+                    "while",
+                ]:
+                    continue
+
+                op_info = OpInOutInfo()
+                op_info.build_info(op)
+                for arg_name in op.input_arg_names + op.output_arg_names:
+                    if var_can_be_deleted(
+                        arg_name, block
+                    ) and op_info.is_needed(arg_name):
+                        self.skip_gc_vars.add(arg_name)
+    
+```
+
 ## 2. 如何进行任务调度
 
-在 ZB VPP 的官方实现中，任务调度需要在多卡视角下进行。但是 Paddle 在进行任务调度的时候是在单卡视角下进行的。现在我们有俩种方案：
+在 ZB VPP 的官方实现中，任务调度需要在多卡视角下进行，且一张卡的调度结果依赖其他卡的调度信息。但是 Paddle 在进行任务调度的时候是在单卡视角下进行的。现在我们有俩种方案：
 
 1. 每张卡都重复做一遍任务调度，根据 pp_stage 确认自己的任务
 2. 0 号卡做一遍任务调度，然后把调度的结果广播给其他卡
 
 第一种方案的缺点是每张卡都需要做一遍任务调度，这样会浪费计算资源。
 
+> 讨论点：Paddle 下是否能改成单卡的视角？
+> ZB 源码中一张卡主要依赖的是其他卡的任务结束信息，Paddle里面写调度方案应该是本来不需要依赖其他卡的任务结束信息的。
+
+
+
 ## 3. 任务调度的实现
 
 编排的核心代码包含两个主要函数，一个是 `try_v_schedule`，一个是 `get_v_schedule`。
+
+> 当前设计是基于 Zero Bubble 的 VPP 实现方案，是在多卡角度下进行任务调度的
 
 `try_v_schedule` 函数是 Zero Bubble VPP 的核心编排函数，它会尝试生成一个调度计划，`get_v_schedule` 函数则是调用 try_v_schedule 函数，尝试用不同的填充方案生成一个调度计划，最后返回最优的调度计划。
 
