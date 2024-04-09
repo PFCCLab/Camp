@@ -41,52 +41,38 @@ Paddle 中有一个根据 program 来估计显存占用情况的工具，这个�
 具体来说我们可以在添加如下功能类，主要功能是根据 program 来估计显存占用情况。
 
 ```python
-class ZBVPPMemoryEstimator:
-    def __init__(self, max_mem):
-        self.max_mem = max_mem
-        self.memory_usage = 0 # 当前卡的显存占用
-        # 存储因为是 persistable 而被保留的变量
-        # 在 backward_w 任务结束后需要释放显存
-        self.skip_gc_vars = set()
+class PipelineMemoryEstimator:
+    def __init__(self):
+        self.mem_usage = 0
+        self.skip_gc_vars = dict()
 
     def estimate_memory_usage(self, program, dist_context):
         # 1. 遍历 program 中的所有 op
         # 2. 根据 op 的输入输出变量来估计显存占用情况
         # 3. 已经在 skip_gc_vars 中的变量不计入显存占用
+        # 4. 返回 program 的最大显存占用和显存占用情况
 
-    def try_insert_program(self, program, dist_context):
+    def add_sub_program(self, program, dist_context, program_mem_usage=None):
         # 1. 根据 program 来估计显存占用情况
-        max_memory_usage, memory_usage = self.estimate_memory_usage(program, dist_context)
-        if self.memory_usage + max_memory_usage > self.max_mem:
-            return False
-
         # 2. 更新显存占用情况
-        self.memory_usage += memory_usage
         # 3. 更新 skip_gc_vars
-        self.add_skip_gc_vars(program)
-
-        # 4. 如果是 backward_w 任务，需要释放显存
-        if program.type == "backward_w":
-            for var in self.skip_gc_vars:
-                self.memory_usage -= self.get_var_memory(program, var)
-        
-        return True
 
     # 根据 var 的类型和 shape 来估计显存占用
     def _get_var_memory(self, program, var_name):
         pass
 
+    # 释放所有的显存
+    def gc_all_vars(self):
+        for _, mem in self.skip_gc_vars.items():
+            self.mem_usage -= mem
+        self.skip_gc_vars.clear()
+
     # 该方法可以考虑把 pass_utils 中的代码重构一下，拆分出来这个功能
     def _add_skip_gc_vars(self, sub_program):
+        skip_ops = ["c_sync_comm_stream", "conditional_block", "data", "nop", "while"]
         for block in program.blocks:
             for op in block.ops:
-                if op.type in [
-                    "c_sync_comm_stream",
-                    "conditional_block",
-                    "data",
-                    "nop",
-                    "while",
-                ]:
+                if op.type in skip_ops:
                     continue
 
                 op_info = OpInOutInfo()
@@ -95,8 +81,30 @@ class ZBVPPMemoryEstimator:
                     if var_can_be_deleted(
                         arg_name, block
                     ) and op_info.is_needed(arg_name):
-                        self.skip_gc_vars.add(arg_name)
-    
+                        self.skip_gc_vars[arg_name] = self._get_var_memory(program, arg_name)
+```
+
+PipelineMemoryEstimator 类的主要功能是根据 program 来估计显存占用情况。在添加一个 program 的时候，会根据 program 来估计显存占用情况。与估计单个 program 的显存不同的是，PipelineMemoryEstimator 类还会维护一个 skip_gc_vars 字典，用来存储因为是 persistable 而被保留的变量。并且在估计后续 program 的显存占用情况的时候，会考虑到这些变量。
+
+在实际调度阶段我们就可以封装一个类方法结合 PipelineMemoryEstimator 类来进行任务调度。
+
+```python
+    def try_insert_program(self, program, dist_context):
+        # 1. 根据 program 来估计显存占用情况
+        max_memory_usage, memory_usage = self.pipeline_memory_estimator.estimate_memory_usage(program, dist_context)
+
+        # 2. 更新显存占用情况
+        if self.pipeline_memory_estimator.memory_usage + max_memory_usage > self.max_memory:
+            return False
+
+        # 3. 将 program 添加到 pipeline_memory_estimator 中
+        self.pipeline_memory_estimator.add_sub_program(program, dist_context, memory_usage)
+        
+        # 4. 如果是 backward_w 任务，需要释放显存
+        if program.type == "backward_w":
+            self.pipeline_memory_estimator.gc_all_vars()
+
+        return True
 ```
 
 ## 2. 如何进行任务调度
@@ -110,6 +118,7 @@ class ZBVPPMemoryEstimator:
 
 > 讨论点：Paddle 下是否能改成单卡的视角？
 > ZB 源码中一张卡主要依赖的是其他卡的任务结束信息，Paddle里面写调度方案应该是本来不需要依赖其他卡的任务结束信息的。
+> 讨论结果：静态图是一轮编排 + 多轮执行的方式，且调度算法总体复杂度不高，每张卡都计算一遍调度任务对性能不会有太大影响。直接采用第一种方案即可。
 
 
 
