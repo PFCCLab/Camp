@@ -21,14 +21,10 @@ Github ID: [RedContritio](https://github.com/RedContritio)
 2. 文档规范化建设，健全文档规范检查体系
 
     - [] 构建时 clone PaConvert 用于构建别名关系。
-        - https://github.com/PaddlePaddle/docs/pull/6580
-        - 官网构建和预览工具不一致，后续仍需跟踪。
-    - [x] 修复[此前](https://github.com/PaddlePaddle/docs/pull/5798)引入的表格样式错误问题
-        - https://github.com/PaddlePaddle/docs/pull/6588
-    - [x] 更新映射主目录表头设置
-        - https://github.com/PaddlePaddle/docs/pull/6589
-    - [x] 更新映射主目录索引为文档展示页而非 github 源文件
-        - https://github.com/PaddlePaddle/docs/pull/6590
+    - https://github.com/PaddlePaddle/docs/pull/6580
+    - https://github.com/PaddlePaddle/docs/pull/6588
+    - https://github.com/PaddlePaddle/docs/pull/6589
+    - https://github.com/PaddlePaddle/docs/pull/6590
  
 ### 下周工作
 
@@ -42,3 +38,5 @@ Github ID: [RedContritio](https://github.com/RedContritio)
 2. 4月对 api_alias 与映射分类、组合进行细化，提高分类合理性。
 
 ### 导师点评
+
+RedContritio 在近期完成了一些API升级的映射文档工作，后续需针对 **API升级**、**API新增** 两项内容细致开展查漏补缺工作，将Matcher、文档完成对应升级，同时也充当验收工作的角色。如果发现API仍存在问题，需记录并推动修改，直到满足自己的要求为止。因此后续工作中加强联动沟通，促进PaConvert与Paddle框架的完美融合。
