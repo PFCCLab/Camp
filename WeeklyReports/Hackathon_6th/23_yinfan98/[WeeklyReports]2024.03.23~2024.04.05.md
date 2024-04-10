@@ -12,7 +12,8 @@
 
 ### 下周工作
 
-1. 实现weight only phi kernel
+1. 实现weight_quantize weight_only_int4 gpu kernel
 2. 继续优化fuse pass实现
 
 ### 导师点评
+工作进度符合预期，主动性较强，继续保持。
