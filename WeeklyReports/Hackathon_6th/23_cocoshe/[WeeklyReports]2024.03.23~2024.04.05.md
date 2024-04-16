@@ -35,3 +35,5 @@ PaddleMIX 套件能力建设（图文方向）
 1. 将InternLM-XComposer集成到PaddleMIX中，支持sft
 
 ### 导师点评
+在完成任务期间，发现了paddle embeding与torch的行为不一致问题，并告知框架同学。
+继续保持，按计划进行完成任务
