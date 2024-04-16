@@ -26,4 +26,4 @@ PIR Python API 升级及机制建设
 1. 继续推进 PIR test_errors 相关单测适配和 PIR Python API适配升级（第三期）。
 
 ### 导师点评
-
+再接再厉，尽快完成认领的api适配任务，后续投入到sot动态shape 的建设中
