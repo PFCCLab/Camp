@@ -16,3 +16,5 @@ https://github.com/PaddlePaddle/Paddle/pull/63000
 1. 使用nsys profile分析group norm算子的性能问题，尝试进行性能优化
 
 ### 导师点评
+
+本周新宇进度较快、积极主动支持编译器后端相关的工作、infer_symbolic_shape 的任务已经收尾结束，并支持了单测提供了验证
