@@ -20,3 +20,5 @@ CINN 支持动态 Shape 专项（前端方向）
 1. 在`TileFirstGeneralTactic`中实现global memory coalescing策略
 
 ### 导师点评
+
+书豪在收尾 0D Tensor 的过程中，展现出了较强的自驱能力，主动修复前端的补丁，相关单测建设得较为全面；希望再接再厉，在升级 global memory coalescing 的过程中，承担起「方案设计-实验测试-代码上线」的全流程工作
