@@ -12,7 +12,7 @@
 
 1. 新增`reduce_as` op并修复其BUG
 
-算子的新增，引起了`test_assign_pos_op`单测的错误，在本地cuda 11.2和cuda 12.0的环境下，均无法复现其错误。最后，是导师及其同时在CI环境中，发现`test_assign_pos_op`的动态图测试出现了问题，估计是和单测执行模式有关，最后将动态图测试从`test_assign_pos_op`拆解出来，并写入新的单测文件中，问题得以解决。
+算子的新增，引起了`test_assign_pos_op`单测的错误，在本地cuda 11.2和cuda 12.0的环境下，均无法复现其错误。最后，是导师及其同事在CI环境中，发现`test_assign_pos_op`的动态图测试出现了问题，估计是和单测执行模式有关，最后将动态图测试从`test_assign_pos_op`拆解出来，并写入新的单测文件中，问题得以解决。
 
 相关 PR:
 
@@ -20,7 +20,7 @@
 
 2. 解决`test_sub_graph_78`中，开启`with_prim=True`会导致单测报错的BUG。
 
-`test_sub_graph_78`的单测是因为在使用`multiply_grad`的反向拆解时，调用了反向拆解中的函数`get_reduce_dims_from_out(out_grad_dims, x_dims)`有问题。具体是说，在检测reduce的dim时，使用的索引错误，现已修改成正确的索引。
+`test_sub_graph_78`的单测是因为在使用`multiply_grad`的反向拆解时，调用反向拆解中的函数`get_reduce_dims_from_out(out_grad_dims, x_dims)`有问题。具体是说，在检测reduce的dim时，使用的索引错误，现已修改成正确的索引。
 
 相关 PR:
 
