@@ -51,3 +51,7 @@ class TestNoGradientCase(Dy2StTestBase):
 1. PIR 动转静理想态单测推全验证任务（二期）
 
 ### 导师点评
+
+加油加油，下周继续 :doge:
+
+LGTMeow <img src="https://www.gstatic.com/android/keyboard/emojikitchen/20220506/u1f381/u1f381_u1f43e.png" width="14" alt="🐾"/>
