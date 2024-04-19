@@ -32,7 +32,8 @@
 ### 下周工作
 
 1. 尝试对`reduce_as`完成`complex64/128`和`int8`的支持
-2. 完善之前尚未merge的PR。
+2. 补充`reduce_as`的中文文档
+3. 完善之前尚未merge的PR。
 
 ### 导师点评
 
