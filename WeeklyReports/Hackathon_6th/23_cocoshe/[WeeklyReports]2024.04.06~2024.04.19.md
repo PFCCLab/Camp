@@ -10,7 +10,7 @@ PaddleMIX 套件能力建设（图文方向）
 
 本周主要工作如下：
 
-将 internlm-xcomposer 集成到 PaddleMIX 中，解耦原组网中的 tokenize 部分和 embed 部分，将 tokenize 部分封装成 collator 和 processor，支持 auto 导入。
+将 internlm-xcomposer2 集成到 PaddleMIX 中，解耦原组网中的 tokenize 部分和 embed 部分，将 tokenize 部分封装成 collator 和 processor，支持 auto 导入。
 
 + https://github.com/PaddlePaddle/PaddleMIX/pull/511
 
