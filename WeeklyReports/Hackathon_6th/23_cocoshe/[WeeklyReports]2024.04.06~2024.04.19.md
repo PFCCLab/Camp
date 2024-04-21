@@ -1,26 +1,26 @@
-1. ### 姓名
+### 姓名
 
-   叶柯
+叶柯
 
-   ### 实习项目
+### 实习项目
 
-   PaddleMIX 套件能力建设（图文方向）
+PaddleMIX 套件能力建设（图文方向）
 
-   ### 本周工作
+### 本周工作
 
-   本周主要工作如下：
+本周主要工作如下：
 
-   将 internlm-xcomposer 集成到 PaddleMIX 中，解耦原组网中的 tokenize 部分和 embed 部分，将 tokenize 部分封装成 collator 和 processor，支持 auto 导入。
+将 internlm-xcomposer 集成到 PaddleMIX 中，解耦原组网中的 tokenize 部分和 embed 部分，将 tokenize 部分封装成 collator 和 processor，支持 auto 导入。
 
-   + https://github.com/PaddlePaddle/PaddleMIX/pull/511
++ https://github.com/PaddlePaddle/PaddleMIX/pull/511
 
-   上报一个Paddle的Dataloader相关的BUG（待确认）
+上报一个Paddle的Dataloader相关的BUG（待确认）
 
-   + https://github.com/PaddlePaddle/Paddle/issues/63725
++ https://github.com/PaddlePaddle/Paddle/issues/63725
 
-   ### 下周工作
+### 下周工作
 
-   1. 推进完成的几个PR合入
-   2. 进行其他任务
+1. 推进完成的几个PR合入
+2. 进行其他任务
 
-   ### 导师点评
+### 导师点评
