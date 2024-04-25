@@ -21,4 +21,4 @@ PaddleSpeech 套件能力建设
 1. 继续完成PaddleSpeech测试，对demos中的推理任务和examples中的训练任务进行测试
 
 ### 导师点评
-请联系导师填写
+对paddlespeech整体问题梳理的过程中，了解套件目前面对的问题。
