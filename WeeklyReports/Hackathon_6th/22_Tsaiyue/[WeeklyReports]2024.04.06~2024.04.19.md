@@ -32,3 +32,5 @@ PaddleMIX 套件能力建设（文图方向）
 2. 调研结合transformer和diffusion model的视频生成开源模型，与导师沟通规划下一步工作重点；
 
 ### 导师点评
+
+蔡越在本周围完成了AnimateAnyone的结尾工作，完成了相关PR的合入和ai studio项目的更新，并开展了open-sora相关的调研工作，干的不错，继续加油。
