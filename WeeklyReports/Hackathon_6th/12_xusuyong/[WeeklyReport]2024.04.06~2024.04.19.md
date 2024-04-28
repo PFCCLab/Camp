@@ -25,4 +25,4 @@ Github ID：[xusuyong](https://github.com/xusuyong)
 1. 实验casual loss
 
 ### 导师点评
-请联系导师填写
+苏勇添加的两个案例质量高，代码规范，之后可以基于allen_cahn_default案例添加通用的ntk优化策略。
