@@ -6,11 +6,11 @@
 
 ### 本周工作
 
-2. **学习动态shape相关知识**
+1. **学习动态shape相关知识**
 
 	* 了解算子拆解中动态shape的相关知识
 
-3. **进行算子拆解工作** 
+2. **进行算子拆解工作** 
     * [support hardsigmoid op forward in prim pir](https://github.com/PaddlePaddle/Paddle/pull/64025) 已合入
 	* [support floor_divide op forward in prim pir](https://github.com/PaddlePaddle/Paddle/pull/64023) 已合入
 	* [support bce_loss op forward in prim pir](https://github.com/PaddlePaddle/Paddle/pull/63918) 已合入
