@@ -8,9 +8,9 @@ PIR 控制流专项
 
 ### 本周工作
 
-#### 修复 PaddleDetection 中 ppyoloe_plus_crn_l_80e_coco 模型训练在 PIR 下出现的显存泄露问题
+- 修复 PaddleDetection 中 ppyoloe_plus_crn_l_80e_coco 模型训练在 PIR 下出现的显存泄露问题
 
-##### 复现问题
+#### 复现问题
 
 - 复现脚本：
 
@@ -74,7 +74,7 @@ Epoch: [0] [  10/6250] mem_allocated: 825 MB mem_reserved: 8517 MB
 
 经初步讨论：导致显存泄露问题的原因是存在变量没有被回收 (GC)，每次迭代都有新的变量没有被 GC 导致显存占用不断增加，最后引发 OOM
 
-##### 验证已知问题是否解决
+#### 验证已知问题是否解决
 
 之前有大佬已经针对这个问题已经提了 2 个 PR：
 
@@ -114,7 +114,7 @@ Epoch: [0] [  10/6250] mem_allocated: 825 MB mem_reserved: 8517 MB
 
    另外 ppyoloe_plus_crn_l_80e_coco 对于 Program 中的同一个 if 控制流，每次迭代执行时都会定义新的 inner outputs，导致随着训练没有被回收的显存越来越多，最后报了 OOM 的错误
 
-#### 解决问题
+### 解决问题
 
 - https://github.com/PaddlePaddle/Paddle/pull/64130
 
