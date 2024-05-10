@@ -14,3 +14,6 @@ CINN 支持动态 Shape 专项（前端方向）
 1. 收尾generate shape的相关问题，与reduce_mean其它相关优化联调测试
 2. 收尾inferSymbolicShape和inferMeta推导结果不一致的问题，使pr https://github.com/PaddlePaddle/Paddle/pull/63784 可以合入
 3. 开始测试if\else分支在计算图中与在cuda kernel中的性能差异
+
+### 导师点评
+近两周的任务难度有明显提升，欣楷的推进效率很高，希望继续保持！
