@@ -50,3 +50,7 @@ int main()
 1. PyFuncOp 迁移
 
 ### 导师点评
+
+牛哇川砸，既推动了 pybind 升级，又解决了遗留已久的反向 Program 析构问题～
+
+LGTMeow <img src="https://www.gstatic.com/android/keyboard/emojikitchen/20240206/u1f30b/u1f30b_u1f43e.png" width="14" alt="🐾"/>
