@@ -8,7 +8,7 @@ PIR 控制流专项
 
 ### 本周工作
 
-- 修复 PaddleDetection 中 ppyoloe_plus_crn_l_80e_coco 模型训练在 PIR 下出现的显存泄露问题
+- 分析 PaddleDetection 中 ppyoloe_plus_crn_l_80e_coco 模型训练在 PIR 下出现的显存泄露问题并初步解决
 
 #### 复现问题
 
@@ -85,7 +85,7 @@ Epoch: [0] [  10/6250] mem_allocated: 825 MB mem_reserved: 8517 MB
 
 结果：经过 log 验证分析，这 2 个 PR 实现了预期的目标，因此在其他地方还存在没有被 GC 的变量
 
-##### 问题分析过程
+#### 问题分析过程
 
 1. 逐个 OP 对比 PIR 和旧 IR 之间显存变化的区别
 
@@ -95,7 +95,7 @@ Epoch: [0] [  10/6250] mem_allocated: 825 MB mem_reserved: 8517 MB
 
    通过不断修改模型结构，最后发现是模型中的 if 控制流导致的显存泄露问题，当把模型中所有的 if 控制流都移除时，显存泄露的问题就消失了，但却不清楚为什么 if 控制流会导致显存泄露
 
-3. 缩小问题规模进行分析
+3. 缩小问题规模分析问题
 
    由于原模型的 if 控制流比较复杂，涉及的变量较多，不方便分析，我通过将原模型的 if 控制流全部移除，然后通过修改模型代码增加了一个非常简单的 if 控制流：
 
@@ -114,7 +114,7 @@ Epoch: [0] [  10/6250] mem_allocated: 825 MB mem_reserved: 8517 MB
 
    另外 ppyoloe_plus_crn_l_80e_coco 对于 Program 中的同一个 if 控制流，每次迭代执行时都会定义新的 inner outputs，导致随着训练没有被回收的显存越来越多，最后报了 OOM 的错误
 
-### 解决问题
+#### 初步解决问题
 
 - https://github.com/PaddlePaddle/Paddle/pull/64130
 
@@ -134,5 +134,12 @@ Epoch: [0] [  10/6250] mem_allocated: 825 MB mem_reserved: 8517 MB
   Epoch: [0] [  10/6250] mem_allocated: 825 MB mem_reserved: 8529 MB
   ```
 
-  
+
+- 目前通过手动添加 inner outputs 的 GC 虽然能够解决问题，但是可能存在 inner outputs 后续需要被使用的风险，针对该问题，经讨论后认为应该为 yield op 实现一个 instruction，从而直接复用 pir_interpreter 的 GC 逻辑。
+
+  因为当前 inner outputs 不被 GC 的原因是 yield op 的实际执行只是一个拷贝函数，而不是一个 instruction，因此 interpreter 在默认情况下会认为 inner outputs 是不被后续算子需要的，导致 inner outputs 在拷贝之前就被 GC 掉了，所以目前将 inner outputs 跳过了 GC，但是会引发内存泄露问题，而为 yield op 实现 instruction 后旧不用跳过 inner outputs 的 GC，直接服用 pir_interpreter 的 GC 逻辑就能解决目前的问题。
+
+### 下周工作
+
+- 为 yield op 实现 instruction
 
