@@ -137,7 +137,7 @@ Epoch: [0] [  10/6250] mem_allocated: 825 MB mem_reserved: 8517 MB
 
 - 目前通过手动添加 inner outputs 的 GC 虽然能够解决问题，但是可能存在 inner outputs 后续需要被使用的风险，针对该问题，经讨论后认为应该为 yield op 实现一个 instruction，从而直接复用 pir_interpreter 的 GC 逻辑。
 
-  因为当前 inner outputs 不被 GC 的原因是 yield op 的实际执行只是一个拷贝函数，而不是一个 instruction，因此 interpreter 在默认情况下会认为 inner outputs 是不被后续算子需要的，导致 inner outputs 在拷贝之前就被 GC 掉了，所以目前将 inner outputs 跳过了 GC，但是会引发内存泄露问题，而为 yield op 实现 instruction 后旧不用跳过 inner outputs 的 GC，直接服用 pir_interpreter 的 GC 逻辑就能解决目前的问题。
+  因为当前 inner outputs 不被 GC 的原因是 yield op 的实际执行只是一个拷贝函数，而不是一个 instruction，因此 interpreter 在默认情况下会认为 inner outputs 是不被后续算子需要的，导致 inner outputs 在拷贝之前就被 GC 掉了，所以目前将 inner outputs 跳过了 GC，但是会引发内存泄露问题，而为 yield op 实现 instruction 后就不用跳过 inner outputs 的 GC，直接复用 pir_interpreter 的 GC 逻辑就能解决目前的问题。
 
 ### 下周工作
 
