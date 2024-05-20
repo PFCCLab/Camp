@@ -31,3 +31,5 @@ Github ID：[xusuyong](https://github.com/xusuyong)
 1. 修正ntk weight的PR
 
 ### 导师点评
+
+完成NTK的案例复现后，可以补充一下NTK aggregator的相关公式。
