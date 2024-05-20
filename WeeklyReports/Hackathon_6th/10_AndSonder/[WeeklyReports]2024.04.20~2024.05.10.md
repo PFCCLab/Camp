@@ -185,3 +185,4 @@ pp2, mp2, gradient accumulation 8, 不开启 recompute,batch2, num_hidden_layers
 适配 vpp_degree > 2 的情况，完成 ZBV 编排代码的编写。修改分布式标记适配 ZBV 的 V 形编排。在 Llama2 上进行初步性能测试。
 
 ### 导师点评
+卢畅本周的工作充实且富有成效，在显存估计、ZBV编排代码编写和问题排查方面均取得了显著的进展。期待在下周的工作中能够继续保持这种良好的势头，为项目的顺利完成打下坚实的基础。
