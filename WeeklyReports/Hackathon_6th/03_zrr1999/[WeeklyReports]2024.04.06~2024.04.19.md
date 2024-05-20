@@ -28,4 +28,4 @@ PIR Python API 升级及机制建设
     - https://github.com/PaddlePaddle/Paddle/pull/63786
 
 ### 导师点评
-
+正常推进PIR相关的开源工作，后续会参与SOT 动态shape相关的工作~
