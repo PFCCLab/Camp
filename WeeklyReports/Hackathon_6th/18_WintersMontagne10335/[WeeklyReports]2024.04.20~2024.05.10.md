@@ -16,7 +16,7 @@ CINN 静态 shape 下鲁棒性和性能优化
 2. **代码串讲**
 
 	* 调研动态 shape 支持相关的内容，并以《浅析 cinn 中的符号推导机制》为题做分享
-（相关链接：https://github.com/WintersMontagne10335/Paddle-Code-Camp/blob/master/code%20reading/%E6%B5%85%E6%9E%90%20cinn%20%E4%B8%AD%E7%9A%84%E7%AC%A6%E5%8F%B7%E6%8E%A8%E5%AF%BC%E6%9C%BA%E5%88%B6.md）
+（相关链接：https://github.com/WintersMontagne10335/Paddle-Code-Camp/blob/master/code%20reading/%E6%B5%85%E6%9E%90%20cinn%20%E4%B8%AD%E7%9A%84%E7%AC%A6%E5%8F%B7%E6%8E%A8%E5%AF%BC%E6%9C%BA%E5%88%B6.md ）
 
 ### 下周工作
 
