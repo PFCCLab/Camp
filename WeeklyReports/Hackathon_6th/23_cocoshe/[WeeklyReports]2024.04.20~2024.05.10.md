@@ -21,3 +21,6 @@ PaddleMIX 套件能力建设（图文方向）
 1. 赶一下毕设和最近nips的ddl
 
 ### 导师点评
+internlm-xcomposer2 pr已合入；
+协助启航计划同学解决了问题，并且提了pr；
+后续开始完成paddlemix的一些优化工作；
