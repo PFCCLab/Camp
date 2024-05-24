@@ -44,4 +44,4 @@
 
 
 ### 导师点评
-
+拆组合算子的时候，能定位出sigmoid_cross_entropy_with_logits 反向kernel出现的精度问题，并且修复，手动点赞
