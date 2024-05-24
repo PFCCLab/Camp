@@ -15,4 +15,4 @@ CINN 支持动态 Shape 专项（前端方向）
 1. 实验generate shape多输出lower
 
 ### 导师点评
-
+generate shape的lower工作在近两周取得重要突破，完成了核心代码的开发和PR合入，希望再接再厉，将generate shape lower的工作做到足够完备。
