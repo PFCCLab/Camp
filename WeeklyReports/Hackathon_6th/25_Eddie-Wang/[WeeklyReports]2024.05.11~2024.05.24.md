@@ -11,6 +11,7 @@
 	* 继续学习prim拆解及动态shape相关知识
 
 2. **进行算子拆解工作** 
+
     * [support huber_loss op forward in prim pir](https://github.com/PaddlePaddle/Paddle/pull/64425) 已合入
 	* [support squared_l2_norm op forward in prim pir](https://github.com/PaddlePaddle/Paddle/pull/64498) 已合入
 	* [support square op backward in prim pir](https://github.com/PaddlePaddle/Paddle/pull/64381) 已完成
