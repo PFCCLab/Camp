@@ -1,17 +1,17 @@
-### ����
+### 姓名
 YibinLiu666
 
-### ʵϰ��Ŀ
-�߽�΢�ֵ����ܷ������Ż�
+### 实习项目
+高阶微分的性能分析和优化
 
-### ���ܹ���
-1. ��βcumprod����pr��
-2. ��λ��˫��cumprodʵ��prod_grad��bug����̬ͼ������cpu cumprod���Զ�ʹ��inplace��ԭ��δ֪��
-3. ����֧��bmm�ĸ�����complex64���е�����
+### 本周工作
+1. 收尾cumprod升级pr。
+2. 定位到双向cumprod实现prod_grad的bug，静态图机制下cpu cumprod会自动使用inplace，原因未知。
+3. 初步支持bmm的复数，complex64还有点问题
 
-### ���ܹ���
+### 下周工作
 
-1. ��β˫��cumprodʵ��prod_grad pr
-2. ֧��bmm��������
+1. 收尾双向cumprod实现prod_grad pr
+2. 支持bmm复数类型
 
-### ��ʦ����
+### 导师点评
