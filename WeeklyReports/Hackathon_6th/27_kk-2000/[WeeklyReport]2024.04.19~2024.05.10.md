@@ -10,7 +10,7 @@ PaddleSpeech 套件能力建设
 
 1. **PaddleSpeech测试**
    * 基于paddlepaddle-gpu\==2.6.1及paddleSpeech\==develop进行测试
-   * 对demos中14个demo（共25个）进行了测试，并记录测试情况，测试情况如图
+   * 对demos中14个demo（共25个）进行了测试，并记录测试情况，验证完成的demo为8个，测试情况如图
 
 ### 下周工作
 
