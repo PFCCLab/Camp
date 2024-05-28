@@ -23,3 +23,7 @@ pr: [#64624](https://github.com/PaddlePaddle/Paddle/pull/64624)
 1. 推进 pr 合入
 
 ### 导师点评
+
+喵哇川子，这周可以准备答辩了
+
+LGTMeow <img src="https://www.gstatic.com/android/keyboard/emojikitchen/20240206/u1f3a3/u1f3a3_u1f43e.png" width="14" alt="🐾"/>
