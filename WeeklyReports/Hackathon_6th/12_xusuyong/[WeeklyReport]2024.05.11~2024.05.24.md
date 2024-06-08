@@ -20,7 +20,7 @@ Github ID：[xusuyong](https://github.com/xusuyong)
 
 
 ### 下周工作
-
+将jaxpi的部分重点案例接入PaddleScience，以及添加curriculum训练策略
 
 ### 导师点评
 工作正常推进
