@@ -14,4 +14,4 @@ YibinLiu666
 1. 收尾双向cumprod实现prod_grad pr
 2. 支持bmm复数类型
 
-### 导师点评
+高效完成prod_grad并合入PR和bmm复数支持（windows 精度有问题待排查）
