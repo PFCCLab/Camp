@@ -89,7 +89,7 @@ jobs:
                   echo "$file 符合要求"
               else
                   echo "$file 导师点评内容缺失."
-                  echo "如有疑问, 请联系助教 AndSonder （第六期助教）、MarioLulab（第五期助教）"
+                  echo "如有疑问, 请联系助教 yinfan98 （第七期助教）、AndSonder （第六期助教）、MarioLulab（第五期助教）"
                   exit 1
               fi
           done
