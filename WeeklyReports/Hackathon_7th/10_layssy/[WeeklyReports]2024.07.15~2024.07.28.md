@@ -13,12 +13,12 @@
 3. **完成了pd_op.cast Maker的开发和单测**
 4. **整理了需要进行开发的pd_op的算子**
 
-
 ### 下周工作
 
 1. **继续完成剩余pd_op.h的算子的Maker开发和实现**
+1. **完成Paddle-Inference-Demo 的复现和整理**
 
-  - 完成Paddle-Inference-Demo 的复现和整理
+### 详细链接
 
+[周报pr链接](https://github.com/PFCCLab/Camp/pull/309)
 
-### 导师点评
