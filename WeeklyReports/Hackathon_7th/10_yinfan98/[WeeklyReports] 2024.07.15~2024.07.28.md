@@ -1,13 +1,10 @@
-### 姓名
-
-尹帆
+### 尹帆
 
 ### 实习项目
 
 推理 Predictor 及 IR Pass 建设
 
 ### 本周工作
-
 
 1. 学习竞品文档和旧IR实现的Python端Infra，学习如何为新PIR实现Python端pass。
 2. 产出文档
