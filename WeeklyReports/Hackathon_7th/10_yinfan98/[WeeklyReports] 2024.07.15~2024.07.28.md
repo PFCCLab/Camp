@@ -11,9 +11,12 @@
 
 1. 学习竞品文档和旧IR实现的Python端Infra，学习如何为新PIR实现Python端pass。
 2. 产出文档
-  https://github.com/yuanlehome/Hackathon/wiki/%5BHackathon-7th-Paddle-python-pass%5D-Paddle-DRR%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB
-  https://github.com/yuanlehome/Hackathon/wiki/%5BHackathon-7th-Paddle-python-pass%5D-passes-ir.py%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB
-  https://github.com/yuanlehome/Hackathon/wiki/%5BHackathon-7th-Paddle-python-pass%5D-torch.fx%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB
+
+  - [DRR源码阅读](https://github.com/yuanlehome/Hackathon/wiki/%5BHackathon-7th-Paddle-python-pass%5D-Paddle-DRR%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB)
+
+  - [pass ir.py源码阅读](https://github.com/yuanlehome/Hackathon/wiki/%5BHackathon-7th-Paddle-python-pass%5D-passes-ir.py%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB)
+
+  - [torch.fx源码阅读](https://github.com/yuanlehome/Hackathon/wiki/%5BHackathon-7th-Paddle-python-pass%5D-torch.fx%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB)
 
 ### 下周工作
 
