@@ -4,7 +4,7 @@
 
 ### 实习项目
 
-PaddleNLP大模型推理
+为Paddle推理新增Pass管理功能
 
 ### 本周工作
 
