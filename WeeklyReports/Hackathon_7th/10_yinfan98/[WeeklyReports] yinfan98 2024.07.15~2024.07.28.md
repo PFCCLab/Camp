@@ -21,3 +21,4 @@
 2. 实现一个matmul + transpose IR
 
 ### 导师点评
+继续构思python写pass设计实现方案
