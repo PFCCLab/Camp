@@ -32,3 +32,4 @@
 - RT-DETRv2: https://github.com/PaddlePaddle/PaddleDetection/pull/9073
 
 ### 导师点评
+【高效高质量完成YOLOv10和RT-DETRv2模型的复现工作；继续探索基于RTDETR的开放世界检测】
