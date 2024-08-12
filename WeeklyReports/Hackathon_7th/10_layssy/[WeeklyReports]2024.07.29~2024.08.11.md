@@ -39,3 +39,5 @@
    1. 统计完成之后，补充缺少marker算子的marker以及单测
    1. 学习如何开发算子的converter
 1. 熟悉Paddle-Inference-Demo 的c++端的流程
+
+### 导师评价
