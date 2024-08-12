@@ -15,12 +15,23 @@
 
 #### 算子的 Marker 的开发 和单测的实现
 
-1. 完成Split_with_num 、multiply、 elementwise_max elementwise_min elementwise_pow elementwise_floordiv elementwise_sub elementwise_div elementwise_mod、shape以及greate_equal等算子的 marker 和单测 的开发
+1. 完成一系列算子的 marker和单测的开发
+   1. Split_with_num 
+   2. multiply
+   3.  elementwise_max、 elementwise_min 、elementwise_pow 、elementwise_floordiv 、elementwise_sub 、elementwise_div 、elementwise_mod
+   4. shape
+   5. greate_equal
+
 2. 补充现在已有marker的算子的单测
 
 #### 模型文档整理
 
-1. 整理了一部分check_infrence.sh中的的模型( Deeplabv3_Plus-R101、 Deeplabv3_Plus-R50、Deeplabv3-R101、Deeplabv3-R50、OCRNet_HRNet-W48、PP-LiteSeg-T、PP-OCRv4_mobile_det、PP-OCRv4_server_det、PP-OCRv4_mobile_rec、PP-OCRv4_server_rec)包含的算子是否具有对应的marker 和converter
+1. 整理了一部分check_infrence.sh中的的模型包含的算子是否具有对应的marker 和converter
+   1. Deeplabv3_Plus-R101、 Deeplabv3_Plus-R50、Deeplabv3-R101、Deeplabv3-R50
+   2. OCRNet_HRNet-W48
+   3. PP-LiteSeg-T
+   4. PP-OCRv4_mobile_det、PP-OCRv4_server_det、PP-OCRv4_mobile_rec、PP-OCRv4_server_rec
+
 
 ### 下周工作
 
