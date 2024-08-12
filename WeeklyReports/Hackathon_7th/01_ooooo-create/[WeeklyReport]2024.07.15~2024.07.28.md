@@ -24,3 +24,4 @@ PIR 专项
 3. 整理遇到的问题到 [PIR 单测推全交流平台](https://github.com/PaddlePaddle/Paddle/issues/66134) 上
 
 ### 导师点评
+@ooooo-create 重点参与了static.nn的API替换工作，这是一个相对独立且对飞桨未来API动静统一有重要价值的工作。需要注意，有一些API如果已有动静统一的非static.nn的API，则可以考虑标记退场，仅需要适配静态图独有的API即可。
