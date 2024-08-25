@@ -58,3 +58,5 @@
 5. `paddle.empty` 等包含 dtype 参数的 API 添加⽀持 paddle.dtype 类型的输入。
 
 ### 导师点评
+
+后续注意对已修改API进一步完善转换规则，只有Paddle与PaConvert做好配套工作，互相结合，才能够帮助用户更好的使用Paddle。
