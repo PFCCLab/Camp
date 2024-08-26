@@ -23,3 +23,5 @@
 2. 理解运行单测文件时添加的环境变量FLAGS_enable_pir_api=True在何处起作用
 3. 在相关源文件中的ProgramDesc、VarDesc、FunctionInfo相关处修改代码以适配PIR体系
 
+### 导师点评
+  需要抓紧时间开发，暴露问题，获取实质性进展
