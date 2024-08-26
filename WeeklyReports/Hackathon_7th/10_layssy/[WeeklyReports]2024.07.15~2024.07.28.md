@@ -32,3 +32,6 @@
 
 [周报pr链接](https://github.com/PFCCLab/Camp/pull/309)
 
+### 导师评价
+
+需要完成哪些op marker / converter的开发，能否梳理一个列表
