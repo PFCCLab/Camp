@@ -34,3 +34,5 @@
 3. 继续了解Attention显存管理的相关工作（PagedAttention, GMLake, vAttention等），以及paddle框架的相关实现
 
 ### 导师点评
+
+下周希望看到QServe的相关进一步进展，加油！
