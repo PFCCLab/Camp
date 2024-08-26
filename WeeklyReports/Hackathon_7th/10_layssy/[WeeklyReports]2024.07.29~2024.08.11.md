@@ -41,3 +41,5 @@
 1. 熟悉Paddle-Inference-Demo 的c++端的流程
 
 ### 导师评价
+
+本周李伟已经统计完成check_inference.sh模型中全部算子的统计，并提交了elementwise_max、 elementwise_min 、elementwise_pow 、elementwise_floordiv 、elementwise_sub 、elementwise_div 、elementwise_mod、shape、greate_equal 的Marker到develop分支上
