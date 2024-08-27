@@ -18,6 +18,7 @@
 ### 下周工作
 
 1. 解决chatglmv3在block_attn模式下输出不正常的问题
-1. 继续支持chatglmv2和chatglmv3在block_attn组网模式下跑通a8w8
+2. 继续支持chatglmv2和chatglmv3在block_attn组网模式下跑通a8w8
 
 ### 导师点评
+先继续解决精度问题
