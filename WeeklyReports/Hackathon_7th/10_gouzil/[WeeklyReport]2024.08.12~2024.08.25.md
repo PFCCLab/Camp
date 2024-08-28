@@ -15,5 +15,9 @@ PIR 专项
 ### 下周工作
 
 1. 在收紧正确性的前提下看能否支持非打断
+2. 分析和修复 https://www.paddlepaddle.org.cn/documentation/docs/zh/guides/paddle_v3_features/sot_cn.html#id2 示例代码报其他错误的问题
+3. 了解动转静体验优化现阶段已有的任务，并尝试对部分场景报错进行优化
 
 ### 导师点评
+
+下周可以开始进行部分动转静体验优化的任务～
