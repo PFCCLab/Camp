@@ -38,6 +38,12 @@
 
 - pr 链接：https://github.com/PaddlePaddle/PaConvert/pull/463 、https://github.com/PaddlePaddle/docs/pull/6848 、https://github.com/PaddlePaddle/Paddle/pull/67772
 
+6. **修复 `paddle.put_along_axis` 存在的 bug**
+
+- 当 reduce = 'amax' 时，value 的反向梯度计算存在随机 inf 的情况。
+
+- pr 链接：https://github.com/PaddlePaddle/Paddle/pull/67698
+
 #### 问题疑惑与解答
 
 暂无
