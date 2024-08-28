@@ -8,7 +8,7 @@ PIR 专项
 
 ### 本周工作
 
-1. 修复 SOT 没能捕获 breakgraph 导致直接 raise 到最外层了, 收紧正确性
+1. 修复 SOT 没能捕获 breakgraph 导致直接 raise 到最外层了, 收紧正确性. PR: [#67591](https://github.com/PaddlePaddle/Paddle/pull/67591)
 2. 收尾 [[CodeStyle][Ruff] Ruff 新 rule 引入计划（第二期）](https://github.com/PaddlePaddle/Paddle/issues/67116) 和 [[Typing][PEP585 Upgrade] PEP 585 标准集合泛型支持升级——Python 3.8 退场前瞻特别任务](https://github.com/PaddlePaddle/Paddle/issues/66936) 两个任务
 
 
