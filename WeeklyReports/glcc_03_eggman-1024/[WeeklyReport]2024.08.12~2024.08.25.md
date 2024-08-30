@@ -6,15 +6,9 @@
 
 ### 本周工作
 
-1. **熟悉PIR体系组件**
+1. **增加PIR体系下Load代码**
 
-	* 熟悉PIR体系下Save到本地的计算图json文件构成
-    * 查阅Program、IrContext、ModuleOp相关源码
-
-
-2. **增加PIR体系下Load代码**
-
-	* 在相关源文件中的ProgramDesc、FunctionInfo相关处修改代码以适配PIR体系
+	* 在`serializer.cc/h`, `layer.cc/h`, ` function_utils.cc/h`, `function_schema.cc/h`,  `pir_interpreter_engine.cc/h` 等代码文件中修改、增添代码以适配PIR体系。
 
 
 
@@ -25,4 +19,4 @@
 
 
 ### 导师点评
-需要抓紧时间开发，暴露问题，获取实质性进展
+
