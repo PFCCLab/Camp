@@ -15,7 +15,7 @@
 2. **了解Attention显存管理的相关工作，并尝试进行实现**
 
     * 依照vAttention框架的思路，实现了类似的基于VMM API的自定义算子`vtensor_reserve_on_token`
-      * https://github.com/PaddlePaddle/Paddle/pull/68152
+      * https://github.com/PaddlePaddle/PaddleNLP/pull/9126
       * 该算子可以作为`paddle.concat`的替代品，可以实现往tensor的末尾追加数据而不用复制整个tensor
       * 在有较长上下文时，性能有明显提升
 
