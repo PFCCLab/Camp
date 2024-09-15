@@ -26,31 +26,26 @@
 
 - pr 链接：https://github.com/PaddlePaddle/Paddle/pull/67947、https://github.com/PaddlePaddle/Paddle/pull/68033
 
-4. **优化 `torch.gather/torch.Tensor.gather` 的 API 转换规则**
 
-- 更新 PaConvert 中的 json 映射规则以及测试案例。
-
-- pr 链接：https://github.com/PaddlePaddle/PaConvert/pull/449
-
-5. **修复 `paddle.linalg.matrix_rank` 新增 kernel 存在的 bug**
+4. **修复 `paddle.linalg.matrix_rank` 新增 kernel 存在的 bug**
 
 - 修复当 rtol 输入为 None 的计算分支内关于 rtol_tensor 形状的问题
 
 - pr 链接：https://github.com/PaddlePaddle/Paddle/pull/68108
 
-6. **增强 `F.max_unpool1d/F.max_unpool2d/F.max_unpool3d` 输入 indices 的类型**
+5. **增强 `F.max_unpool1d/F.max_unpool2d/F.max_unpool3d` 输入 indices 的类型**
 
 - F.max_unpool1d/F.max_unpool2d/F.max_unpool3d 的输入 indices 需增加 int64 类型输入的支持
 
 - pr 链接：https://github.com/PaddlePaddle/Paddle/pull/68046
 
-7. **修复 `F.batch_norm` 存在的 bug**
+6. **修复 `F.batch_norm` 存在的 bug**
 
 - 当 training=True 时，F.batch_norm 的 running_variance 计算结果与 pytorch 不同，因为 pytorch 使用的是无偏方差，paddle 是有偏方差
 
 - pr 链接：https://github.com/PaddlePaddle/Paddle/pull/68159
 
-8. **增强 `F.pad` 的 data_format 参数**
+7. **增强 `F.pad` 的 data_format 参数**
 
 - F.pad 的 data_format 需自动适配3D/5D输入
 
@@ -63,8 +58,8 @@
 ### 下周工作
 
 1. 完善未合入的 pr 以及对应的映射文档、matcher、json 映射法则以及 PaConvert 中的单测；
-1. 分析 paddle.nonzero 修改的不兼容升级问题
-1. paddle.load 增强输入类型
+1. 分析 paddle.nonzero 修改的不兼容升级问题；
+1. paddle.load 增强输入类型；
 1. paddle.chunk 支持非整除情况
 
 ### 导师点评
