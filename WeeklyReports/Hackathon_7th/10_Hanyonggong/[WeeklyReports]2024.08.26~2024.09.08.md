@@ -6,8 +6,6 @@
 
 ### 本周工作
 
-#### int8 matmul cublaslt全局离线调优策略
-
 **1、调研deepseekv2大模型的结构**
 
 **2、修复tune_cublaslt_gemm 算子bug**
