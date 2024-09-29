@@ -18,5 +18,6 @@
 
 
 ### 下周工作
-
+参与Paddle PIR-TRT Converter开发工作
 ### 导师点评
+符合预期
