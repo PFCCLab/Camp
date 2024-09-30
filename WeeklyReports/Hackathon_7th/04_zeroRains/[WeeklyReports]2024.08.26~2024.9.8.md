@@ -58,5 +58,6 @@
 2. one_hot, batch_norm_, batch_norm, bmm 前向适配动态shape
 
 ### 导师点评
+按时完成工作任务，效率很高
 
 
