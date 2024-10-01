@@ -17,3 +17,5 @@ PIR 专项
   - PaddlePaddle/Paddle#68113
 
 ### 导师点评
+
+继续推进 SOT 动态 shape 开发，推动 SOT 动态 shape 切默认
