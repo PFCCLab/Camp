@@ -54,6 +54,8 @@ source ./scene/set_pts_env.sh # 设定默认环境变量
 ```
 
 找到 layertest.py，找到代码最后几行，设定需要排查的 子图（layerfile）和 测试配置（testing）
+
+*注意：执行路径下应该没有framework/e2e/PaddleLT_new，只用写layertest/…/ 后面的路径*
 ``` python
 if __name__ == "__main__":
     layerfile = "layercase/sublayer1000/Clas_cases/CSWinTransformer_CSWinTransformer_base_384/SIR_236.py" # 子图case路径
