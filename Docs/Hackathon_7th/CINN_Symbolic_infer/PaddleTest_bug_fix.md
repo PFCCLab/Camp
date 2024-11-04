@@ -10,17 +10,18 @@ git clone https://github.com/PaddlePaddle/PaddleTest.git
 2. 编译安装 Paddle 包
 ``` bash
 cd Paddle/build
-cmake .. -DWITH_GPU=ON \
-        -DWITH_PROFILER=OFF \
-        -DPY_VERSION=3.9 \
+cmake .. -DPYTHON_EXECUTABLE=/usr/bin/python3.10 \
+        -DWITH_GPU=ON     \
+        -DWITH_PROFILER=OFF     \
+        -DPY_VERSION=3.10      \
         -DWITH_DISTRIBUTE=OFF  \
-        -DON_INFER=ON \
-        -DWITH_TESTING=ON \
+        -DON_INFER=ON     \
+        -DWITH_TESTING=ON    \
         -DWITH_CINN=ON
 
 make -j 32
 python -m pip uninstall paddlepaddle-gpu -y
-python -m pip install python/dist/paddlepaddle_gpu-0.0.0-cp39-cp39-linux_x86_64.whl
+python -m pip install python/dist/paddlepaddle_gpu-0.0.0-cp310-cp310-linux_x86_64.whl
 ```
 3. 运行 PaddleTest 中的子图单测
 ### 方法1
