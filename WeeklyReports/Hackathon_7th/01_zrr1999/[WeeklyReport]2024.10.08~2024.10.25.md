@@ -10,6 +10,7 @@ PIR 专项
 
 1. **优化 fallback 机制**
   - PaddlePaddle/Paddle#68616
+  - PaddlePaddle/Paddle#68555
 
 ### 下周工作
 
