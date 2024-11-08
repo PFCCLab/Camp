@@ -50,6 +50,7 @@ export FLAGS_group_schedule_tiling_first=1
 export FLAGS_cinn_bucket_compile=1
 export FRAMEWORK=paddle # 设置FRAMEWORK，paddle/torch
 export PLT_SET_DEVICE="gpu" # gpu/cpu
+export PLT_DEVICE_ID=0 # 设置 device_id
 
 source ./scene/set_pts_env.sh # 设定默认环境变量
 ```
@@ -67,7 +68,8 @@ if __name__ == "__main__":
 
 运行 layertest.py，python 版本要与编译安装的 python 版本一致
 ``` bash
- python layertest.py
+python layertest.py
+# python layertest.py > SIR_35.txt 2>&1
 ```
 
 
@@ -75,5 +77,5 @@ if __name__ == "__main__":
 ## Bug 列表
 |Bug 编号 |Bug 目录 | Bug描述 | 认领人 |
 |---|---|---|---|
-|1|[SIR_32.py](https://github.com/PaddlePaddle/PaddleTest/blob/develop/framework/e2e/PaddleLT_new/layercase/sublayer160/Seg_cases/isanet_isanet_resnet50_os8_cityscapes_769x769_80k/SIR_32.py)| ![Alt text](src/SIR_32_bug_info.png)| -|
-| 2 | [SIR_35.py](https://github.com/PaddlePaddle/PaddleTest/blob/develop/framework/e2e/PaddleLT_new/layercase/sublayer160/Seg_cases/isanet_isanet_resnet50_os8_cityscapes_769x769_80k/SIR_35.py) | ![Alt text](src/SIR_35_bug_info.png)| -|
+|✅1|[SIR_32.py](https://github.com/PaddlePaddle/PaddleTest/blob/develop/framework/e2e/PaddleLT_new/layercase/sublayer160/Seg_cases/isanet_isanet_resnet50_os8_cityscapes_769x769_80k/SIR_32.py)| ![Alt text](src/SIR_32_bug_info.png)| [ooooo-create](https://github.com/ooooo-create) [✅Paddle#69167](https://github.com/PaddlePaddle/Paddle/pull/69167),[✅PaddleTest#69167](https://github.com/PaddlePaddle/PaddleTest/pull/2981)|
+|✅2 | [SIR_35.py](https://github.com/PaddlePaddle/PaddleTest/blob/develop/framework/e2e/PaddleLT_new/layercase/sublayer160/Seg_cases/isanet_isanet_resnet50_os8_cityscapes_769x769_80k/SIR_35.py) | ![Alt text](src/SIR_35_bug_info.png)| [ooooo-create](https://github.com/ooooo-create) [✅Paddle#69167](https://github.com/PaddlePaddle/Paddle/pull/69167),[✅PaddleTest#69167](https://github.com/PaddlePaddle/PaddleTest/pull/2981)|
