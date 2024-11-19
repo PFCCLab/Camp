@@ -78,5 +78,6 @@ python layertest.py
 |---|---|---|---|
 |✅1|[SIR_32.py](https://github.com/PaddlePaddle/PaddleTest/blob/develop/framework/e2e/PaddleLT_new/layercase/sublayer160/Seg_cases/isanet_isanet_resnet50_os8_cityscapes_769x769_80k/SIR_32.py)| ![Alt text](src/SIR_32_bug_info.png)| [ooooo-create](https://github.com/ooooo-create) [✅Paddle#69167](https://github.com/PaddlePaddle/Paddle/pull/69167),[✅PaddleTest#2981](https://github.com/PaddlePaddle/PaddleTest/pull/2981)|
 |✅2 | [SIR_35.py](https://github.com/PaddlePaddle/PaddleTest/blob/develop/framework/e2e/PaddleLT_new/layercase/sublayer160/Seg_cases/isanet_isanet_resnet50_os8_cityscapes_769x769_80k/SIR_35.py) | ![Alt text](src/SIR_35_bug_info.png)| [ooooo-create](https://github.com/ooooo-create) [✅Paddle#69167](https://github.com/PaddlePaddle/Paddle/pull/69167),[✅PaddleTest#2981](https://github.com/PaddlePaddle/PaddleTest/pull/2981)|
-|3|[kron_3_func.py](https://github.com/PaddlePaddle/PaddleTest/blob/develop/framework/e2e/PaddleLT_new/layerApicase/math_sublayer/kron_3_func.py)| | |
+|3|[kron_3_func.py](https://github.com/PaddlePaddle/PaddleTest/blob/develop/framework/e2e/PaddleLT_new/layerApicase/math_sublayer/kron_3_func.py)|![98200f282bc865643e5760fd8499c687](https://github.com/user-attachments/assets/a824769f-f197-49df-aab6-2a14dc976cce)
+ | |
 
