@@ -68,10 +68,9 @@ if __name__ == "__main__":
 
 运行 layertest.py，python 版本要与编译安装的 python 版本一致
 ``` bash
-
 python layertest.py
 # python layertest.py > SIR_35.txt 2>&1
-
+``` 
 
 ## Bug 列表
 |Bug 编号 |Bug 目录 | Bug描述 | 认领人 |
