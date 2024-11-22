@@ -21,3 +21,5 @@ CINN InferSymbolShape支持。
 继续完成对其他Op的InferSymbolShape支持。
 
 ### 导师点评
+
+导师点评：任务量达标，能深入分析各算子推导过程中遇到的问题
