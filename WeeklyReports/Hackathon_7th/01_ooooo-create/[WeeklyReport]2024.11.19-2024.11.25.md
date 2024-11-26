@@ -16,9 +16,15 @@ CINN 符号推导
 #### Others
 - [typos](https://github.com/PaddlePaddle/Paddle/pull/69525)
 - [refinelogic](https://github.com/PaddlePaddle/Paddle/pull/69615)
+- [cinnop.split](https://github.com/PaddlePaddle/Paddle/pull/69344)
+- [tensor_to_array](https://github.com/PaddlePaddle/Paddle/pull/69069) 反向算子
+
+#### 新增
+
+- [add_n_array](https://github.com/PaddlePaddle/Paddle/pull/69698)
 
 ### 下周工作
 
-1. 学习新东西
+1. CINN IR && Pass
 
 ### 导师点评
