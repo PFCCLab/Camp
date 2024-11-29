@@ -14,12 +14,10 @@ PIR 专项
 2. **对 `make_stringified_guard` 方法 适配 C++ 端 `guard`**
   - PaddlePaddle/Paddle#69353
   - PaddlePaddle/Paddle#69411
-  - PaddlePaddle/Paddle#69472
+  - PaddlePaddle/Paddle#69672
 3. **修复 `BooleanEnvironmentVariable` 的实例可能被意外当成布尔值的问题**
   - PaddlePaddle/Paddle#69412
-4. **修复 `make_stringified_guard` 方法在 C++ 端可能出现的内存泄漏问题**
-  - PaddlePaddle/Paddle#69528
-5. 搭建了基本的 Benchmark 仓库
+4. 搭建了基本的 Benchmark 仓库
   - zrr1999/PaddleGuardBenchmark
 
 ### 下周工作
