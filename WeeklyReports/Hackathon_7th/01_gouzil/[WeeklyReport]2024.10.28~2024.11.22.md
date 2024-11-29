@@ -18,4 +18,4 @@ PIR 专项
 
 ### 导师点评
 
-SOT Python 3.13 适配推进迅速，解决了多个疑难的段错误，目前单测基本适配完成，下一阶段可以开始参与 Guard 优化
+LGTMeow <img src="https://www.gstatic.com/android/keyboard/emojikitchen/20230418/u1f5ef-ufe0f/u1f5ef-ufe0f_u1f43e.png" width="14" alt="🐾"/>，SOT Python 3.13 适配推进迅速，解决了多个疑难的段错误，目前单测基本适配完成，下一阶段可以开始参与 Guard 优化
