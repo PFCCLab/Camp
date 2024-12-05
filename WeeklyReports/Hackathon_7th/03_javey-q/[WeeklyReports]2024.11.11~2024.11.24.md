@@ -62,3 +62,5 @@ normalization.py： SD35AdaLayerNormZeroX
 结合代码，对StableDiffusion3论文进行解读。（未完成）
 
 ### 导师点评
+
+工作进展总体较好，能够围绕实习项目的核心任务展开，SD3 Controlnet相关PR已顺利合入，任务完成较为扎实，接下来需要进一步推进SD3.5适配合入和论文解读相关工作。
