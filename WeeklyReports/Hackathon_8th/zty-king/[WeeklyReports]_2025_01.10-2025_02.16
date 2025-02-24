@@ -1,0 +1,19 @@
+### 姓名
+郑天宇
+
+### 实习项目
+静态图流水并行功能增强和性能优化
+
+### 本周工作
+
+1. **【Auto-Parallel | Comm】fix communication hang issue on GPU-H(VPP)**
+
+  * 解决当前vpp编排下，通信hang住的问题，优化vpp的切图和编排，将forward拆分成recv_forward和forward，send_backward和backward
+
+
+### 下周工作
+
+1. 复现`DualPipe`流水编排
+
+
+
