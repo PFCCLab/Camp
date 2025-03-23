@@ -16,6 +16,6 @@ PIR-TRT 算子 Converter 及单测开发
 
 ### 下周工作
 
-* 熟悉deepseek结构、学习Ktransformer推理流程
+* 熟悉deepseek结构、学习Ktransformer推理流程.
 
 ### 导师点评
