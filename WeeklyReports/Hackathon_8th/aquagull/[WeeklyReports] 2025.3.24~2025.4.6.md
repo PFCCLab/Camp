@@ -6,7 +6,7 @@
 
 ### 本周工作
 
-修正prod、eye、expand_dims、vecdot几个array-api-compat后端接口，以让其通过测试。
+修正prod、eye、expand_dims、vecdot几个array-api-compat后端接口，以让其通过测试。[仓库链接](https://github.com/HydrogenSulfate/array-api-compat/compare/support_paddle...aquagull:array-api-compat:support_paddle)
 
 #### PR：
 - 修复paddle.nozero [PR](https://github.com/PaddlePaddle/Paddle/pull/72003)
