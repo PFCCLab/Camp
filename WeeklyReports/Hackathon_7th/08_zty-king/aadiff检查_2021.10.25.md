@@ -88,8 +88,8 @@ $$
 
 **再考虑一种num_micro_batches>pp_degree**
 
-![image-20241025000830757](images/num_micro_batches>pp_degree时bubble_check插入位置分析图.png)
+![image-20241025000830757](images/num_micro_batches大于pp_degree时bubble_check插入位置分析图.png)
 
-<div style="text-align: center;">num_micro_batches>pp_degree时bubble_check插入位置分析</div>
+<div style="text-align: center;">num_micro_batches大于pp_degree时bubble_check插入位置分析</div>
 
 可以看到，规律还是如上公式所示。
