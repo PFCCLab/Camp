@@ -34,7 +34,7 @@
 
 ### 下周工作
 
-1. 分析DeepSeekV2使用Weight Quant，以及使用Quant Weight计算的逻辑。
+1. 分析MOE架构中Expert计算部分，采用量化和不采用量化产生较大精度差异的原因。
 
 ### 导师点评
 
