@@ -14,7 +14,7 @@
 
 2. **完成图像特征处理和图神经网络部分模型并根据TableMagic v2产线结构进行部分模型改造**
    
-   
+   项目地址： [GitHub - ErnestinaQiu/PaddleX-TableRec at my-develop](https://github.com/ErnestinaQiu/PaddleX-TableRec/tree/my-develop)
 
 3. **问题疑惑与解答**
    
