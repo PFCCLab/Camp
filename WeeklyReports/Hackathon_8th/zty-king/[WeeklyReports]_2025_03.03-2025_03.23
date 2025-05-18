@@ -1,0 +1,21 @@
+### 姓名
+郑天宇
+
+### 实习项目
+静态图流水并行功能增强和性能优化
+
+### 本周工作
+
+1. **动半下实现多卡视角下的流水并行策略（即当前的流水并行是单卡视角下的）**
+
+  * 分析动半下流水并行的实现方法，尤其是1f1b，vpp等策略
+  * 分析动半下p2p通信的实现方法
+2. **【Auto-Parallel | Comm】fix communication hang issue on GPU-H(VPP)** 
+  * 存在一个bug，在计算loss时，会传入空的tensor，修复该bug
+
+### 下周工作
+
+1. 参考local_layer，以及pytorch的local_map,开发paddle的local_map
+
+
+
