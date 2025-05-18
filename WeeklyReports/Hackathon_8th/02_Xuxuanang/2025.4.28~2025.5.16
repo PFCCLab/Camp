@@ -1,0 +1,26 @@
+### 姓名
+许轩昂
+
+### 实习项目
+项目二：模型迁移工具建设
+
+### 本周工作
+
+1. 排查并修复codestyle的CI问题
+
+- https://github.com/PaddlePaddle/PaConvert/pull/580
+
+2. 根据新增的Paddle API，排查是否存在对应的torchAPI，新增/修改torch.linalg.svdvals，torch.linalg.vecdot，torch.Tensor.mT等API。
+
+- https://github.com/PaddlePaddle/PaConvert/pull/581
+
+3. 处理torch.concat/torch.concatenate别名，对齐torch.Tensor.stft映射文档，新增torch.linalg.svdvals，torch.linalg.vecdot，torch.Tensor.mT等映射文档。
+
+- https://github.com/PaddlePaddle/docs/pull/7301
+
+### 下周工作
+
+1. 完成剩余约40个需要开发的API映射关系的开发，包括映射文档，转换规则，Matcher以及单测。
+
+
+### 导师点评
