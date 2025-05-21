@@ -1,0 +1,25 @@
+### 姓名
+郑天宇
+
+### 实习项目
+静态图流水并行功能增强和性能优化
+
+### 本周工作
+
+1. **参考local_layer，以及pytorch的local_map,开发paddle的local_map**
+  * 开发好了local_map
+  * 构造了多种单测验证
+  * 替换了paddle里的locallayer并验证
+  * 修复了之前locallayer的一个错误单测，验证了local_map对比动手和动半的相同效果
+2. **【Auto-Parallel | Comm】fix communication hang issue on GPU-H(VPP)** 
+  * 修复了计算loss时的空tensor
+  * 统一所有pp的job常量
+  * 将1F1B中切图类转化为切图函数，统一pp结构
+
+### 下周工作
+
+1. 在paddlemix和paddlenlp中，使用local_map替换locallayer,并验证有效性
+2. 参与动态图的流水并行功能开发
+
+
+
