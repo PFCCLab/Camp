@@ -23,7 +23,9 @@
 
 相关仓库：
 
-- https://github.com/zeroRains/fastsafetensors 的paddle分支
+- https://github.com/foundation-model-stack/fastsafetensors/pull/16
+- https://github.com/foundation-model-stack/fastsafetensors/pull/19
+- https://github.com/foundation-model-stack/fastsafetensors/pull/22
 
 
 ### 下周工作
