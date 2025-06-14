@@ -10,7 +10,7 @@
 
 本项目的主要工作是优化当前PaddleNLP大模型推理服务调用，本周主要工作如下：
 
-1. 使fastsafetensors其支持paddle
+1. 使fastsafetensors支持paddle
 
 了解fastsafetensors的基本工作流程，目前已支持paddle在single模式下的Tensor加载，分布式加载(parallel)已经支持了cpu+gloo后端的加载，gpu+nccl后端的加载仍然存在一些问题，后续会继续进行分析。
 通过替换torch API以及添加必要的cpp函数，已经实现了fastsafetensors对paddle的支持。
