@@ -1,0 +1,253 @@
+[
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "OrderedDict",
+        "importPath": "collections",
+        "description": "collections",
+        "isExtraImport": true,
+        "detail": "collections",
+        "documentation": {}
+    },
+    {
+        "label": "issue_url",
+        "kind": 5,
+        "importPath": "Utils.assistant_helper",
+        "description": "Utils.assistant_helper",
+        "peekOfCode": "issue_url = \"https://api.github.com/repos/PFCCLab/Camp/issues/161\"\nstart_date = \"2024.03.09\"\nend_date = \"2024.03.22\"\nstu_list = [\n    \"xingmingyyj\",\n    \"huangjiyi\",\n    \"zrr1999\",\n    \"gouzil\",\n    \"zyt1024\",\n    \"zbt78\",",
+        "detail": "Utils.assistant_helper",
+        "documentation": {}
+    },
+    {
+        "label": "start_date",
+        "kind": 5,
+        "importPath": "Utils.assistant_helper",
+        "description": "Utils.assistant_helper",
+        "peekOfCode": "start_date = \"2024.03.09\"\nend_date = \"2024.03.22\"\nstu_list = [\n    \"xingmingyyj\",\n    \"huangjiyi\",\n    \"zrr1999\",\n    \"gouzil\",\n    \"zyt1024\",\n    \"zbt78\",\n    \"RedContritio\",",
+        "detail": "Utils.assistant_helper",
+        "documentation": {}
+    },
+    {
+        "label": "end_date",
+        "kind": 5,
+        "importPath": "Utils.assistant_helper",
+        "description": "Utils.assistant_helper",
+        "peekOfCode": "end_date = \"2024.03.22\"\nstu_list = [\n    \"xingmingyyj\",\n    \"huangjiyi\",\n    \"zrr1999\",\n    \"gouzil\",\n    \"zyt1024\",\n    \"zbt78\",\n    \"RedContritio\",\n    \"NKNaN\",",
+        "detail": "Utils.assistant_helper",
+        "documentation": {}
+    },
+    {
+        "label": "stu_list",
+        "kind": 5,
+        "importPath": "Utils.assistant_helper",
+        "description": "Utils.assistant_helper",
+        "peekOfCode": "stu_list = [\n    \"xingmingyyj\",\n    \"huangjiyi\",\n    \"zrr1999\",\n    \"gouzil\",\n    \"zyt1024\",\n    \"zbt78\",\n    \"RedContritio\",\n    \"NKNaN\",\n    \"zeroRains\",",
+        "detail": "Utils.assistant_helper",
+        "documentation": {}
+    },
+    {
+        "label": "stu_to_teacher",
+        "kind": 5,
+        "importPath": "Utils.assistant_helper",
+        "description": "Utils.assistant_helper",
+        "peekOfCode": "stu_to_teacher = {\n    \"xingmingyyj\": [\"kangguangli\"],\n    \"huangjiyi\": [\"winter-wang\"],\n    \"zrr1999\": [\"YuanRisheng\", \"0x45f\"],\n    \"gouzil\": [\"SigureMo\"],\n    \"zyt1024\": [\"GGBond8488\"],\n    \"zbt78\": [\"GGBond8488\"],\n    \"RedContritio\": [\"zhwesky2010\"],\n    \"NKNaN\": [\"zhwesky2010\"],\n    \"zeroRains\": [\"cyber-pioneer\"],",
+        "detail": "Utils.assistant_helper",
+        "documentation": {}
+    },
+    {
+        "label": "project_to_stu",
+        "kind": 5,
+        "importPath": "Utils.assistant_helper",
+        "description": "Utils.assistant_helper",
+        "peekOfCode": "project_to_stu = OrderedDict()\nproject_to_stu[\"项目一：PIR 算子补全与兼容机制建设\"] = [\"xingmingyyj\"]\nproject_to_stu[\"项目二：PIR 控制流专项\"] = [\"huangjiyi\"]\nproject_to_stu[\"项目三：PIR Python API 升级及机制建设\"] = [\"zrr1999\"]\nproject_to_stu[\"项目四：动转静 SOT 模块 Python 3.12 支持\"] = [\"gouzil\"]\nproject_to_stu[\"项目五：算子支持复数计算专项\"] = [\"zyt1024\", \"zbt78\"]\nproject_to_stu[\"项目六：模型迁移工具建设\"] = [\"RedContritio\"]\nproject_to_stu[\"项目七：框架 API 易用性提升\"] = [\"NKNaN\"]\nproject_to_stu[\"项目八：组合机制算子专项和机制建设\"] = [\"zeroRains\"]\nproject_to_stu[\"项目九：高阶微分的性能分析和优化\"] = [\"YibinLiu666\"]",
+        "detail": "Utils.assistant_helper",
+        "documentation": {}
+    },
+    {
+        "label": "project_to_stu[\"项目五：算子支持复数计算专项\"]",
+        "kind": 5,
+        "importPath": "Utils.assistant_helper",
+        "description": "Utils.assistant_helper",
+        "peekOfCode": "project_to_stu[\"项目五：算子支持复数计算专项\"] = [\"zyt1024\", \"zbt78\"]\nproject_to_stu[\"项目六：模型迁移工具建设\"] = [\"RedContritio\"]\nproject_to_stu[\"项目七：框架 API 易用性提升\"] = [\"NKNaN\"]\nproject_to_stu[\"项目八：组合机制算子专项和机制建设\"] = [\"zeroRains\"]\nproject_to_stu[\"项目九：高阶微分的性能分析和优化\"] = [\"YibinLiu666\"]\nproject_to_stu[\"项目十：静态图半自动并行训练性能优化\"] = [\"AndSonder\"]\nproject_to_stu[\"项目十一：全自动并行架构升级\"] = [\"Corle-hyz\"]\nproject_to_stu[\"项目十二：科学计算领域拓展专项（DeePMD-kit、光学案例）\"] = [\"xusuyong\"]\nproject_to_stu[\"项目十三：科学计算领域拓展专项（超分重构方向）\"] = [\"zhaojiameng\"]\nproject_to_stu[\"项目十四：科学计算领域拓展专项（领域流体方向）\"] = [\"DUCH714\"]",
+        "detail": "Utils.assistant_helper",
+        "documentation": {}
+    },
+    {
+        "label": "project_to_stu[\"项目六：模型迁移工具建设\"]",
+        "kind": 5,
+        "importPath": "Utils.assistant_helper",
+        "description": "Utils.assistant_helper",
+        "peekOfCode": "project_to_stu[\"项目六：模型迁移工具建设\"] = [\"RedContritio\"]\nproject_to_stu[\"项目七：框架 API 易用性提升\"] = [\"NKNaN\"]\nproject_to_stu[\"项目八：组合机制算子专项和机制建设\"] = [\"zeroRains\"]\nproject_to_stu[\"项目九：高阶微分的性能分析和优化\"] = [\"YibinLiu666\"]\nproject_to_stu[\"项目十：静态图半自动并行训练性能优化\"] = [\"AndSonder\"]\nproject_to_stu[\"项目十一：全自动并行架构升级\"] = [\"Corle-hyz\"]\nproject_to_stu[\"项目十二：科学计算领域拓展专项（DeePMD-kit、光学案例）\"] = [\"xusuyong\"]\nproject_to_stu[\"项目十三：科学计算领域拓展专项（超分重构方向）\"] = [\"zhaojiameng\"]\nproject_to_stu[\"项目十四：科学计算领域拓展专项（领域流体方向）\"] = [\"DUCH714\"]\nproject_to_stu[\"项目十五：科学计算领域拓展专项（领域气象方向）\"] = [\"Yang-Changhui\"]",
+        "detail": "Utils.assistant_helper",
+        "documentation": {}
+    },
+    {
+        "label": "project_to_stu[\"项目八：组合机制算子专项和机制建设\"]",
+        "kind": 5,
+        "importPath": "Utils.assistant_helper",
+        "description": "Utils.assistant_helper",
+        "peekOfCode": "project_to_stu[\"项目八：组合机制算子专项和机制建设\"] = [\"zeroRains\"]\nproject_to_stu[\"项目九：高阶微分的性能分析和优化\"] = [\"YibinLiu666\"]\nproject_to_stu[\"项目十：静态图半自动并行训练性能优化\"] = [\"AndSonder\"]\nproject_to_stu[\"项目十一：全自动并行架构升级\"] = [\"Corle-hyz\"]\nproject_to_stu[\"项目十二：科学计算领域拓展专项（DeePMD-kit、光学案例）\"] = [\"xusuyong\"]\nproject_to_stu[\"项目十三：科学计算领域拓展专项（超分重构方向）\"] = [\"zhaojiameng\"]\nproject_to_stu[\"项目十四：科学计算领域拓展专项（领域流体方向）\"] = [\"DUCH714\"]\nproject_to_stu[\"项目十五：科学计算领域拓展专项（领域气象方向）\"] = [\"Yang-Changhui\"]\nproject_to_stu[\"项目十六：CINN 支持动态 Shape 专项（前端方向）\"] = [\"lshpku\", \"ZelinMa557\"]\nproject_to_stu[\"项目十七：CINN 支持动态 Shape 专项（PIR 部分）\"] = [\"Xinyu302\", \"fty1777\"]",
+        "detail": "Utils.assistant_helper",
+        "documentation": {}
+    },
+    {
+        "label": "project_to_stu[\"项目九：高阶微分的性能分析和优化\"]",
+        "kind": 5,
+        "importPath": "Utils.assistant_helper",
+        "description": "Utils.assistant_helper",
+        "peekOfCode": "project_to_stu[\"项目九：高阶微分的性能分析和优化\"] = [\"YibinLiu666\"]\nproject_to_stu[\"项目十：静态图半自动并行训练性能优化\"] = [\"AndSonder\"]\nproject_to_stu[\"项目十一：全自动并行架构升级\"] = [\"Corle-hyz\"]\nproject_to_stu[\"项目十二：科学计算领域拓展专项（DeePMD-kit、光学案例）\"] = [\"xusuyong\"]\nproject_to_stu[\"项目十三：科学计算领域拓展专项（超分重构方向）\"] = [\"zhaojiameng\"]\nproject_to_stu[\"项目十四：科学计算领域拓展专项（领域流体方向）\"] = [\"DUCH714\"]\nproject_to_stu[\"项目十五：科学计算领域拓展专项（领域气象方向）\"] = [\"Yang-Changhui\"]\nproject_to_stu[\"项目十六：CINN 支持动态 Shape 专项（前端方向）\"] = [\"lshpku\", \"ZelinMa557\"]\nproject_to_stu[\"项目十七：CINN 支持动态 Shape 专项（PIR 部分）\"] = [\"Xinyu302\", \"fty1777\"]\nproject_to_stu[\"项目十八：CINN 静态 shape 下鲁棒性和性能优化\"] = [",
+        "detail": "Utils.assistant_helper",
+        "documentation": {}
+    },
+    {
+        "label": "project_to_stu[\"项目十：静态图半自动并行训练性能优化\"]",
+        "kind": 5,
+        "importPath": "Utils.assistant_helper",
+        "description": "Utils.assistant_helper",
+        "peekOfCode": "project_to_stu[\"项目十：静态图半自动并行训练性能优化\"] = [\"AndSonder\"]\nproject_to_stu[\"项目十一：全自动并行架构升级\"] = [\"Corle-hyz\"]\nproject_to_stu[\"项目十二：科学计算领域拓展专项（DeePMD-kit、光学案例）\"] = [\"xusuyong\"]\nproject_to_stu[\"项目十三：科学计算领域拓展专项（超分重构方向）\"] = [\"zhaojiameng\"]\nproject_to_stu[\"项目十四：科学计算领域拓展专项（领域流体方向）\"] = [\"DUCH714\"]\nproject_to_stu[\"项目十五：科学计算领域拓展专项（领域气象方向）\"] = [\"Yang-Changhui\"]\nproject_to_stu[\"项目十六：CINN 支持动态 Shape 专项（前端方向）\"] = [\"lshpku\", \"ZelinMa557\"]\nproject_to_stu[\"项目十七：CINN 支持动态 Shape 专项（PIR 部分）\"] = [\"Xinyu302\", \"fty1777\"]\nproject_to_stu[\"项目十八：CINN 静态 shape 下鲁棒性和性能优化\"] = [\n    \"yulangz\", \"WintersMontagne10335\"]",
+        "detail": "Utils.assistant_helper",
+        "documentation": {}
+    },
+    {
+        "label": "project_to_stu[\"项目十一：全自动并行架构升级\"]",
+        "kind": 5,
+        "importPath": "Utils.assistant_helper",
+        "description": "Utils.assistant_helper",
+        "peekOfCode": "project_to_stu[\"项目十一：全自动并行架构升级\"] = [\"Corle-hyz\"]\nproject_to_stu[\"项目十二：科学计算领域拓展专项（DeePMD-kit、光学案例）\"] = [\"xusuyong\"]\nproject_to_stu[\"项目十三：科学计算领域拓展专项（超分重构方向）\"] = [\"zhaojiameng\"]\nproject_to_stu[\"项目十四：科学计算领域拓展专项（领域流体方向）\"] = [\"DUCH714\"]\nproject_to_stu[\"项目十五：科学计算领域拓展专项（领域气象方向）\"] = [\"Yang-Changhui\"]\nproject_to_stu[\"项目十六：CINN 支持动态 Shape 专项（前端方向）\"] = [\"lshpku\", \"ZelinMa557\"]\nproject_to_stu[\"项目十七：CINN 支持动态 Shape 专项（PIR 部分）\"] = [\"Xinyu302\", \"fty1777\"]\nproject_to_stu[\"项目十八：CINN 静态 shape 下鲁棒性和性能优化\"] = [\n    \"yulangz\", \"WintersMontagne10335\"]\nproject_to_stu[\"项目二十：CINN 支持动态 Shape 专项 （后端模型扩量）\"] = [\"unseenme\"]",
+        "detail": "Utils.assistant_helper",
+        "documentation": {}
+    },
+    {
+        "label": "project_to_stu[\"项目十二：科学计算领域拓展专项（DeePMD-kit、光学案例）\"]",
+        "kind": 5,
+        "importPath": "Utils.assistant_helper",
+        "description": "Utils.assistant_helper",
+        "peekOfCode": "project_to_stu[\"项目十二：科学计算领域拓展专项（DeePMD-kit、光学案例）\"] = [\"xusuyong\"]\nproject_to_stu[\"项目十三：科学计算领域拓展专项（超分重构方向）\"] = [\"zhaojiameng\"]\nproject_to_stu[\"项目十四：科学计算领域拓展专项（领域流体方向）\"] = [\"DUCH714\"]\nproject_to_stu[\"项目十五：科学计算领域拓展专项（领域气象方向）\"] = [\"Yang-Changhui\"]\nproject_to_stu[\"项目十六：CINN 支持动态 Shape 专项（前端方向）\"] = [\"lshpku\", \"ZelinMa557\"]\nproject_to_stu[\"项目十七：CINN 支持动态 Shape 专项（PIR 部分）\"] = [\"Xinyu302\", \"fty1777\"]\nproject_to_stu[\"项目十八：CINN 静态 shape 下鲁棒性和性能优化\"] = [\n    \"yulangz\", \"WintersMontagne10335\"]\nproject_to_stu[\"项目二十：CINN 支持动态 Shape 专项 （后端模型扩量）\"] = [\"unseenme\"]\nproject_to_stu[\"项目二十一：Paddle CMake 治理和编译优化\"] = [\"silverling\"]",
+        "detail": "Utils.assistant_helper",
+        "documentation": {}
+    },
+    {
+        "label": "project_to_stu[\"项目十三：科学计算领域拓展专项（超分重构方向）\"]",
+        "kind": 5,
+        "importPath": "Utils.assistant_helper",
+        "description": "Utils.assistant_helper",
+        "peekOfCode": "project_to_stu[\"项目十三：科学计算领域拓展专项（超分重构方向）\"] = [\"zhaojiameng\"]\nproject_to_stu[\"项目十四：科学计算领域拓展专项（领域流体方向）\"] = [\"DUCH714\"]\nproject_to_stu[\"项目十五：科学计算领域拓展专项（领域气象方向）\"] = [\"Yang-Changhui\"]\nproject_to_stu[\"项目十六：CINN 支持动态 Shape 专项（前端方向）\"] = [\"lshpku\", \"ZelinMa557\"]\nproject_to_stu[\"项目十七：CINN 支持动态 Shape 专项（PIR 部分）\"] = [\"Xinyu302\", \"fty1777\"]\nproject_to_stu[\"项目十八：CINN 静态 shape 下鲁棒性和性能优化\"] = [\n    \"yulangz\", \"WintersMontagne10335\"]\nproject_to_stu[\"项目二十：CINN 支持动态 Shape 专项 （后端模型扩量）\"] = [\"unseenme\"]\nproject_to_stu[\"项目二十一：Paddle CMake 治理和编译优化\"] = [\"silverling\"]\nproject_to_stu[\"项目二十二：PaddleMIX 套件能力建设（文图方向）\"] = [\"Tsaiyue\"]",
+        "detail": "Utils.assistant_helper",
+        "documentation": {}
+    },
+    {
+        "label": "project_to_stu[\"项目十四：科学计算领域拓展专项（领域流体方向）\"]",
+        "kind": 5,
+        "importPath": "Utils.assistant_helper",
+        "description": "Utils.assistant_helper",
+        "peekOfCode": "project_to_stu[\"项目十四：科学计算领域拓展专项（领域流体方向）\"] = [\"DUCH714\"]\nproject_to_stu[\"项目十五：科学计算领域拓展专项（领域气象方向）\"] = [\"Yang-Changhui\"]\nproject_to_stu[\"项目十六：CINN 支持动态 Shape 专项（前端方向）\"] = [\"lshpku\", \"ZelinMa557\"]\nproject_to_stu[\"项目十七：CINN 支持动态 Shape 专项（PIR 部分）\"] = [\"Xinyu302\", \"fty1777\"]\nproject_to_stu[\"项目十八：CINN 静态 shape 下鲁棒性和性能优化\"] = [\n    \"yulangz\", \"WintersMontagne10335\"]\nproject_to_stu[\"项目二十：CINN 支持动态 Shape 专项 （后端模型扩量）\"] = [\"unseenme\"]\nproject_to_stu[\"项目二十一：Paddle CMake 治理和编译优化\"] = [\"silverling\"]\nproject_to_stu[\"项目二十二：PaddleMIX 套件能力建设（文图方向）\"] = [\"Tsaiyue\"]\nproject_to_stu[\"项目二十三：PaddleMIX 套件能力建设（图文方向）\"] = [\"cocoshe\"]",
+        "detail": "Utils.assistant_helper",
+        "documentation": {}
+    },
+    {
+        "label": "project_to_stu[\"项目十五：科学计算领域拓展专项（领域气象方向）\"]",
+        "kind": 5,
+        "importPath": "Utils.assistant_helper",
+        "description": "Utils.assistant_helper",
+        "peekOfCode": "project_to_stu[\"项目十五：科学计算领域拓展专项（领域气象方向）\"] = [\"Yang-Changhui\"]\nproject_to_stu[\"项目十六：CINN 支持动态 Shape 专项（前端方向）\"] = [\"lshpku\", \"ZelinMa557\"]\nproject_to_stu[\"项目十七：CINN 支持动态 Shape 专项（PIR 部分）\"] = [\"Xinyu302\", \"fty1777\"]\nproject_to_stu[\"项目十八：CINN 静态 shape 下鲁棒性和性能优化\"] = [\n    \"yulangz\", \"WintersMontagne10335\"]\nproject_to_stu[\"项目二十：CINN 支持动态 Shape 专项 （后端模型扩量）\"] = [\"unseenme\"]\nproject_to_stu[\"项目二十一：Paddle CMake 治理和编译优化\"] = [\"silverling\"]\nproject_to_stu[\"项目二十二：PaddleMIX 套件能力建设（文图方向）\"] = [\"Tsaiyue\"]\nproject_to_stu[\"项目二十三：PaddleMIX 套件能力建设（图文方向）\"] = [\"cocoshe\"]\nproject_to_stu[\"项目二十四：大模型训练稳定性和高效低价小模型快速收敛\"] = [\"lishuai-97\"]",
+        "detail": "Utils.assistant_helper",
+        "documentation": {}
+    },
+    {
+        "label": "project_to_stu[\"项目二十四：大模型训练稳定性和高效低价小模型快速收敛\"]",
+        "kind": 5,
+        "importPath": "Utils.assistant_helper",
+        "description": "Utils.assistant_helper",
+        "peekOfCode": "project_to_stu[\"项目二十四：大模型训练稳定性和高效低价小模型快速收敛\"] = [\"lishuai-97\"]\nproject_to_stu[\"项目二十六：推理 Pass & 融合算子优化\"] = [\"yinfan98\"]\nhead_part = f\"\"\"\n# [WeeklyReports] {start_date}~{end_date} 周报汇总\n请各位学员在本 issue 下以 comment 的形式填写周报摘要，ddl 本周五晚，格式示例如下：\n```\n### 姓名\nxxx\n### 本周工作\n1. xxx",
+        "detail": "Utils.assistant_helper",
+        "documentation": {}
+    },
+    {
+        "label": "head_part",
+        "kind": 5,
+        "importPath": "Utils.assistant_helper",
+        "description": "Utils.assistant_helper",
+        "peekOfCode": "head_part = f\"\"\"\n# [WeeklyReports] {start_date}~{end_date} 周报汇总\n请各位学员在本 issue 下以 comment 的形式填写周报摘要，ddl 本周五晚，格式示例如下：\n```\n### 姓名\nxxx\n### 本周工作\n1. xxx\n2. xxx\n### 下周工作",
+        "detail": "Utils.assistant_helper",
+        "documentation": {}
+    },
+    {
+        "label": "comments",
+        "kind": 5,
+        "importPath": "Utils.assistant_helper",
+        "description": "Utils.assistant_helper",
+        "peekOfCode": "comments = requests.get(issue_url + \"/comments\").json()\n# convert to a list\ncomments_stu = [x[\"user\"][\"login\"]\n                for x in comments if x[\"user\"][\"login\"] in stu_list]\ncomments_comments = [x[\"body\"]\n                     for x in comments if x[\"user\"][\"login\"] in stu_list]\nfor project, stus in project_to_stu.items():\n    head_part += f\"\\n#### {project}\\n\\n\"\n    for stu in stus:\n        teacher = stu_to_teacher[stu]",
+        "detail": "Utils.assistant_helper",
+        "documentation": {}
+    },
+    {
+        "label": "comments_stu",
+        "kind": 5,
+        "importPath": "Utils.assistant_helper",
+        "description": "Utils.assistant_helper",
+        "peekOfCode": "comments_stu = [x[\"user\"][\"login\"]\n                for x in comments if x[\"user\"][\"login\"] in stu_list]\ncomments_comments = [x[\"body\"]\n                     for x in comments if x[\"user\"][\"login\"] in stu_list]\nfor project, stus in project_to_stu.items():\n    head_part += f\"\\n#### {project}\\n\\n\"\n    for stu in stus:\n        teacher = stu_to_teacher[stu]\n        teacher = [f\"@{t}\" for t in teacher]\n        if stu in comments_stu:",
+        "detail": "Utils.assistant_helper",
+        "documentation": {}
+    },
+    {
+        "label": "comments_comments",
+        "kind": 5,
+        "importPath": "Utils.assistant_helper",
+        "description": "Utils.assistant_helper",
+        "peekOfCode": "comments_comments = [x[\"body\"]\n                     for x in comments if x[\"user\"][\"login\"] in stu_list]\nfor project, stus in project_to_stu.items():\n    head_part += f\"\\n#### {project}\\n\\n\"\n    for stu in stus:\n        teacher = stu_to_teacher[stu]\n        teacher = [f\"@{t}\" for t in teacher]\n        if stu in comments_stu:\n            head_part += f\"- [x] @{stu} ({', '.join(teacher)})\\n\"\n        else:",
+        "detail": "Utils.assistant_helper",
+        "documentation": {}
+    },
+    {
+        "label": "pr_url",
+        "kind": 5,
+        "importPath": "Utils.assistant_helper",
+        "description": "Utils.assistant_helper",
+        "peekOfCode": "pr_url = \"https://api.github.com/repos/PFCCLab/Camp/pulls\"\npr_list = requests.get(pr_url).json()\npr_list = [\n    x for x in pr_list if f\"{start_date}~{end_date}\" in x[\"title\"] and x[\"state\"] == \"open\"]\npr_author = [x[\"user\"][\"login\"] for x in pr_list]\n# 获取所有 author 的导师\npr_author_teacher = [\",\".join(stu_to_teacher[x]) for x in pr_author]\nprint(\"未提交周报的学员：\", list(set(stu_list) - set(comments_stu)))\nprint(\"未点评周报并合入PR的导师：\", pr_author_teacher)",
+        "detail": "Utils.assistant_helper",
+        "documentation": {}
+    },
+    {
+        "label": "pr_list",
+        "kind": 5,
+        "importPath": "Utils.assistant_helper",
+        "description": "Utils.assistant_helper",
+        "peekOfCode": "pr_list = requests.get(pr_url).json()\npr_list = [\n    x for x in pr_list if f\"{start_date}~{end_date}\" in x[\"title\"] and x[\"state\"] == \"open\"]\npr_author = [x[\"user\"][\"login\"] for x in pr_list]\n# 获取所有 author 的导师\npr_author_teacher = [\",\".join(stu_to_teacher[x]) for x in pr_author]\nprint(\"未提交周报的学员：\", list(set(stu_list) - set(comments_stu)))\nprint(\"未点评周报并合入PR的导师：\", pr_author_teacher)",
+        "detail": "Utils.assistant_helper",
+        "documentation": {}
+    },
+    {
+        "label": "pr_list",
+        "kind": 5,
+        "importPath": "Utils.assistant_helper",
+        "description": "Utils.assistant_helper",
+        "peekOfCode": "pr_list = [\n    x for x in pr_list if f\"{start_date}~{end_date}\" in x[\"title\"] and x[\"state\"] == \"open\"]\npr_author = [x[\"user\"][\"login\"] for x in pr_list]\n# 获取所有 author 的导师\npr_author_teacher = [\",\".join(stu_to_teacher[x]) for x in pr_author]\nprint(\"未提交周报的学员：\", list(set(stu_list) - set(comments_stu)))\nprint(\"未点评周报并合入PR的导师：\", pr_author_teacher)",
+        "detail": "Utils.assistant_helper",
+        "documentation": {}
+    },
+    {
+        "label": "pr_author",
+        "kind": 5,
+        "importPath": "Utils.assistant_helper",
+        "description": "Utils.assistant_helper",
+        "peekOfCode": "pr_author = [x[\"user\"][\"login\"] for x in pr_list]\n# 获取所有 author 的导师\npr_author_teacher = [\",\".join(stu_to_teacher[x]) for x in pr_author]\nprint(\"未提交周报的学员：\", list(set(stu_list) - set(comments_stu)))\nprint(\"未点评周报并合入PR的导师：\", pr_author_teacher)",
+        "detail": "Utils.assistant_helper",
+        "documentation": {}
+    },
+    {
+        "label": "pr_author_teacher",
+        "kind": 5,
+        "importPath": "Utils.assistant_helper",
+        "description": "Utils.assistant_helper",
+        "peekOfCode": "pr_author_teacher = [\",\".join(stu_to_teacher[x]) for x in pr_author]\nprint(\"未提交周报的学员：\", list(set(stu_list) - set(comments_stu)))\nprint(\"未点评周报并合入PR的导师：\", pr_author_teacher)",
+        "detail": "Utils.assistant_helper",
+        "documentation": {}
+    }
+]
