@@ -1,0 +1,24 @@
+### 姓名
+郑天宇
+
+### 实习项目
+自动并行流水并行功能增强和性能优化
+
+### 本周工作
+
+1. **动态图半自动化流水并行save_load 机制精度对齐，修复现存bug**
+2. **动态图半自动化流水并行dataloader逻辑对齐，尤其在dp、pp混合场景下的micro_batch切分**
+3. **GradientClipByGlobalNorm逻辑对齐，默认与动手对齐**
+4. **get_group bug fix**
+5. **增强stage对层间传递stop_grad=True的参数的支持**
+
+
+### 下周工作
+
+1. GradientClipByGlobalNorm逻辑对齐，在对齐模式下，与原动半pp对齐
+
+### 导师评价
+
+
+
+
