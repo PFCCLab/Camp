@@ -1,0 +1,24 @@
+### 姓名
+郑天宇
+
+### 实习项目
+自动并行流水并行功能增强和性能优化
+
+### 本周工作
+
+1. GradientClipByGlobalNorm逻辑对齐，在对齐模式下，与原动半pp对齐
+2. fused_rotary_position_embedding算子反向逻辑修复,同时修复原来单测的逻辑缺陷（因为此缺陷导致单测未检查出反向的错误）
+3. 理解flexcheckpoint框架的开发逻辑，配合flexcheckpoint的dcp组件的开发验证，提出了一些逻辑问题
+4. 使用flexcheckpoint适配paddlenlp、paddleformers跑通ernie、llama2、qwen3、qwen3-moe
+5. 在llama2上对flexcheckpoint框架做了多重策略转换的验证
+
+
+### 下周工作
+
+1. 在llama2上对多重策略转换的情况继续做验证——md5对齐、loss收敛。
+
+### 导师评价
+
+
+
+

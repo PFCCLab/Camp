@@ -1,0 +1,34 @@
+### 姓名
+郑天宇
+
+### 实习项目
+自动并行流水并行功能增强和性能优化
+
+### 本周工作
+
+**1.在llama2上验证Flexcheckpoint框架**
+- 在使用过程中，对于tp、pp、dp、shardingV1、shardingV2等多种策略转换的情况——验证md5对齐、loss收敛，同时针对每种情况都写了一个自动化脚本，一键运行两种策略的互转、对齐md5、运行接续热启动训练、验证loss接续。
+- 在验证纯sharding时出错，原因是梯度累加数据类型有问题，需要在累加时做数据转换（临时hack，后来验证是paddle更新的pr导致的问题，最新版的paddle已修复此问题）
+- 在测tp策略转换的过程中，发现fused_qkv, fused_ffn打开后loss差距不符合预期；经验证，当前存在fused_qkv与old_fused_qkv两套逻辑，llama当前默认使用的是old_fused_qkv此时无需配置aoa与tp自洽，而ernie使用的是fused_qkv，需要配置aoa。
+- 在测dp策略转换的过程中，发现原来的纯dp策略只保存一份ckpt，而Flexcheckpoint框架
+- 使用aoa_config时，macros优先级、关键字过滤、fused_ffn命令长度存在问题，已修复
+- 针对llama2上验证Flexcheckpoint框架流程，撰写了运行指导文档： https://github.com/PFCCLab/FlexCheckpointVerf/blob/main/parallel-strategy-verification/llama2/env.md
+
+**2.在ernie4.5上验证Flexcheckpoint框架**
+- 在使用过程中，对于tp、pp、dp、shardingV1、shardingV2等多种策略转换的情况——验证md5对齐、loss收敛，同时针对每种情况都写了一个自动化脚本，一键运行两种策略的互转、对齐md5、运行接续热启动训练、验证loss接续。（**目前还在测试过程中，未全部完成**）
+- tp2(ep2)->tp4时，gate参数的md5未对齐，经过验证发现，gate参数会在回调函数OrthogonalCallback中计算正交损失并更新，直接用FLAGS_shard_bypass_dygraph_optimizer 标志位控制优化器不更新无法制止gate的更新，而经过hack相应代码验证，gate不更新后，转换前后，tp2(ep2)的ckpt能完全对齐。
+- tp2(ep2)->pp4时，发现未适配共享参数的场景，做了适配，同时发现ernie pp和ernie 非pp的组网逻辑不一致，无法直接做对齐验证。
+
+
+
+### 下周工作
+
+1.继续在ernie4.5上验证Flexcheckpoint框架
+
+### 导师评价
+
+
+
+
+
+

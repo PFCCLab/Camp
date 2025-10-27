@@ -1,0 +1,34 @@
+### 姓名
+郑天宇
+
+### 实习项目
+自动并行流水并行功能增强和性能优化
+
+### 本周工作
+
+**1.在ernie4.5上验证method1：A->B->A的md5对齐，与loss接续**
+- 验证了纯tp、pp、dp、shardingV1、shardingV2，在训练时，moe_group需要设置为dummy，即不划分experts。
+- tp2(ep2)->pp4时，关闭tie_weights操作，md5仍无法对齐，查验后发现，需要关闭moe_use_aux_free，否则非pp将多出一份参数。
+- tp下，bias为None时，出现bug，主要是MPScale.apply未考虑bias为None的情况。
+- 当前ernie_moe跑vpp存在问题跳过。
+- 纯DP下，opt未被封装，会导致init_optimizer报错，优化了paddlenlp的fc适配代码。
+- DP2、ShardingV1、V2转TP2(EP2)_PP2等出现src_var和dst_var的global_size对不齐的现象，经验证，主要是Ernie下的SequenceParallelLayer未适配sharded_state_dict，做了适配。
+
+**2.在ernie4.5上验证method2：A->B,二者合参后与uc的md5对齐**
+- 1.编写自动化脚本，一键训练，转化，合参，并分别与uc对比md5，已经验证了纯tp、pp、dp、shardingV1、shardingV2、sd2(ep2)。
+- 2.uc下，sd2(ep2)的md5无法对齐，经验证主要是uc未对expert的id做偏移，而fc做了偏移，对uc的expert_id偏移后，md5对齐。
+- 3.涉及TP的都无法对齐，主要是当前ernie_moe与uc在跑tp时存在bug，以及ernie_moe的tp_mappings未对mtp_block层做映射，load_state_dict和_handle_aoa未考虑到多卡转单机，已做适配。
+
+
+
+### 下周工作
+
+1.继续在ernie4.5上验证method2。
+
+### 导师评价
+
+
+
+
+
+

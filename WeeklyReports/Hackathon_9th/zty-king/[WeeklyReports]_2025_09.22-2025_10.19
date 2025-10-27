@@ -1,0 +1,35 @@
+### 姓名
+郑天宇
+
+### 实习项目
+自动并行流水并行功能增强和性能优化
+
+### 本周工作
+
+**1.在ernie4.5上验证method2：A->B,二者合参后与uc的md5对齐**
+    全部验证完毕
+
+**2.paddlnlp适配fc的代码，适配完成并合入pr**
+
+**3.AOA验证工作**
+- 1.添加专家ID的macro
+- 2.修复rename不支持axis属性的问题
+- 3.修复$LAYER_ID的get_num_hidden_layer的bug
+- 4.修改及补充整个macro单测，覆盖AOAShardInfoContext类的测试
+- 5.修改optimizer_it的逻辑——在后续过程过滤，而不是直接读取metadata文件初始化（当前这个修改暂时保留，后续如果需要支持fused_qkv->非fused_qkv且保留优化器状态的场景，则推进该修改合入）
+- 6.尝试支持在qkv->q,k,v场景下，beta1_pow_acc_0，beta2_pow_acc_0一对多和多对一的赋值转换，但经过讨论后，pass了这个方案，此场景下随机赋值这两个动量。
+- 7.修复star_macro和add aoa原语的bug
+- 8.尝试在save时优化对DygraphShardingOptimizerV2的flatten_tensor的处理逻辑；目前最新pr已经将逻辑移入到load阶段，因此不做合入。
+
+
+### 下周工作
+
+1.完善aoa相关组件问题
+
+### 导师评价
+
+
+
+
+
+
