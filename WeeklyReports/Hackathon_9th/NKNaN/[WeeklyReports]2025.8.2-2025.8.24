@@ -1,0 +1,22 @@
+### 姓名
+李睿文
+
+### 实习项目
+灵活高效、多场景统一的大模型分布式checkpoint系统研发
+
+### 本周工作
+
+1. **完成 reshard 模拟切分转换功能pr的修改**
+    pr: https://github.com/PaddlePaddle/Paddle/pull/74248
+
+2. **学习 FlexCheckpoint 系统设计思路**
+
+3. **完成 FlexCheckpoint 系统 AOA 模块中 tranpose 原语的实现**
+    pr: https://github.com/PaddlePaddle/Paddle/pull/74814
+
+### 下周工作
+
+1. 完成 FlexCheckpoint 系统 AOA 模块中 cast 原语的实现
+2. 用 Qwen2Moe/llama 模型进行 FlexCheckpoint 系统的模型结构转换验证
+
+### 导师评价
