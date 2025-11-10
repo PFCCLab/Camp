@@ -1,0 +1,35 @@
+### 姓名
+郑天宇
+
+### 实习项目
+自动并行流水并行功能增强和性能优化
+
+### 本周工作
+
+**aoa相关组件问题(PR均已合入)**
+    - 1.修复add，remove的bug，同时为aoa添加add、cast等单测
+    - 2.修复star_macro的在匹配字符串的逻辑，转换成严格匹配
+    - 3.修改ID相关的macro逻辑，统一使用id_macro，并限制在'$EXPERT_ID', '$LAYER_ID'范围内使用
+    - 4.为load hf checkpoint添加单测
+    - 5.修复full param的bug，并添加相关的cast单测
+    - 6.添加get_var_mapping_chain_macro,支持中间变量继承src_key、dst_key的切分信息，并添加单测
+    - 7.修复build_input_vars的bug
+    - 8.修复merge_sharded_state_dict，支持单卡运行
+
+**API相关工作(PR已提交，待合入)**
+    - 1.优化17个loss函数的size_average和reduce的报错逻辑，当用户以pytorch习惯使用这些函数时，正确将size_average+reduce映射到reduction，并报错提示。
+    - 2.对5个paddle的window函数进行封装，对齐torch的接口，使用时与torch相同，即paddle.xxx_window
+
+
+
+### 下周工作
+
+1.API相关工作推进
+
+### 导师评价
+
+
+
+
+
+
