@@ -14,7 +14,7 @@ Paddle C++ API生态兼容建设
 
    https://github.com/PFCCLab/PaddleCppAPITest/pull/25
 
-2. `TensorBase.h` 下新增 `is_sparse` `is_sparse_csr` 兼容接口
+2. `TensorBase.h` 下新增 `is_sparse` `is_sparse_csr` 兼容接口，并补充tensor的创建方法，和Pytorch对齐，支持创建稀疏张量
 
    https://github.com/PaddlePaddle/Paddle/pull/77581
 
@@ -37,5 +37,6 @@ Paddle C++ API生态兼容建设
 ### 下周工作
 
 1. 继续完善 `TensorBody.h` 头文件
+2. 改写 `TensorBody.h` 中的接口，将实现移至ops目录下
 
 ### 导师点评
