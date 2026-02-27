@@ -14,7 +14,7 @@ FlashAttention 低精度训练算法研究与 Kernel 开发
     - 设计 reporter，便于导出为 csv,json 供进一步分析
 2. 研读 SageAttention 算法细节与实现
 3. 研读 FlashMask 算法细节与实现
-4. 基于已有 Sage Attention 和 FlashMask 实现，开发 Sage+FlashMask（尚未进行测试）
+4. 基于已有 Sage Attention 和 FlashMask 实现，开发 Sage+FlashMask（尚未进行测试，ArcaLunar/sage-flashmask）
 
 ### 下周计划
 
