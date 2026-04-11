@@ -4,7 +4,7 @@ PrayerQX
 
 ### 实习项目
 
-PaddleOCR 文档解析模型部署、PDF 转 Markdown 工具链与 benchmark 评测
+基于PaddleOCR在大模型GEO的优化
 
 ### 本周工作
 
