@@ -44,14 +44,6 @@ PrayerQX
    - 围绕 PaddleOCR 相关工作共整理三篇文章，分别覆盖 `PaddleOCR-VL-1.5` 部署、`PP-StructureV3` 对比、以及主流文档解析模型选型分析。
    - 完善 GitHub 主页和项目 README，使 `doc-parsing-benchmark`、`PPStructureV3-PDF-to-Markdown` 等 PaddleOCR 相关内容更容易被查看和复现。
 
-6. 问题疑惑与解答
-
-   - 问题：`PaddleOCR-VL-1.5` 和 `PP-StructureV3` 是否需要完全不同的部署环境？
-   - 解答：两者都属于 PaddleOCR 体系，可以共用 `PaddlePaddle + PaddleOCR` 的基础运行环境；差异主要体现在调用入口、pipeline、模型权重和后处理逻辑上。
-   - 问题：lite benchmark 是否能代表最终结论？
-   - 解答：不能完全代表。lite benchmark 更适合做快速筛选和工程选型初判，最终结论仍需要全量数据集和更完整的场景切片验证。
-   - 问题：`MonkeyOCR` 早期表格分为 0 是否说明模型没有表格能力？
-   - 解答：不是。根因是本地接入方式只跑了 text-only 路线。改成完整 parse 后，表格能力已经在 `OmniDocBench Lite` 上体现出来。
 
 ### 下周工作
 
