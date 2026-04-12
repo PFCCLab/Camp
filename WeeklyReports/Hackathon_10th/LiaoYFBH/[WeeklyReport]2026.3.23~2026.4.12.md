@@ -12,6 +12,10 @@ LiaoYFBH
 2. 增加了PDF生成模块（PaperForge集成），支持将Agent生成的Markdown研究报告（含图表、参考文献）导出为标准论文格式的PDF。
 3. 调研了可用于科研Agent评测的benchmark，初步集成了ScienceAgentBench（102个科学计算任务），后续还将考虑MLAgentBench、GAIA等benchmark。
 
+### 导师点评
+
+​    思考如何有效评测agent。
+
 ### 下周工作
 
 1. 修复评审模型未生效的问题（当前reviewer反馈未注入回agent对话），使评审结果能实际引导agent修正输出。
