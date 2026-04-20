@@ -18,7 +18,7 @@
 示例：GitHub ID 为 `dev_alice`，认领了进阶任务 #20（天数智芯）：
 
 ```
-ERNIEPartner_20_dev_alice/
+20_dev_alice/
 ```
 
 ---
