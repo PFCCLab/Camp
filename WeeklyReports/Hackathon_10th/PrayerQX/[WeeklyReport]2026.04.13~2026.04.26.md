@@ -4,7 +4,7 @@ PrayerQX
 
 ### 实习项目
 
-基于 PaddleOCR + ERNIE 4.5 的金融文档理解与可复现实验流水线
+基于 PaddleOCR + ERNIE 4.5 的金融图像理解项目
 
 ### 本周工作
 
