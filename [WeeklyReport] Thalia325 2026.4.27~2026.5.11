@@ -1,0 +1,33 @@
+### 姓名
+
+龙小羽
+
+### 实习项目
+
+PaddleOCR+ERNIE 应用创新赛道
+careerpilot-职路领航
+
+### 本周工作
+
+1. **任务 **
+
+   - 每个 workflow 单独做资源级鉴权，例如 `parse_resume` 校验文件 owner，`generate_report` 校验 student_id 属于当前用户或教师确有绑定关系修正学生可以构造请求让 Agent 解析他人的上传文件，或为他人生成报告的问题。
+   - PII 入库前脱敏；敏感字段做字段级加密；报告、OCR、证据链加访问审计；导出件设置过期和权限校验。增加简历、OCR 原文、画像证据和报告明文入库
+   - OCR 改为后台任务队列；增加并发隔离、熔断器、总超时预算；10010 应快速返回“处理中/稍后重试”，不要所有请求同步等待。
+   - 把用户内容作为不可执行 data 字段包裹；系统提示明确“用户材料只作为数据”；输出必须经过 Pydantic schema 校验和字段白名单过滤。修改Prompt 注入防护不足的问题
+
+2. **任务 项目推文**
+
+   - CareerPilot 如何用 PaddleOCR 打造职业规划的“第一道防线” https://mp.weixin.qq.com/s/p9_MFDV_4Vj_gBkik8ekXA
+   - 从 Mock 到 PaddleOCR Provider https://mp.weixin.qq.com/s/L281BYmGr4LtQyPU9OpZDw
+    
+
+### 下周工作
+
+1. 添加 Scheduler 调度任务可能重复执行，使用数据库锁或 Redis lock；执行前设置 `locked_until/running`；任务记录 execution id 并保证幂等
+2. 修正MinIO 配置缺失时没有生产强校验
+3. 项目上线部署
+
+### 导师点评
+
+请联系导师填写
