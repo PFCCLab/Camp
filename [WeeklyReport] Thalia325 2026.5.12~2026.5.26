@@ -10,9 +10,10 @@ careerpilot-职路领航
 ### 本周工作
 
 1. **任务 **
-
+   - 上线准备，前端后端打包至服务器，准备 备案材料。
    - 添加 Scheduler 调度任务可能重复执行，使用数据库锁或 Redis lock；执行前设置 `locked_until/running`；任务记录 execution id 并保证幂等
    - 修正MinIO 配置缺失时没有生产强校验
+   - 增加 healthcheck、restart policy、mem_limit 或 deploy resources；后端 depends_on 应等待服务健康，而不只是容器启动。修正Docker Compose 缺少资源限制和健康检查
 
 2. **任务 项目推文**
 
@@ -22,10 +23,10 @@ careerpilot-职路领航
 
 ### 下周工作
 
-1. 添加 Scheduler 调度任务可能重复执行，使用数据库锁或 Redis lock；执行前设置 `locked_until/running`；任务记录 execution id 并保证幂等
-2. 修正MinIO 配置缺失时没有生产强校验
-3. 项目上线部署
-
+1. 扩展_normalize_layout_parsing_result()以处理观察到的 PaddleOCR 响应形状
+2. 添加一种感知提供商的文档处理策略：对于 DOCX：在本地提取文本并进行raw_text规范化，或者在 OCR 之前转换为 PDF/图像。对于 DOC：要么转换，要么拒绝，并给出清晰的前端/后端验证消息。
+3. 修复pytest从普通模式运行backend/失败
 ### 导师点评
 
 请联系导师填写
+
