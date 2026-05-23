@@ -1,0 +1,31 @@
+### 姓名
+
+龙小羽
+
+### 实习项目
+
+PaddleOCR+ERNIE 应用创新赛道
+careerpilot-职路领航
+
+### 本周工作
+
+1. **任务 **
+
+   - 添加 Scheduler 调度任务可能重复执行，使用数据库锁或 Redis lock；执行前设置 `locked_until/running`；任务记录 execution id 并保证幂等
+   - 修正MinIO 配置缺失时没有生产强校验
+
+2. **任务 项目推文**
+
+   - CareerPilot 如何用 PaddleOCR 打造职业规划的“第一道防线” https://mp.weixin.qq.com/s/p9_MFDV_4Vj_gBkik8ekXA
+   - 从 Mock 到 PaddleOCR Provider https://mp.weixin.qq.com/s/L281BYmGr4LtQyPU9OpZDw
+    
+
+### 下周工作
+
+1. 添加 Scheduler 调度任务可能重复执行，使用数据库锁或 Redis lock；执行前设置 `locked_until/running`；任务记录 execution id 并保证幂等
+2. 修正MinIO 配置缺失时没有生产强校验
+3. 项目上线部署
+
+### 导师点评
+
+请联系导师填写
