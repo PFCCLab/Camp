@@ -16,7 +16,7 @@ megemini
 
 2. **代码实现**
 
-   - 已经完成 AI Studio 项目的 notebook
+   - 已经完成 AI Studio 项目的 notebook 并在 AI Studio 公开：https://aistudio.baidu.com/projectdetail/10408725
 
    - 已经完成 AI Studio 的 Gradio 应用并已公开： https://aistudio.baidu.com/application/detail/225481
 
