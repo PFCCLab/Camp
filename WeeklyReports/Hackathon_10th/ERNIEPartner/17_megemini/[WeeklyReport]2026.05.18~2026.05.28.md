@@ -18,7 +18,7 @@ megemini
 
    - 已经完成 AI Studio 项目的 notebook
 
-   - 已经完成 AI Studio 的 Gradio 应用并已公开： https://aistudio.baidu.com/application/detail/2254
+   - 已经完成 AI Studio 的 Gradio 应用并已公开： https://aistudio.baidu.com/application/detail/225481
 
    这里设置了两种连接模型的方式：
 
