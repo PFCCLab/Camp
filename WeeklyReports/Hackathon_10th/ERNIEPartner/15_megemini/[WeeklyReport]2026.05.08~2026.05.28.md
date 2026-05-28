@@ -38,7 +38,7 @@ megemini
 
    ![notebook](images/notebook.png)
 
-   - 问题：天数的双卡框架开发环境中不能编译最新的 FastDeploy 版本
+   - 问题：天数的双卡框架开发环境中不能编译最新的 FastDeploy 版本 https://github.com/PaddlePaddle/FastDeploy/issues/7948
 
    ```shell
     /home/aistudio/FastDeploy/custom_ops/build/fastdeploy_ops/temp.linux-x86_64-cpython-310/build/fastdeploy_ops/temp.linux-x86_64-cpython-310/iluvatar_ops/runtime/iluvatar_context.o is compiled
