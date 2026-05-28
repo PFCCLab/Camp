@@ -38,6 +38,6 @@ nianliunian
 | 交付物 | 状态 | 备注 |
 |--------|:----:|------|
 | RFC 文档 | ✅ 已完成 | - |
-| 代码实现 | ✅ 已完成| - |
-| README | ✅ 已完成| - |
+| 代码实现 | ✅ 已完成| https://aistudio.baidu.com/project/edit/10356349 |
+| README | ✅ 已完成| https://aistudio.baidu.com/project/edit/10356349 |
 | 演示视频/截图 | ⬜未开始 | - |
