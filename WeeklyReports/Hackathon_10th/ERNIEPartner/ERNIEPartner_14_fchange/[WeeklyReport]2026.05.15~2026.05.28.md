@@ -22,13 +22,6 @@ fchange
      - PaddleX 侧在 Paddle 支持到位后移除 ROCm BF16 workaround，并验证 PaddleOCR-VL-1.5 推理链路。
 
 3. **开源贡献与准备工作**
-   - 本周期暂未向 PaddlePaddle/Paddle 或 PaddlePaddle/PaddleX 提交正式 Issue/PR。
-   - 本周期有其他开源贡献记录，可作为个人开源活动参考：
-     - https://github.com/biliup/biliup/pull/1628
-     - https://github.com/biliup/biliup/issues/1627
-     - https://github.com/biliup/biliup/issues/1630
-     - https://github.com/TimFelixBeyer/MIDI2ScoreTransformer/issues/9
-     - https://github.com/TimFelixBeyer/MIDI2ScoreTransformer/pull/10
 
 4. **问题与解决**
    - 问题：当前尚未完成 AMD GPU + ROCm 环境下的本地验证，因此还不能提交带验证截图的 Paddle/PaddleX PR。
