@@ -29,6 +29,68 @@ logger = logging.getLogger("drug_ocr")
 
 
 # ============================================================================
+# patch_aistudio_utils
+# ============================================================================
+"""Patch script to fix aistudio_sdk import in paddlenlp.
+
+Uses importlib.util.find_spec to locate paddlenlp WITHOUT importing it,
+so this can be run before paddlenlp is imported to prevent the ImportError.
+"""
+import importlib.util
+import os
+import subprocess
+
+def _find_paddlenlp_dir():
+    # Method 1: find_spec (no import, just metadata)
+    spec = importlib.util.find_spec("paddlenlp")
+    if spec and spec.origin:
+        return os.path.dirname(spec.origin)
+
+    # Method 2: pip show as fallback
+    result = subprocess.run(
+        ["pip", "show", "paddlenlp"],
+        capture_output=True, text=True,
+    )
+    for line in result.stdout.splitlines():
+        if line.startswith("Location:"):
+            return os.path.join(line.split(":", 1)[1].strip(), "paddlenlp")
+
+    raise RuntimeError("Cannot locate paddlenlp installation directory")
+
+
+def patch_aistudio_utils():
+    pkg_dir = _find_paddlenlp_dir()
+    target_file = os.path.join(pkg_dir, "transformers", "aistudio_utils.py")
+
+    if not os.path.isfile(target_file):
+        raise FileNotFoundError(f"Target file not found: {target_file}")
+
+    old_line = "from aistudio_sdk.hub import download"
+    new_line = "from aistudio_sdk import snapshot_download as download"
+
+    with open(target_file, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    if old_line not in content:
+        if new_line in content:
+            print("File already patched.")
+        else:
+            print(f"Target import not found in {target_file}")
+        return
+
+    patched = content.replace(old_line, new_line)
+
+    with open(target_file, "w", encoding="utf-8") as f:
+        f.write(patched)
+
+    print(f"Patched: {target_file}")
+    print(f"  {old_line}  =>  {new_line}")
+
+
+patch_aistudio_utils()
+
+
+# ============================================================================
 # Image splitting
 # ============================================================================
 
@@ -212,6 +274,9 @@ def clean_for_tts(text):
         "",
         text,
     )
+    # Remove  thinking blocks (including bare </think>)
+    text = re.sub(r"<think>.*?</think>", "", text, flags=re.DOTALL)
+    text = re.sub(r"^.*?</think>\s*", "", text, flags=re.DOTALL)
     # Remove markdown code blocks (```...```)
     text = re.sub(r"```.*?```", "", text, flags=re.DOTALL)
     # Remove inline code (`...`) -> content
@@ -250,19 +315,23 @@ def clean_for_tts(text):
     return text
 
 
-def llm_worker_process(llm_model_dir, ocr_text, max_new_tokens, result_queue):
+def llm_worker_process(llm_model_dir, ocr_text, max_new_tokens, result_queue, tensor_parallel_size=2):
     """Worker function for LLM subprocess - loads model, extracts info, returns result."""
     try:
         import time
         from fastdeploy import LLM, SamplingParams
 
+        import os
+        gpu_ids = ",".join(str(i) for i in range(tensor_parallel_size))
+        os.environ["ILUVATAR_VISIBLE_DEVICES"] = gpu_ids
+
         # Load LLM model
-        print("[LLM Worker] Loading LLM model (ERNIE)...")
+        print(f"[LLM Worker] Loading LLM model (ERNIE) with tensor_parallel_size={tensor_parallel_size}...")
         start = time.perf_counter()
         llm_model = LLM(
             model=llm_model_dir,
-            tensor_parallel_size=1,
-            max_model_len=8192,
+            tensor_parallel_size=tensor_parallel_size,
+            max_model_len=4096,
             block_size=16,
             quantization="wint8",
             graph_optimization_config={"use_cudagraph": False},
@@ -293,7 +362,7 @@ def llm_worker_process(llm_model_dir, ocr_text, max_new_tokens, result_queue):
 
         prompts = [prompt_text]
         sampling_params = SamplingParams(
-            temperature=0.8, top_p=0.95, max_tokens=max_new_tokens,
+            temperature=0.8, top_p=0.95, max_tokens=4096,
         )
 
         print(f"[LLM Worker] Generating response (max_new_tokens={max_new_tokens})...")
@@ -324,6 +393,7 @@ def llm_step(
     llm_model_dir,
     ocr_text,
     max_new_tokens=1024,
+    tensor_parallel_size=2,
 ):
     """Execute the LLM extraction step in a subprocess."""
     step_start = time.perf_counter()
@@ -334,7 +404,7 @@ def llm_step(
     result_queue = Queue()
     llm_process = Process(
         target=llm_worker_process,
-        args=(str(llm_model_dir), ocr_text, max_new_tokens, result_queue)
+        args=(str(llm_model_dir), ocr_text, max_new_tokens, result_queue, tensor_parallel_size)
     )
     llm_process.start()
 
@@ -357,10 +427,11 @@ def llm_step(
 # TTS module (subprocess)
 # ============================================================================
 
-def tts_worker_process(text, output_path, result_queue):
+def tts_worker_process(text, output_path, result_queue, reduce_volume=False):
     """Worker function for TTS subprocess - loads model, synthesizes speech, returns result."""
     try:
         import time
+        import subprocess as _sp
         from paddlespeech.cli.tts.infer import TTSExecutor
         from scipy.io.wavfile import read as wav_read
 
@@ -374,6 +445,17 @@ def tts_worker_process(text, output_path, result_queue):
         # Synthesize speech
         print(f"[TTS Worker] Synthesis start, input text length: {len(text)}")
         tts_model(text=text, output=output_path)
+
+        if reduce_volume:
+            temp_path = output_path + ".tmp.wav"
+            os.rename(output_path, temp_path)
+            print("[TTS Worker] Reducing volume by -90dB via ffmpeg...")
+            _sp.run(
+                ["ffmpeg", "-i", temp_path, "-af", "volume=-90dB", output_path],
+                check=True, capture_output=True,
+            )
+            os.remove(temp_path)
+            print("[TTS Worker] Volume reduction done")
 
         # Read audio data
         sr, wav_data = wav_read(output_path)
@@ -400,6 +482,7 @@ def tts_worker_process(text, output_path, result_queue):
 def tts_step(
     text,
     output_path="output.wav",
+    reduce_volume=False,
 ):
     """Execute the TTS synthesis step in a subprocess."""
     step_start = time.perf_counter()
@@ -410,7 +493,7 @@ def tts_step(
     result_queue = Queue()
     tts_process = Process(
         target=tts_worker_process,
-        args=(text, output_path, result_queue)
+        args=(text, output_path, result_queue, reduce_volume)
     )
     tts_process.start()
 
@@ -446,6 +529,8 @@ def drug_ocr_pipeline(
     overlap_ratio=0.1,
     ocr_max_new_tokens=5120,
     llm_max_new_tokens=1024,
+    tensor_parallel_size=2,
+    reduce_volume=False,
 ):
     """Drug instruction leaflet intelligent recognition and voice broadcast pipeline.
 
@@ -476,12 +561,14 @@ def drug_ocr_pipeline(
         llm_model_dir=llm_model_dir,
         ocr_text=ocr_result["ocr_text"],
         max_new_tokens=llm_max_new_tokens,
+        tensor_parallel_size=tensor_parallel_size,
     )
     result["extracted_info"] = llm_result["extracted_info"]
 
     # Step 3: TTS synthesis (runs in subprocess, automatically cleaned up)
     tts_result = tts_step(
         text=llm_result["extracted_info"],
+        reduce_volume=reduce_volume,
     )
     result["audio"] = tts_result["audio"]
 
@@ -516,6 +603,8 @@ def main():
     parser.add_argument("--overlap", type=float, default=0.1, help="Overlap ratio for image splits (default: 0.1)")
     parser.add_argument("--ocr-tokens", type=int, default=5120, help="OCR max new tokens (default: 5120)")
     parser.add_argument("--llm-tokens", type=int, default=1024, help="LLM max new tokens (default: 1024)")
+    parser.add_argument("--tensor-parallel-size", type=int, default=2, choices=[1, 2], help="Tensor parallel size for LLM (default: 2)")
+    parser.add_argument("--reduce-volume", action="store_true", help="Apply ffmpeg volume=-90dB to TTS output audio")
     parser.add_argument("--output-audio", default=None, help="Output audio file path (default: output.wav in current directory)")
     parser.add_argument("--output-text", default=None, help="Output extracted text file path (default: print to stdout only)")
 
@@ -534,12 +623,12 @@ def main():
         sys.exit(1)
 
     # Validate model directories
-    if not Path(args.ocr_model).exists():
-        print(f"Error: OCR model directory not found: {args.ocr_model}", file=sys.stderr)
-        sys.exit(1)
-    if not Path(args.llm_model).exists():
-        print(f"Error: LLM model directory not found: {args.llm_model}", file=sys.stderr)
-        sys.exit(1)
+    # if not Path(args.ocr_model).exists():
+    #     print(f"Error: OCR model directory not found: {args.ocr_model}", file=sys.stderr)
+    #     sys.exit(1)
+    # if not Path(args.llm_model).exists():
+    #     print(f"Error: LLM model directory not found: {args.llm_model}", file=sys.stderr)
+    #     sys.exit(1)
 
     # Run pipeline
     result = drug_ocr_pipeline(
@@ -551,6 +640,8 @@ def main():
         overlap_ratio=args.overlap,
         ocr_max_new_tokens=args.ocr_tokens,
         llm_max_new_tokens=args.llm_tokens,
+        tensor_parallel_size=args.tensor_parallel_size,
+        reduce_volume=args.reduce_volume,
     )
 
     # Print results
@@ -583,3 +674,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
