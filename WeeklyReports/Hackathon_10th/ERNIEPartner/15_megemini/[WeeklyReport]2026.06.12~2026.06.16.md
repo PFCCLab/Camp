@@ -21,6 +21,7 @@ megemini
 
    1. 在 `drug_ocr_cli.py` 脚本中增加了 `ixsmi` 显存显示的步骤
    2. 在 `drug_ocr_cli.py` 脚本中增加了清理显存的步骤
+   3. 使用最新的 `PaddleOCR-VL-1.6` 模型
 
    `ernie28b.log` 为日志文件，`output.wav` 为合成的音频文件。显存的清理情况以 ERNIE-4.5-21B-A3B-Paddle 模型为例，使用时，占用卡 0 和卡 1 各占约 15GB 的显存
 
