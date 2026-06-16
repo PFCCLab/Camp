@@ -1,0 +1,1014 @@
+root@n91:/data1/workspace# python drug_ocr_cli.py --image resource/test.jpg --no-split --ocr-tokens 4096 --llm-tokens 200 --ocr-model PaddleOCR-VL-1.6 --llm-model ERNIE-4.5-21B-A3B-Paddle
+File already patched.
+13:53:40 [drug_ocr] INFO: ============================================================
+13:53:40 [drug_ocr] INFO: Drug OCR pipeline started (subprocess mode)
+13:53:40 [drug_ocr] INFO:   Image path: resource/test.jpg
+13:53:40 [drug_ocr] INFO:   Image split: False (num_splits=4, overlap=0.10)
+13:53:40 [drug_ocr] INFO: ============================================================
+13:53:40 [drug_ocr] INFO: [OCR Step] Loading image...
+13:53:40 [drug_ocr] INFO: [OCR Step] Image loaded, size: (2014, 2881)
+13:53:40 [drug_ocr] INFO: [OCR Step] Skipping image split
+13:53:42 [drug_ocr] INFO: [OCR Step] Starting OCR subprocess...
+I0616 13:53:42.846256 3378323 init.cc:254] ENV [CUSTOM_DEVICE_ROOT]=/usr/local/lib/python3.10/site-packages/paddle/paddle_custom_device
+I0616 13:53:42.846287 3378323 init.cc:162] Try loading custom device libs from: [/usr/local/lib/python3.10/site-packages/paddle/paddle_custom_device]
+I0616 13:53:42.999578 3378323 custom_device_load.cc:51] Succeed in loading custom runtime in lib: /usr/local/lib/python3.10/site-packages/paddle/paddle_custom_device/libpaddle-iluvatar-gpu.so
+I0616 13:53:42.999616 3378323 custom_device_load.cc:58] Skipped lib [/usr/local/lib/python3.10/site-packages/paddle/paddle_custom_device/libpaddle-iluvatar-gpu.so]: no custom engine Plugin symbol in this lib.
+I0616 13:53:43.007409 3378323 custom_kernel.cc:68] Succeed in loading 896 custom kernel(s) from loaded lib(s), will be used like native ones.
+I0616 13:53:43.007771 3378323 init.cc:174] Finished in LoadCustomDevice with libs_path: [/usr/local/lib/python3.10/site-packages/paddle/paddle_custom_device]
+I0616 13:53:43.007805 3378323 init.cc:260] CustomDevice: iluvatar_gpu, visible devices count: 16
+WARNING  2026-06-16 13:53:44,456 3378323 transfer_manager.py[line:30] cupy not available, falling back to synchronous transfers
+[OCR Worker] Loading OCR model (PaddleOCR-VL)...
+INFO     2026-06-16 13:53:45,167 3378323 args_utils.py[line:658] Parameter `engine_worker_queue_port` is not specified, found available ports for possible use: [28039]
+INFO     2026-06-16 13:53:45,169 3378323 args_utils.py[line:658] Parameter `cache_queue_port` is not specified, found available ports for possible use: [42271]
+INFO     2026-06-16 13:53:45,170 3378323 args_utils.py[line:658] Parameter `rdma_comm_ports` is not specified, found available ports for possible use: [17561]
+INFO     2026-06-16 13:53:45,171 3378323 args_utils.py[line:658] Parameter `pd_comm_port` is not specified, found available ports for possible use: [16122]
+INFO     2026-06-16 13:53:45,172 3378323 download.py[line:146] Using download source: huggingface
+INFO     2026-06-16 13:53:45,172 3378323 configuration_utils.py[line:1208] Loading configuration file PaddleOCR-VL-1.6/config.json
+WARNING  2026-06-16 13:53:45,172 3378323 configuration_utils.py[line:1239] You are using a model of type paddleocr_vl to instantiate a model of type . This is not supported for all configurations of models and can yield errors.
+WARNING  2026-06-16 13:53:45,172 3378323 configuration_utils.py[line:1239] You are using a model of type paddleocr_vl to instantiate a model of type . This is not supported for all configurations of models and can yield errors.
+INFO     2026-06-16 13:53:46,054 3378323 flash_attn_backend.py[line:105] Only support CUDA version flash attention.
+/usr/local/lib/python3.10/site-packages/fastdeploy/model_executor/graph_optimization/utils.py:21: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+WARNING  2026-06-16 13:53:46,400 3378323 moe.py[line:41] import noaux_tc Failed!
+INFO:legacy.config:The model format is Hugging Face Torch
+INFO:legacy.config:use_sequence_parallel_moe: False
+INFO:legacy.config:cudagraph sizes specified by model runner [1, 2, 4, 8, 8] is overridden by config [8, 1, 2, 4]
+INFO:legacy.config:Doing profile, the total_block_num:528
+INFO:legacy.config:Auto-setting num_max_dispatch_tokens_per_rank from 128 to 8 (max_num_seqs=8).
+INFO:legacy.config:register_info: {'role': 'mixed', 'host_ip': '10.31.12.91', 'port': None, 'metrics_port': None, 'connector_port': 16122, 'rdma_ports': [17561], 'engine_worker_queue_port': 28039, 'device_ids': ['0'], 'transfer_protocol': ['ipc', 'rdma'], 'tp_size': 1, 'is_paused': False, 'version': 'init', 'connected_decodes': []}
+INFO:legacy.config:=================== Configuration Information ===============
+INFO:legacy.config:Model Configuration Information :
+INFO:legacy.config:model               :      PaddleOCR-VL-1.6
+INFO:legacy.config:is_quantized        :      False
+INFO:legacy.config:is_moe_quantized    :      False
+INFO:legacy.config:max_model_len       :      8192
+INFO:legacy.config:dtype               :      bfloat16
+INFO:legacy.config:enable_logprob      :      False
+INFO:legacy.config:max_logprobs        :      20
+INFO:legacy.config:logprobs_mode       :      raw_logprobs
+INFO:legacy.config:redundant_experts_num:      0
+INFO:legacy.config:seed                :      0
+INFO:legacy.config:quantization        :      wint8
+INFO:legacy.config:pad_token_id        :      0
+INFO:legacy.config:eos_tokens_lens     :      2
+INFO:legacy.config:lm_head_fp32        :      False
+INFO:legacy.config:moe_gate_fp32       :      False
+INFO:legacy.config:model_format        :      torch
+INFO:legacy.config:runner              :      auto
+INFO:legacy.config:convert             :      auto
+INFO:legacy.config:pooler_config       :      None
+INFO:legacy.config:override_pooler_config:      None
+INFO:legacy.config:revision            :      master
+INFO:legacy.config:prefix_layer_name   :      layers
+INFO:legacy.config:kv_cache_quant_scale_path:      PaddleOCR-VL-1.6/kv_cache_scale.json
+INFO:legacy.config:enable_entropy      :      False
+INFO:legacy.config:model_impl          :      auto
+INFO:legacy.config:version             :      init
+INFO:legacy.config:partial_rotary_factor:      1.0
+INFO:legacy.config:num_nextn_predict_layers:      0
+INFO:legacy.config:mm_max_tokens_per_item:      None
+INFO:legacy.config:pretrained_config   :      PretrainedConfig {
+  "architectures": [
+    "PaddleOCRVLForConditionalGeneration"
+  ],
+  "attention_probs_dropout_prob": 0.0,
+  "auto_map": {
+    "AutoConfig": "configuration_paddleocr_vl.PaddleOCRVLConfig",
+    "AutoModel": "modeling_paddleocr_vl.PaddleOCRVLForConditionalGeneration",
+    "AutoModelForCausalLM": "modeling_paddleocr_vl.PaddleOCRVLForConditionalGeneration"
+  },
+  "compression_ratio": 1.0,
+  "head_dim": 128,
+  "hidden_act": "silu",
+  "hidden_dropout_prob": 0.0,
+  "hidden_size": 1024,
+  "ignored_index": -100,
+  "image_token_id": 100295,
+  "intermediate_size": 3072,
+  "max_position_embeddings": 131072,
+  "max_sequence_length": null,
+  "num_attention_heads": 16,
+  "num_hidden_layers": 18,
+  "num_key_value_heads": 2,
+  "pad_token_id": 0,
+  "paddleformers_version": "1.1.1",
+  "rms_norm_eps": 1e-05,
+  "rope_is_neox_style": true,
+  "rope_scaling": {
+    "mrope_section": [
+      16,
+      24,
+      24
+    ],
+    "rope_type": "default",
+    "type": "default"
+  },
+  "rope_theta": 500000,
+  "sliding_window": null,
+  "tie_word_embeddings": false,
+  "torch_dtype": "bfloat16",
+  "use_3d_rope": true,
+  "use_bias": false,
+  "use_cache": false,
+  "use_flash_attention": false,
+  "video_token_id": 101307,
+  "vision_config": {
+    "architectures": [
+      "PaddleOCRVisionModel"
+    ],
+    "attention_dropout": 0.0,
+    "auto_map": {
+      "AutoConfig": "configuration_paddleocr_vl.PaddleOCRVLConfig",
+      "AutoModel": "modeling_paddleocr_vl.PaddleOCRVisionModel"
+    },
+    "hidden_act": "gelu_pytorch_tanh",
+    "hidden_size": 1152,
+    "image_size": 384,
+    "intermediate_size": 4304,
+    "layer_norm_eps": 1e-06,
+    "model_type": "paddleocr_vl",
+    "num_attention_heads": 16,
+    "num_channels": 3,
+    "num_hidden_layers": 27,
+    "pad_token_id": 0,
+    "patch_size": 14,
+    "spatial_merge_size": 2,
+    "temporal_patch_size": 2,
+    "tokens_per_second": 2,
+    "torch_dtype": "bfloat16"
+  },
+  "vision_end_token_id": 101306,
+  "vision_start_token_id": 101305,
+  "vocab_size": 103424,
+  "weight_share_add_bias": true
+}
+
+INFO:legacy.config:architectures       :      ['PaddleOCRVLForConditionalGeneration']
+INFO:legacy.config:attention_probs_dropout_prob:      0.0
+INFO:legacy.config:auto_map            :      {'AutoConfig': 'configuration_paddleocr_vl.PaddleOCRVLConfig', 'AutoModel': 'modeling_paddleocr_vl.PaddleOCRVLForConditionalGeneration', 'AutoModelForCausalLM': 'modeling_paddleocr_vl.PaddleOCRVLForConditionalGeneration'}
+INFO:legacy.config:compression_ratio   :      1.0
+INFO:legacy.config:head_dim            :      128
+INFO:legacy.config:hidden_act          :      silu
+INFO:legacy.config:hidden_dropout_prob :      0.0
+INFO:legacy.config:hidden_size         :      1024
+INFO:legacy.config:ignored_index       :      -100
+INFO:legacy.config:image_token_id      :      100295
+INFO:legacy.config:intermediate_size   :      3072
+INFO:legacy.config:max_position_embeddings:      131072
+INFO:legacy.config:max_sequence_length :      None
+INFO:legacy.config:model_type          :      paddleocr_vl
+INFO:legacy.config:num_attention_heads :      16
+INFO:legacy.config:num_hidden_layers   :      18
+INFO:legacy.config:num_key_value_heads :      2
+INFO:legacy.config:rms_norm_eps        :      1e-05
+INFO:legacy.config:rope_scaling        :      {'mrope_section': [16, 24, 24], 'rope_type': 'default', 'type': 'default'}
+INFO:legacy.config:rope_theta          :      500000
+INFO:legacy.config:sliding_window      :      None
+INFO:legacy.config:tie_word_embeddings :      False
+INFO:legacy.config:torch_dtype         :      bfloat16
+INFO:legacy.config:transformers_version:      4.55.0
+INFO:legacy.config:use_bias            :      False
+INFO:legacy.config:use_cache           :      False
+INFO:legacy.config:use_flash_attention :      False
+INFO:legacy.config:video_token_id      :      101307
+INFO:legacy.config:vision_config       :      PretrainedConfig {
+  "architectures": [
+    "PaddleOCRVisionModel"
+  ],
+  "attention_dropout": 0.0,
+  "auto_map": {
+    "AutoConfig": "configuration_paddleocr_vl.PaddleOCRVLConfig",
+    "AutoModel": "modeling_paddleocr_vl.PaddleOCRVisionModel"
+  },
+  "hidden_act": "gelu_pytorch_tanh",
+  "hidden_size": 1152,
+  "image_size": 384,
+  "intermediate_size": 4304,
+  "layer_norm_eps": 1e-06,
+  "num_attention_heads": 16,
+  "num_channels": 3,
+  "num_hidden_layers": 27,
+  "pad_token_id": 0,
+  "paddleformers_version": "1.1.1",
+  "patch_size": 14,
+  "spatial_merge_size": 2,
+  "temporal_patch_size": 2,
+  "tie_word_embeddings": true,
+  "tokens_per_second": 2,
+  "torch_dtype": "bfloat16"
+}
+
+INFO:legacy.config:vision_start_token_id:      101305
+INFO:legacy.config:vision_end_token_id :      101306
+INFO:legacy.config:vocab_size          :      103424
+INFO:legacy.config:weight_share_add_bias:      True
+INFO:legacy.config:use_3d_rope         :      True
+INFO:legacy.config:rope_is_neox_style  :      True
+INFO:legacy.config:top_p               :      1.0
+INFO:legacy.config:temperature         :      1.0
+INFO:legacy.config:penalty_score       :      1.0
+INFO:legacy.config:frequency_score     :      0.0
+INFO:legacy.config:presence_score      :      0.0
+INFO:legacy.config:min_length          :      1
+INFO:legacy.config:start_layer_index   :      0
+INFO:legacy.config:moe_num_shared_experts:      0
+INFO:legacy.config:moe_layer_start_index:      0
+INFO:legacy.config:num_max_dispatch_tokens_per_rank:      8
+INFO:legacy.config:moe_use_aux_free    :      False
+INFO:legacy.config:initializer_range   :      0.02
+INFO:legacy.config:quantization_config :      None
+INFO:legacy.config:moe_num_experts     :      None
+INFO:legacy.config:moe_layer_end_index :      None
+INFO:legacy.config:rope_3d             :      True
+INFO:legacy.config:freq_allocation     :      16
+INFO:legacy.config:ori_vocab_size      :      103424
+INFO:legacy.config:think_start_id      :      -1
+INFO:legacy.config:think_end_id        :      -1
+INFO:legacy.config:im_patch_id         :      -1
+INFO:legacy.config:line_break_id       :      -1
+INFO:legacy.config:think_truncate_prompt_ids:      [-1]
+INFO:legacy.config:reasoning_allowed_token_ids:      []
+INFO:legacy.config:is_unified_ckpt     :      True
+INFO:legacy.config:runner_type         :      generate
+INFO:legacy.config:convert_type        :      none
+INFO:legacy.config:is_reasoning_model  :      False
+INFO:legacy.config:enable_mm           :      True
+INFO:legacy.config:supported_tasks     :      []
+INFO:legacy.config:_model_info         :      ModelInfo(architecture='PaddleOCRVLForConditionalGeneration', category=<ModelCategory.MULTIMODAL: 2>, is_text_generation=False, is_multimodal=True, is_reasoning=False, is_pooling=False, module_path='paddleocr_vl.paddleocr_vl', default_pooling_type='LAST')
+INFO:legacy.config:_architecture       :      PaddleOCRVLForConditionalGeneration
+INFO:legacy.config:mla_use_absorb      :      False
+INFO:legacy.config:max_stop_seqs_num   :      5
+INFO:legacy.config:stop_seqs_max_len   :      8
+INFO:legacy.config:model_config        :      {'architectures': ['PaddleOCRVLForConditionalGeneration'], 'attention_probs_dropout_prob': 0.0, 'auto_map': {'AutoConfig': 'configuration_paddleocr_vl.PaddleOCRVLConfig', 'AutoModel': 'modeling_paddleocr_vl.PaddleOCRVLForConditionalGeneration', 'AutoModelForCausalLM': 'modeling_paddleocr_vl.PaddleOCRVLForConditionalGeneration'}, 'compression_ratio': 1.0, 'head_dim': 128, 'hidden_act': 'silu', 'hidden_dropout_prob': 0.0, 'hidden_size': 1024, 'ignored_index': -100, 'image_token_id': 100295, 'intermediate_size': 3072, 'max_position_embeddings': 131072, 'max_sequence_length': None, 'model_type': 'paddleocr_vl', 'num_attention_heads': 16, 'num_hidden_layers': 18, 'num_key_value_heads': 2, 'pad_token_id': 0, 'rms_norm_eps': 1e-05, 'rope_scaling': {'mrope_section': [16, 24, 24], 'rope_type': 'default', 'type': 'default'}, 'rope_theta': 500000, 'sliding_window': None, 'tie_word_embeddings': False, 'torch_dtype': 'bfloat16', 'transformers_version': '4.55.0', 'use_bias': False, 'use_cache': False, 'use_flash_attention': False, 'video_token_id': 101307, 'vision_config': {'architectures': ['PaddleOCRVisionModel'], 'attention_dropout': 0.0, 'auto_map': {'AutoConfig': 'configuration_paddleocr_vl.PaddleOCRVLConfig', 'AutoModel': 'modeling_paddleocr_vl.PaddleOCRVisionModel'}, 'hidden_act': 'gelu_pytorch_tanh', 'hidden_size': 1152, 'image_size': 384, 'intermediate_size': 4304, 'layer_norm_eps': 1e-06, 'model_type': 'paddleocr_vl', 'num_attention_heads': 16, 'num_channels': 3, 'num_hidden_layers': 27, 'pad_token_id': 0, 'patch_size': 14, 'spatial_merge_size': 2, 'temporal_patch_size': 2, 'tokens_per_second': 2, 'torch_dtype': 'bfloat16'}, 'vision_start_token_id': 101305, 'vision_end_token_id': 101306, 'vocab_size': 103424, 'weight_share_add_bias': True, 'use_3d_rope': True, 'rope_is_neox_style': True}
+INFO:legacy.config:moe_phase           :      <fastdeploy.config.MoEPhase object at 0x7f4d48edca90>
+INFO:legacy.config:=============================================================
+INFO:legacy.config:Cache Configuration Information :
+INFO:legacy.config:block_size          :      16
+INFO:legacy.config:gpu_memory_utilization:      0.9
+INFO:legacy.config:num_gpu_blocks_override:      None
+INFO:legacy.config:kv_cache_ratio      :      0.75
+INFO:legacy.config:enc_dec_block_num   :      2
+INFO:legacy.config:prealloc_dec_block_slot_num_threshold:      12
+INFO:legacy.config:cache_dtype         :      bfloat16
+INFO:legacy.config:model_cfg           :      <fastdeploy.config.ModelConfig object at 0x7f4d6e1364d0>
+INFO:legacy.config:enable_chunked_prefill:      False
+INFO:legacy.config:rdma_comm_ports     :      [17561]
+INFO:legacy.config:local_rdma_comm_ports:      [17561]
+INFO:legacy.config:cache_transfer_protocol:      ipc,rdma
+INFO:legacy.config:pd_comm_port        :      [16122]
+INFO:legacy.config:local_pd_comm_port  :      16122
+INFO:legacy.config:enable_prefix_caching:      False
+INFO:legacy.config:enable_ssd_cache    :      False
+INFO:legacy.config:cache_queue_port    :      [42271]
+INFO:legacy.config:local_cache_queue_port:      42271
+INFO:legacy.config:swap_space          :      None
+INFO:legacy.config:max_encoder_cache   :      0
+INFO:legacy.config:max_processor_cache :      -1
+INFO:legacy.config:enable_output_caching:      False
+INFO:legacy.config:disable_chunked_mm_input:      False
+INFO:legacy.config:kvcache_storage_backend:      None
+INFO:legacy.config:write_policy        :      write_through
+INFO:legacy.config:write_through_threshold:      2
+INFO:legacy.config:num_cpu_blocks      :      0
+INFO:legacy.config:use_mla_cache       :      False
+INFO:legacy.config:head_num            :      2
+INFO:legacy.config:head_dim            :      128
+INFO:legacy.config:byte_size           :      2
+INFO:legacy.config:kv_factor           :      2
+INFO:legacy.config:bytes_per_token_per_layer:      1024
+INFO:legacy.config:bytes_per_block     :      294912
+INFO:legacy.config:max_block_num_per_seq:      512
+INFO:legacy.config:dec_token_num       :      32
+INFO:legacy.config:total_block_num     :      528
+INFO:legacy.config:prefill_kvcache_block_num:      528
+INFO:legacy.config:=============================================================
+INFO:legacy.config:LocalScheduler Configuration Information :
+INFO:legacy.config:max_size            :      -1
+INFO:legacy.config:ttl                 :      900
+INFO:legacy.config:max_model_len       :      8192
+INFO:legacy.config:enable_chunked_prefill:      False
+INFO:legacy.config:max_num_partial_prefills:      1
+INFO:legacy.config:max_long_partial_prefills:      1
+INFO:legacy.config:long_prefill_token_threshold:      327
+INFO:legacy.config:=============================================================
+INFO:legacy.config:Parallel Configuration Information :
+INFO:legacy.config:sequence_parallel   :      False
+INFO:legacy.config:use_ep              :      False
+INFO:legacy.config:msg_queue_id        :      1
+INFO:legacy.config:tensor_parallel_rank:      0
+INFO:legacy.config:tensor_parallel_size:      1
+INFO:legacy.config:expert_parallel_rank:      0
+INFO:legacy.config:expert_parallel_size:      1
+INFO:legacy.config:data_parallel_rank  :      0
+INFO:legacy.config:data_parallel_size  :      1
+INFO:legacy.config:enable_expert_parallel:      False
+INFO:legacy.config:enable_chunked_moe  :      False
+INFO:legacy.config:chunked_moe_size    :      256
+INFO:legacy.config:local_data_parallel_id:      0
+INFO:legacy.config:engine_worker_queue_port:      [28039]
+INFO:legacy.config:local_engine_worker_queue_port:      28039
+INFO:legacy.config:device_ids          :      0
+INFO:legacy.config:first_token_id      :      1
+INFO:legacy.config:engine_pid          :      None
+INFO:legacy.config:do_profile          :      False
+INFO:legacy.config:use_internode_ll_two_stage:      False
+INFO:legacy.config:disable_sequence_parallel_moe:      False
+INFO:legacy.config:shutdown_comm_group_if_worker_idle:      True
+INFO:legacy.config:ep_prefill_use_worst_num_tokens:      False
+INFO:legacy.config:pod_ip              :      None
+INFO:legacy.config:disable_custom_all_reduce:      False
+INFO:legacy.config:enable_flashinfer_allreduce_fusion:      False
+INFO:legacy.config:pd_disaggregation_mode:      None
+INFO:legacy.config:prefill_one_step_stop:      False
+INFO:legacy.config:use_sequence_parallel_moe:      False
+INFO:legacy.config:=============================================================
+INFO:legacy.config:speculative_config  :      {"method_list": ["ngram", "mtp", "naive", "suffix"], "mtp_strategy_list": ["default", "with_ngram"], "mtp_strategy": "default", "num_speculative_tokens": 1, "num_model_steps": 1, "max_candidate_len": 5, "verify_window": 2, "max_ngram_size": 5, "min_ngram_size": 2, "suffix_decoding_max_tree_depth": 64, "suffix_decoding_max_cached_requests": -1, "suffix_decoding_max_spec_factor": 1.0, "suffix_decoding_min_token_prob": 0.1, "model": "PaddleOCR-VL-1.6", "quantization": "wint8", "num_gpu_block_expand_ratio": 1.0, "model_type": "main", "benchmark_mode": false, "enf_gen_phase_tag": false, "enable_draft_logprob": false, "verify_strategy": "target_match", "accept_policy": "normal", "model_config": {}, "num_extra_cache_layer": 0}
+INFO:legacy.config:eplb_config         :      <fastdeploy.config.EPLBConfig object at 0x7f4d48edc940>
+INFO:legacy.config:device_config       :      None
+INFO:legacy.config:load_config         :      {"load_choices": "default_v1", "is_pre_sharded": false, "dynamic_load_weight": false, "load_strategy": "normal", "rsync_config": null, "model_loader_extra_config": null}
+INFO:legacy.config:quant_config        :      None
+INFO:legacy.config:graph_opt_config    :      {"graph_opt_level": 0, "sot_warmup_sizes": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 16, 32, 64, 128], "use_cudagraph": false, "cudagraph_capture_sizes": [8, 4, 2, 1], "flag_cudagraph_capture_sizes_initlized": true, "cudagraph_capture_sizes_prefill": [512, 512, 480, 448, 416, 384, 352, 320, 288, 256, 240, 224, 208, 192, 176, 160, 144, 128, 120, 112, 104, 96, 88, 80, 72, 64, 56, 48, 40, 32, 24, 16, 8, 4, 2, 1], "cudagraph_num_of_warmups": 2, "cudagraph_copy_inputs": false, "cudagraph_splitting_ops": [], "cudagraph_only_prefill": false, "full_cuda_graph": true, "max_capture_size": 8, "real_shape_to_captured_size": {"4": 4, "5": 8, "6": 8, "7": 8, "2": 2, "3": 4, "1": 1, "0": 0, "8": 8}, "real_bsz_to_captured_size": {}, "use_unique_memory_pool": true, "draft_model_use_cudagraph": true, "max_capture_shape_prefill": 512, "max_capture_size_prefill": 512, "real_shape_to_captured_size_prefill": {"480": 480, "481": 512, "482": 512, "483": 512, "484": 512, "485": 512, "486": 512, "487": 512, "488": 512, "489": 512, "490": 512, "491": 512, "492": 512, "493": 512, "494": 512, "495": 512, "496": 512, "497": 512, "498": 512, "499": 512, "500": 512, "501": 512, "502": 512, "503": 512, "504": 512, "505": 512, "506": 512, "507": 512, "508": 512, "509": 512, "510": 512, "511": 512, "448": 448, "449": 480, "450": 480, "451": 480, "452": 480, "453": 480, "454": 480, "455": 480, "456": 480, "457": 480, "458": 480, "459": 480, "460": 480, "461": 480, "462": 480, "463": 480, "464": 480, "465": 480, "466": 480, "467": 480, "468": 480, "469": 480, "470": 480, "471": 480, "472": 480, "473": 480, "474": 480, "475": 480, "476": 480, "477": 480, "478": 480, "479": 480, "416": 416, "417": 448, "418": 448, "419": 448, "420": 448, "421": 448, "422": 448, "423": 448, "424": 448, "425": 448, "426": 448, "427": 448, "428": 448, "429": 448, "430": 448, "431": 448, "432": 448, "433": 448, "434": 448, "435": 448, "436": 448, "437": 448, "438": 448, "439": 448, "440": 448, "441": 448, "442": 448, "443": 448, "444": 448, "445": 448, "446": 448, "447": 448, "384": 384, "385": 416, "386": 416, "387": 416, "388": 416, "389": 416, "390": 416, "391": 416, "392": 416, "393": 416, "394": 416, "395": 416, "396": 416, "397": 416, "398": 416, "399": 416, "400": 416, "401": 416, "402": 416, "403": 416, "404": 416, "405": 416, "406": 416, "407": 416, "408": 416, "409": 416, "410": 416, "411": 416, "412": 416, "413": 416, "414": 416, "415": 416, "352": 352, "353": 384, "354": 384, "355": 384, "356": 384, "357": 384, "358": 384, "359": 384, "360": 384, "361": 384, "362": 384, "363": 384, "364": 384, "365": 384, "366": 384, "367": 384, "368": 384, "369": 384, "370": 384, "371": 384, "372": 384, "373": 384, "374": 384, "375": 384, "376": 384, "377": 384, "378": 384, "379": 384, "380": 384, "381": 384, "382": 384, "383": 384, "320": 320, "321": 352, "322": 352, "323": 352, "324": 352, "325": 352, "326": 352, "327": 352, "328": 352, "329": 352, "330": 352, "331": 352, "332": 352, "333": 352, "334": 352, "335": 352, "336": 352, "337": 352, "338": 352, "339": 352, "340": 352, "341": 352, "342": 352, "343": 352, "344": 352, "345": 352, "346": 352, "347": 352, "348": 352, "349": 352, "350": 352, "351": 352, "288": 288, "289": 320, "290": 320, "291": 320, "292": 320, "293": 320, "294": 320, "295": 320, "296": 320, "297": 320, "298": 320, "299": 320, "300": 320, "301": 320, "302": 320, "303": 320, "304": 320, "305": 320, "306": 320, "307": 320, "308": 320, "309": 320, "310": 320, "311": 320, "312": 320, "313": 320, "314": 320, "315": 320, "316": 320, "317": 320, "318": 320, "319": 320, "256": 256, "257": 288, "258": 288, "259": 288, "260": 288, "261": 288, "262": 288, "263": 288, "264": 288, "265": 288, "266": 288, "267": 288, "268": 288, "269": 288, "270": 288, "271": 288, "272": 288, "273": 288, "274": 288, "275": 288, "276": 288, "277": 288, "278": 288, "279": 288, "280": 288, "281": 288, "282": 288, "283": 288, "284": 288, "285": 288, "286": 288, "287": 288, "240": 240, "241": 256, "242": 256, "243": 256, "244": 256, "245": 256, "246": 256, "247": 256, "248": 256, "249": 256, "250": 256, "251": 256, "252": 256, "253": 256, "254": 256, "255": 256, "224": 224, "225": 240, "226": 240, "227": 240, "228": 240, "229": 240, "230": 240, "231": 240, "232": 240, "233": 240, "234": 240, "235": 240, "236": 240, "237": 240, "238": 240, "239": 240, "208": 208, "209": 224, "210": 224, "211": 224, "212": 224, "213": 224, "214": 224, "215": 224, "216": 224, "217": 224, "218": 224, "219": 224, "220": 224, "221": 224, "222": 224, "223": 224, "192": 192, "193": 208, "194": 208, "195": 208, "196": 208, "197": 208, "198": 208, "199": 208, "200": 208, "201": 208, "202": 208, "203": 208, "204": 208, "205": 208, "206": 208, "207": 208, "176": 176, "177": 192, "178": 192, "179": 192, "180": 192, "181": 192, "182": 192, "183": 192, "184": 192, "185": 192, "186": 192, "187": 192, "188": 192, "189": 192, "190": 192, "191": 192, "160": 160, "161": 176, "162": 176, "163": 176, "164": 176, "165": 176, "166": 176, "167": 176, "168": 176, "169": 176, "170": 176, "171": 176, "172": 176, "173": 176, "174": 176, "175": 176, "144": 144, "145": 160, "146": 160, "147": 160, "148": 160, "149": 160, "150": 160, "151": 160, "152": 160, "153": 160, "154": 160, "155": 160, "156": 160, "157": 160, "158": 160, "159": 160, "128": 128, "129": 144, "130": 144, "131": 144, "132": 144, "133": 144, "134": 144, "135": 144, "136": 144, "137": 144, "138": 144, "139": 144, "140": 144, "141": 144, "142": 144, "143": 144, "120": 120, "121": 128, "122": 128, "123": 128, "124": 128, "125": 128, "126": 128, "127": 128, "112": 112, "113": 120, "114": 120, "115": 120, "116": 120, "117": 120, "118": 120, "119": 120, "104": 104, "105": 112, "106": 112, "107": 112, "108": 112, "109": 112, "110": 112, "111": 112, "96": 96, "97": 104, "98": 104, "99": 104, "100": 104, "101": 104, "102": 104, "103": 104, "88": 88, "89": 96, "90": 96, "91": 96, "92": 96, "93": 96, "94": 96, "95": 96, "80": 80, "81": 88, "82": 88, "83": 88, "84": 88, "85": 88, "86": 88, "87": 88, "72": 72, "73": 80, "74": 80, "75": 80, "76": 80, "77": 80, "78": 80, "79": 80, "64": 64, "65": 72, "66": 72, "67": 72, "68": 72, "69": 72, "70": 72, "71": 72, "56": 56, "57": 64, "58": 64, "59": 64, "60": 64, "61": 64, "62": 64, "63": 64, "48": 48, "49": 56, "50": 56, "51": 56, "52": 56, "53": 56, "54": 56, "55": 56, "40": 40, "41": 48, "42": 48, "43": 48, "44": 48, "45": 48, "46": 48, "47": 48, "32": 32, "33": 40, "34": 40, "35": 40, "36": 40, "37": 40, "38": 40, "39": 40, "24": 24, "25": 32, "26": 32, "27": 32, "28": 32, "29": 32, "30": 32, "31": 32, "16": 16, "17": 24, "18": 24, "19": 24, "20": 24, "21": 24, "22": 24, "23": 24, "8": 8, "9": 16, "10": 16, "11": 16, "12": 16, "13": 16, "14": 16, "15": 16, "4": 4, "5": 8, "6": 8, "7": 8, "2": 2, "3": 4, "1": 1, "0": 0, "512": 512}}
+INFO:legacy.config:early_stop_config   :      {"enable_early_stop": false, "strategy": "repetition", "window_size": 3000, "threshold": 0.99}
+INFO:legacy.config:plas_attention_config:      {"plas_encoder_top_k_left": null, "plas_encoder_top_k_right": null, "plas_decoder_top_k_left": null, "plas_decoder_top_k_right": null, "plas_use_encoder_seq_limit": null, "plas_use_decoder_seq_limit": null, "plas_block_size": 128, "mlp_weight_name": "plas_attention_mlp_weight.safetensors", "plas_max_seq_length": 131072}
+INFO:legacy.config:structured_outputs_config:      {"reasoning_parser": null, "guided_decoding_backend": "off", "disable_any_whitespace": true, "logits_processors": null}
+INFO:legacy.config:router_config       :      {"router": null, "api_server_host": "10.31.12.91", "api_server_port": null, "metrics_port": null}
+INFO:legacy.config:routing_replay_config:      {"enable_routing_replay": false, "routing_store_type": "local", "local_store_dir": "./routing_replay_output", "rdma_store_server": "", "only_last_turn": false, "use_fused_put": false}
+INFO:legacy.config:deploy_modality     :      mixed
+INFO:legacy.config:tokenizer           :      PaddleOCR-VL-1.6
+INFO:legacy.config:ips                 :      None
+INFO:legacy.config:tool_parser         :      None
+INFO:legacy.config:master_ip           :      0.0.0.0
+INFO:legacy.config:host_ip             :      10.31.12.91
+INFO:legacy.config:nnode               :      1
+INFO:legacy.config:node_rank           :      0
+INFO:legacy.config:limit_mm_per_prompt :      None
+INFO:legacy.config:mm_processor_kwargs :      None
+INFO:legacy.config:use_warmup          :      0
+INFO:legacy.config:max_num_partial_prefills:      1
+INFO:legacy.config:max_long_partial_prefills:      1
+INFO:legacy.config:long_prefill_token_threshold:      327
+INFO:legacy.config:max_prefill_batch   :      8
+INFO:legacy.config:max_chips_per_node  :      16
+INFO:legacy.config:worker_num_per_node :      1
+INFO:legacy.config:is_master           :      True
+INFO:legacy.config:paddle_commit_id    :      502c5f0af401a6cea8054bf5dc89c39080f2dcea
+INFO:legacy.config:local_device_ids    :      ['0']
+INFO:legacy.config:splitwise_version   :      v1
+INFO:legacy.config:register_info       :      {'role': 'mixed', 'host_ip': '10.31.12.91', 'port': None, 'metrics_port': None, 'connector_port': 16122, 'rdma_ports': [17561], 'engine_worker_queue_port': 28039, 'device_ids': ['0'], 'transfer_protocol': ['ipc', 'rdma'], 'tp_size': 1, 'is_paused': False, 'version': 'init', 'connected_decodes': []}
+INFO:legacy.config:=============================================================
+INFO:legacy.prefix_cache_manager:Prefix cache manager is initialized with 528 gpu blocks and 0 cpu blocks, bytes_per_token_per_layer for each rank: 1024.0
+INFO     2026-06-16 13:53:47,052 3378323 download.py[line:146] Using download source: huggingface
+INFO     2026-06-16 13:53:47,052 3378323 configuration_utils.py[line:425] Loading configuration file PaddleOCR-VL-1.6/generation_config.json
+INFO     2026-06-16 13:53:47,083 3378323 tokenizer_utils.py[line:257] Using download source: huggingface
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+INFO     2026-06-16 13:53:49,190 3378323 engine.py[line:159] Waiting for worker processes to be ready...
+Loading Weights:   0%|                                                                                                                                  | 0/100 [00:04<?, ?it/s]INFO:legacy.config:Reset block num, the total_block_num:10922, prefill_kvcache_block_num:10922
+Loading Weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:05<00:00, 18.13it/s]
+Loading Layers: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 199.57it/s]
+INFO     2026-06-16 13:54:01,221 3378323 engine.py[line:218] Worker processes are launched with 14.573204755783081 seconds.
+INFO     2026-06-16 13:54:01,222 3378323 engine.py[line:229] Detected 10922 gpu blocks and 0 cpu blocks in cache (block size: 16).
+INFO     2026-06-16 13:54:01,222 3378323 engine.py[line:232] FastDeploy will be serving 8 running requests if each sequence reaches its maximum length: 8192
+[OCR Worker] OCR model loaded, elapsed: 16.06s
+[OCR Worker] Recognizing image 1/1, size: (2014, 2881)
+Processed prompts:   0%|                                                                              | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]INFO:legacy.prefix_cache_manager:req_id:b67adc05-a6a4-4652-b3ac-c1e1577b25c2 allocate_gpu_blocks: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76], len(self.gpu_free_block_list) 10845
+[2026-06-16 13:54:03] [3378323] [INFO] Prefill batch, dp_rank: 0, #new-seq: 1, #new-token: 1231, #cached-token: 0, token usage: 0.01, #free-block: 10845, #evictable-block: 0, #running-req: 1, #queue-req: 0, 
+INFO:legacy.prefix_cache_manager:req_id:b67adc05-a6a4-4652-b3ac-c1e1577b25c2 allocate_gpu_blocks: [77, 78], len(self.gpu_free_block_list) 10843
+INFO:legacy.prefix_cache_manager:req_id:b67adc05-a6a4-4652-b3ac-c1e1577b25c2 allocate_gpu_blocks: [79, 80], len(self.gpu_free_block_list) 10841
+INFO:legacy.prefix_cache_manager:req_id:b67adc05-a6a4-4652-b3ac-c1e1577b25c2 allocate_gpu_blocks: [81, 82], len(self.gpu_free_block_list) 10839
+INFO:legacy.prefix_cache_manager:req_id:b67adc05-a6a4-4652-b3ac-c1e1577b25c2 allocate_gpu_blocks: [83, 84], len(self.gpu_free_block_list) 10837
+INFO:legacy.prefix_cache_manager:req_id:b67adc05-a6a4-4652-b3ac-c1e1577b25c2 allocate_gpu_blocks: [85, 86], len(self.gpu_free_block_list) 10835
+[2026-06-16 13:54:06] [3378323] [INFO] Decode batch, dp_rank: 0, #running-req: 1, #token: 1392, token usage: 0.01, #free-block: 10835, #evictable-block: 0, cuda graph: False, gen throughput (token/s): 6.01, #queue-req: 0, 
+INFO:legacy.prefix_cache_manager:req_id:b67adc05-a6a4-4652-b3ac-c1e1577b25c2 allocate_gpu_blocks: [87, 88], len(self.gpu_free_block_list) 10833
+INFO:legacy.prefix_cache_manager:req_id:b67adc05-a6a4-4652-b3ac-c1e1577b25c2 allocate_gpu_blocks: [89, 90], len(self.gpu_free_block_list) 10831
+INFO:legacy.prefix_cache_manager:req_id:b67adc05-a6a4-4652-b3ac-c1e1577b25c2 allocate_gpu_blocks: [91, 92], len(self.gpu_free_block_list) 10829
+INFO:legacy.prefix_cache_manager:req_id:b67adc05-a6a4-4652-b3ac-c1e1577b25c2 allocate_gpu_blocks: [93, 94], len(self.gpu_free_block_list) 10827
+INFO:legacy.prefix_cache_manager:req_id:b67adc05-a6a4-4652-b3ac-c1e1577b25c2 allocate_gpu_blocks: [95, 96], len(self.gpu_free_block_list) 10825
+[2026-06-16 13:54:08] [3378323] [INFO] Decode batch, dp_rank: 0, #running-req: 1, #token: 1552, token usage: 0.01, #free-block: 10825, #evictable-block: 0, cuda graph: False, gen throughput (token/s): 82.58, #queue-req: 0, 
+INFO:legacy.prefix_cache_manager:req_id:b67adc05-a6a4-4652-b3ac-c1e1577b25c2 allocate_gpu_blocks: [97, 98], len(self.gpu_free_block_list) 10823
+INFO:legacy.prefix_cache_manager:req_id:b67adc05-a6a4-4652-b3ac-c1e1577b25c2 allocate_gpu_blocks: [99, 100], len(self.gpu_free_block_list) 10821
+INFO:legacy.prefix_cache_manager:req_id:b67adc05-a6a4-4652-b3ac-c1e1577b25c2 allocate_gpu_blocks: [101, 102], len(self.gpu_free_block_list) 10819
+INFO:legacy.prefix_cache_manager:req_id:b67adc05-a6a4-4652-b3ac-c1e1577b25c2 allocate_gpu_blocks: [103, 104], len(self.gpu_free_block_list) 10817
+INFO:legacy.prefix_cache_manager:req_id:b67adc05-a6a4-4652-b3ac-c1e1577b25c2 allocate_gpu_blocks: [105, 106], len(self.gpu_free_block_list) 10815
+[2026-06-16 13:54:09] [3378323] [INFO] Decode batch, dp_rank: 0, #running-req: 1, #token: 1712, token usage: 0.01, #free-block: 10815, #evictable-block: 0, cuda graph: False, gen throughput (token/s): 82.93, #queue-req: 0, 
+INFO:legacy.prefix_cache_manager:req_id:b67adc05-a6a4-4652-b3ac-c1e1577b25c2 allocate_gpu_blocks: [107, 108], len(self.gpu_free_block_list) 10813
+INFO:legacy.prefix_cache_manager:req_id:b67adc05-a6a4-4652-b3ac-c1e1577b25c2 allocate_gpu_blocks: [109, 110], len(self.gpu_free_block_list) 10811
+INFO:legacy.prefix_cache_manager:req_id:b67adc05-a6a4-4652-b3ac-c1e1577b25c2 allocate_gpu_blocks: [111, 112], len(self.gpu_free_block_list) 10809
+INFO:legacy.prefix_cache_manager:req_id:b67adc05-a6a4-4652-b3ac-c1e1577b25c2 allocate_gpu_blocks: [113, 114], len(self.gpu_free_block_list) 10807
+INFO:legacy.prefix_cache_manager:req_id:b67adc05-a6a4-4652-b3ac-c1e1577b25c2 allocate_gpu_blocks: [115, 116], len(self.gpu_free_block_list) 10805
+[2026-06-16 13:54:11] [3378323] [INFO] Decode batch, dp_rank: 0, #running-req: 1, #token: 1872, token usage: 0.01, #free-block: 10805, #evictable-block: 0, cuda graph: False, gen throughput (token/s): 82.31, #queue-req: 0, 
+INFO:legacy.prefix_cache_manager:req_id:b67adc05-a6a4-4652-b3ac-c1e1577b25c2 allocate_gpu_blocks: [117, 118], len(self.gpu_free_block_list) 10803
+INFO:legacy.prefix_cache_manager:req_id:b67adc05-a6a4-4652-b3ac-c1e1577b25c2 allocate_gpu_blocks: [119, 120], len(self.gpu_free_block_list) 10801
+INFO:legacy.prefix_cache_manager:req_id:b67adc05-a6a4-4652-b3ac-c1e1577b25c2 recycle_gpu_blocks: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120], len(self.gpu_free_block_list) 10801
+Processed prompts: 100%|██████████████████████████████████████████████████████████████████████| 1/1 [00:10<00:00, 10.12s/it, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+[OCR Worker] Image 1 done, text length: 936
+[OCR Worker] All images done, total text length: 936
+[ixsmi OCR before release] GPU Memory:
+  0, Iluvatar BI-V150, 6160, 32768
+  1, Iluvatar BI-V150, 64, 32768
+  2, Iluvatar BI-V150, 64, 32768
+  3, Iluvatar BI-V150, 64, 32768
+  4, Iluvatar BI-V150, 64, 32768
+  5, Iluvatar BI-V150, 64, 32768
+  6, Iluvatar BI-V150, 64, 32768
+  7, Iluvatar BI-V150, 64, 32768
+  8, Iluvatar BI-V150, 64, 32768
+  9, Iluvatar BI-V150, 64, 32768
+  10, Iluvatar BI-V150, 64, 32768
+  11, Iluvatar BI-V150, 64, 32768
+  12, Iluvatar BI-V150, 64, 32768
+  13, Iluvatar BI-V150, 64, 32768
+  14, Iluvatar BI-V150, 64, 32768
+  15, Iluvatar BI-V150, 64, 32768
+[OCR] Shutting down FastDeploy engine workers...
+[OCR] FastDeploy engine workers stopped
+[OCR Worker] OCR model released
+13:54:23 [drug_ocr] INFO: [OCR Step] OCR complete, total text length: 936, elapsed: 42.63s
+/usr/local/lib/python3.10/multiprocessing/resource_tracker.py:224: UserWarning: resource_tracker: There appear to be 13 leaked shared_memory objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+/usr/local/lib/python3.10/multiprocessing/resource_tracker.py:237: UserWarning: resource_tracker: '/exist_swapped_task_signal.28039': [Errno 2] No such file or directory: '/exist_swapped_task_signal.28039'
+  warnings.warn('resource_tracker: %r: %s' % (name, e))
+/usr/local/lib/python3.10/multiprocessing/resource_tracker.py:237: UserWarning: resource_tracker: '/model_weights_status.28039': [Errno 2] No such file or directory: '/model_weights_status.28039'
+  warnings.warn('resource_tracker: %r: %s' % (name, e))
+/usr/local/lib/python3.10/multiprocessing/resource_tracker.py:237: UserWarning: resource_tracker: '/cache_ready_signal.28039': [Errno 2] No such file or directory: '/cache_ready_signal.28039'
+  warnings.warn('resource_tracker: %r: %s' % (name, e))
+/usr/local/lib/python3.10/multiprocessing/resource_tracker.py:237: UserWarning: resource_tracker: '/kv_cache_status.28039': [Errno 2] No such file or directory: '/kv_cache_status.28039'
+  warnings.warn('resource_tracker: %r: %s' % (name, e))
+/usr/local/lib/python3.10/multiprocessing/resource_tracker.py:237: UserWarning: resource_tracker: '/worker_healthy_live_signal.28039': [Errno 2] No such file or directory: '/worker_healthy_live_signal.28039'
+  warnings.warn('resource_tracker: %r: %s' % (name, e))
+/usr/local/lib/python3.10/multiprocessing/resource_tracker.py:237: UserWarning: resource_tracker: '/exist_prefill_task_signal.28039': [Errno 2] No such file or directory: '/exist_prefill_task_signal.28039'
+  warnings.warn('resource_tracker: %r: %s' % (name, e))
+/usr/local/lib/python3.10/multiprocessing/resource_tracker.py:237: UserWarning: resource_tracker: '/exist_tasks_intra_signal.28039': [Errno 2] No such file or directory: '/exist_tasks_intra_signal.28039'
+  warnings.warn('resource_tracker: %r: %s' % (name, e))
+/usr/local/lib/python3.10/multiprocessing/resource_tracker.py:237: UserWarning: resource_tracker: '/engine_forward_signal.28039': [Errno 2] No such file or directory: '/engine_forward_signal.28039'
+  warnings.warn('resource_tracker: %r: %s' % (name, e))
+/usr/local/lib/python3.10/multiprocessing/resource_tracker.py:237: UserWarning: resource_tracker: '/exist_task_signal.28039': [Errno 2] No such file or directory: '/exist_task_signal.28039'
+  warnings.warn('resource_tracker: %r: %s' % (name, e))
+[ixsmi after OCR] GPU Memory:
+  0, Iluvatar BI-V150, 64, 32768
+  1, Iluvatar BI-V150, 64, 32768
+  2, Iluvatar BI-V150, 64, 32768
+  3, Iluvatar BI-V150, 64, 32768
+  4, Iluvatar BI-V150, 64, 32768
+  5, Iluvatar BI-V150, 64, 32768
+  6, Iluvatar BI-V150, 64, 32768
+  7, Iluvatar BI-V150, 64, 32768
+  8, Iluvatar BI-V150, 64, 32768
+  9, Iluvatar BI-V150, 64, 32768
+  10, Iluvatar BI-V150, 64, 32768
+  11, Iluvatar BI-V150, 64, 32768
+  12, Iluvatar BI-V150, 64, 32768
+  13, Iluvatar BI-V150, 64, 32768
+  14, Iluvatar BI-V150, 64, 32768
+  15, Iluvatar BI-V150, 64, 32768
+13:54:23 [drug_ocr] INFO: [LLM Step] LLM extraction...
+13:54:23 [drug_ocr] INFO: [LLM Step] Starting LLM subprocess...
+I0616 13:54:24.109442 3404609 init.cc:254] ENV [CUSTOM_DEVICE_ROOT]=/usr/local/lib/python3.10/site-packages/paddle/paddle_custom_device
+I0616 13:54:24.109470 3404609 init.cc:162] Try loading custom device libs from: [/usr/local/lib/python3.10/site-packages/paddle/paddle_custom_device]
+I0616 13:54:24.265461 3404609 custom_device_load.cc:51] Succeed in loading custom runtime in lib: /usr/local/lib/python3.10/site-packages/paddle/paddle_custom_device/libpaddle-iluvatar-gpu.so
+I0616 13:54:24.265494 3404609 custom_device_load.cc:58] Skipped lib [/usr/local/lib/python3.10/site-packages/paddle/paddle_custom_device/libpaddle-iluvatar-gpu.so]: no custom engine Plugin symbol in this lib.
+I0616 13:54:24.272986 3404609 custom_kernel.cc:68] Succeed in loading 896 custom kernel(s) from loaded lib(s), will be used like native ones.
+I0616 13:54:24.273339 3404609 init.cc:174] Finished in LoadCustomDevice with libs_path: [/usr/local/lib/python3.10/site-packages/paddle/paddle_custom_device]
+I0616 13:54:24.273367 3404609 init.cc:260] CustomDevice: iluvatar_gpu, visible devices count: 16
+WARNING  2026-06-16 13:54:25,721 3404609 transfer_manager.py[line:30] cupy not available, falling back to synchronous transfers
+[LLM Worker] Loading LLM model (ERNIE) with tensor_parallel_size=2...
+INFO     2026-06-16 13:54:26,431 3404609 args_utils.py[line:658] Parameter `engine_worker_queue_port` is not specified, found available ports for possible use: [52519]
+INFO     2026-06-16 13:54:26,432 3404609 args_utils.py[line:658] Parameter `cache_queue_port` is not specified, found available ports for possible use: [26627]
+INFO     2026-06-16 13:54:26,434 3404609 args_utils.py[line:658] Parameter `rdma_comm_ports` is not specified, found available ports for possible use: [41320, 41321]
+INFO     2026-06-16 13:54:26,435 3404609 args_utils.py[line:658] Parameter `pd_comm_port` is not specified, found available ports for possible use: [29402]
+INFO     2026-06-16 13:54:26,436 3404609 download.py[line:146] Using download source: huggingface
+INFO     2026-06-16 13:54:26,436 3404609 configuration_utils.py[line:1208] Loading configuration file ERNIE-4.5-21B-A3B-Paddle/config.json
+WARNING  2026-06-16 13:54:26,436 3404609 configuration_utils.py[line:1239] You are using a model of type ernie4_5_moe to instantiate a model of type . This is not supported for all configurations of models and can yield errors.
+INFO     2026-06-16 13:54:27,269 3404609 flash_attn_backend.py[line:105] Only support CUDA version flash attention.
+/usr/local/lib/python3.10/site-packages/fastdeploy/model_executor/graph_optimization/utils.py:21: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+WARNING  2026-06-16 13:54:27,529 3404609 moe.py[line:41] import noaux_tc Failed!
+INFO:legacy.config:Parameter `COMPRESSION_RATIO` will use default value 1.0.
+INFO:legacy.config:The model format is Paddle
+INFO:legacy.config:use_sequence_parallel_moe: False
+INFO:legacy.config:cudagraph sizes specified by model runner [1, 2, 4, 8, 8] is overridden by config [8, 1, 2, 4]
+INFO:legacy.config:Doing profile, the total_block_num:272
+INFO:legacy.config:Auto-setting num_max_dispatch_tokens_per_rank from 128 to 8 (max_num_seqs=8).
+INFO:legacy.config:register_info: {'role': 'mixed', 'host_ip': '10.31.12.91', 'port': None, 'metrics_port': None, 'connector_port': 29402, 'rdma_ports': [41320, 41321], 'engine_worker_queue_port': 52519, 'device_ids': ['0', '1'], 'transfer_protocol': ['ipc', 'rdma'], 'tp_size': 2, 'is_paused': False, 'version': 'init', 'connected_decodes': []}
+INFO:legacy.config:=================== Configuration Information ===============
+INFO:legacy.config:Model Configuration Information :
+INFO:legacy.config:model               :      ERNIE-4.5-21B-A3B-Paddle
+INFO:legacy.config:is_quantized        :      False
+INFO:legacy.config:is_moe_quantized    :      False
+INFO:legacy.config:max_model_len       :      4096
+INFO:legacy.config:dtype               :      bfloat16
+INFO:legacy.config:enable_logprob      :      False
+INFO:legacy.config:max_logprobs        :      20
+INFO:legacy.config:logprobs_mode       :      raw_logprobs
+INFO:legacy.config:redundant_experts_num:      0
+INFO:legacy.config:seed                :      0
+INFO:legacy.config:quantization        :      wint8
+INFO:legacy.config:pad_token_id        :      0
+INFO:legacy.config:eos_tokens_lens     :      2
+INFO:legacy.config:lm_head_fp32        :      False
+INFO:legacy.config:moe_gate_fp32       :      False
+INFO:legacy.config:model_format        :      paddle
+INFO:legacy.config:runner              :      auto
+INFO:legacy.config:convert             :      auto
+INFO:legacy.config:pooler_config       :      None
+INFO:legacy.config:override_pooler_config:      None
+INFO:legacy.config:revision            :      master
+INFO:legacy.config:prefix_layer_name   :      layers
+INFO:legacy.config:kv_cache_quant_scale_path:      ERNIE-4.5-21B-A3B-Paddle/kv_cache_scale.json
+INFO:legacy.config:enable_entropy      :      False
+INFO:legacy.config:model_impl          :      auto
+INFO:legacy.config:version             :      init
+INFO:legacy.config:partial_rotary_factor:      1.0
+INFO:legacy.config:num_nextn_predict_layers:      1
+INFO:legacy.config:mm_max_tokens_per_item:      None
+INFO:legacy.config:pretrained_config   :      PretrainedConfig {
+  "architectures": [
+    "Ernie4_5_MoeForCausalLM"
+  ],
+  "bos_token_id": 1,
+  "eos_token_id": 2,
+  "hidden_act": "silu",
+  "hidden_size": 2560,
+  "intermediate_size": 12288,
+  "max_position_embeddings": 131072,
+  "moe_capacity": [
+    64,
+    64,
+    64
+  ],
+  "moe_gate": "topk",
+  "moe_intermediate_size": 1536,
+  "moe_k": 6,
+  "moe_layer_interval": 1,
+  "moe_layer_start_index": 1,
+  "moe_num_experts": 64,
+  "moe_num_shared_experts": 2,
+  "moe_use_aux_free": true,
+  "multi_token_pred_lambda": 0.3,
+  "num_attention_heads": 20,
+  "num_hidden_layers": 28,
+  "num_key_value_heads": 4,
+  "num_nextn_predict_layers": 1,
+  "pad_token_id": 0,
+  "paddleformers_version": "1.1.1",
+  "rms_norm_eps": 1e-05,
+  "rope_theta": 500000,
+  "tie_word_embeddings": true,
+  "torch_dtype": "bfloat16",
+  "use_bias": false,
+  "use_cache": false,
+  "use_rmsnorm": true,
+  "vocab_size": 103424
+}
+
+INFO:legacy.config:architectures       :      ['Ernie4_5_MoeForCausalLM']
+INFO:legacy.config:bos_token_id        :      1
+INFO:legacy.config:eos_token_id        :      2
+INFO:legacy.config:hidden_act          :      silu
+INFO:legacy.config:hidden_size         :      2560
+INFO:legacy.config:intermediate_size   :      12288
+INFO:legacy.config:max_position_embeddings:      131072
+INFO:legacy.config:model_type          :      ernie4_5_moe
+INFO:legacy.config:num_attention_heads :      20
+INFO:legacy.config:num_key_value_heads :      4
+INFO:legacy.config:num_hidden_layers   :      28
+INFO:legacy.config:rms_norm_eps        :      1e-05
+INFO:legacy.config:use_cache           :      False
+INFO:legacy.config:vocab_size          :      103424
+INFO:legacy.config:rope_theta          :      500000
+INFO:legacy.config:use_rmsnorm         :      True
+INFO:legacy.config:tie_word_embeddings :      True
+INFO:legacy.config:use_bias            :      False
+INFO:legacy.config:moe_num_experts     :      64
+INFO:legacy.config:moe_num_shared_experts:      2
+INFO:legacy.config:moe_layer_start_index:      1
+INFO:legacy.config:moe_intermediate_size:      1536
+INFO:legacy.config:moe_capacity        :      [64, 64, 64]
+INFO:legacy.config:moe_gate            :      topk
+INFO:legacy.config:moe_k               :      6
+INFO:legacy.config:moe_layer_interval  :      1
+INFO:legacy.config:moe_use_aux_free    :      True
+INFO:legacy.config:multi_token_pred_lambda:      0.3
+INFO:legacy.config:top_p               :      1.0
+INFO:legacy.config:temperature         :      1.0
+INFO:legacy.config:penalty_score       :      1.0
+INFO:legacy.config:frequency_score     :      0.0
+INFO:legacy.config:presence_score      :      0.0
+INFO:legacy.config:min_length          :      1
+INFO:legacy.config:start_layer_index   :      0
+INFO:legacy.config:num_max_dispatch_tokens_per_rank:      8
+INFO:legacy.config:hidden_dropout_prob :      0.0
+INFO:legacy.config:initializer_range   :      0.02
+INFO:legacy.config:quantization_config :      None
+INFO:legacy.config:moe_layer_end_index :      None
+INFO:legacy.config:head_dim            :      128
+INFO:legacy.config:ori_vocab_size      :      103424
+INFO:legacy.config:think_start_id      :      -1
+INFO:legacy.config:think_end_id        :      -1
+INFO:legacy.config:im_patch_id         :      -1
+INFO:legacy.config:line_break_id       :      -1
+INFO:legacy.config:think_truncate_prompt_ids:      [-1]
+INFO:legacy.config:reasoning_allowed_token_ids:      []
+INFO:legacy.config:is_unified_ckpt     :      True
+INFO:legacy.config:runner_type         :      generate
+INFO:legacy.config:convert_type        :      none
+INFO:legacy.config:is_reasoning_model  :      False
+INFO:legacy.config:enable_mm           :      False
+INFO:legacy.config:supported_tasks     :      ['generate']
+INFO:legacy.config:_model_info         :      ModelInfo(architecture='Ernie4_5_MoeForCausalLM', category=<ModelCategory.TEXT_GENERATION: 1>, is_text_generation=True, is_multimodal=False, is_reasoning=False, is_pooling=False, module_path='ernie4_5_moe', default_pooling_type='LAST')
+INFO:legacy.config:_architecture       :      Ernie4_5_MoeForCausalLM
+INFO:legacy.config:mla_use_absorb      :      False
+INFO:legacy.config:max_stop_seqs_num   :      5
+INFO:legacy.config:stop_seqs_max_len   :      8
+INFO:legacy.config:compression_ratio   :      1.0
+INFO:legacy.config:model_config        :      {'architectures': ['Ernie4_5_MoeForCausalLM'], 'bos_token_id': 1, 'eos_token_id': 2, 'hidden_act': 'silu', 'hidden_size': 2560, 'intermediate_size': 12288, 'max_position_embeddings': 131072, 'model_type': 'ernie4_5_moe', 'num_attention_heads': 20, 'num_key_value_heads': 4, 'num_hidden_layers': 28, 'pad_token_id': 0, 'rms_norm_eps': 1e-05, 'use_cache': False, 'vocab_size': 103424, 'rope_theta': 500000, 'use_rmsnorm': True, 'tie_word_embeddings': True, 'use_bias': False, 'moe_num_experts': 64, 'moe_num_shared_experts': 2, 'moe_layer_start_index': 1, 'moe_intermediate_size': 1536, 'moe_capacity': [64, 64, 64], 'moe_gate': 'topk', 'moe_k': 6, 'moe_layer_interval': 1, 'moe_use_aux_free': True, 'dtype': 'bfloat16', 'num_nextn_predict_layers': 1, 'multi_token_pred_lambda': 0.3}
+INFO:legacy.config:moe_phase           :      <fastdeploy.config.MoEPhase object at 0x7f4d48ed4a90>
+INFO:legacy.config:=============================================================
+INFO:legacy.config:Cache Configuration Information :
+INFO:legacy.config:block_size          :      16
+INFO:legacy.config:gpu_memory_utilization:      0.9
+INFO:legacy.config:num_gpu_blocks_override:      None
+INFO:legacy.config:kv_cache_ratio      :      0.75
+INFO:legacy.config:enc_dec_block_num   :      2
+INFO:legacy.config:prealloc_dec_block_slot_num_threshold:      12
+INFO:legacy.config:cache_dtype         :      bfloat16
+INFO:legacy.config:model_cfg           :      <fastdeploy.config.ModelConfig object at 0x7f4c53179540>
+INFO:legacy.config:enable_chunked_prefill:      False
+INFO:legacy.config:rdma_comm_ports     :      [41320, 41321]
+INFO:legacy.config:local_rdma_comm_ports:      [41320, 41321]
+INFO:legacy.config:cache_transfer_protocol:      ipc,rdma
+INFO:legacy.config:pd_comm_port        :      [29402]
+INFO:legacy.config:local_pd_comm_port  :      29402
+INFO:legacy.config:enable_prefix_caching:      False
+INFO:legacy.config:enable_ssd_cache    :      False
+INFO:legacy.config:cache_queue_port    :      [26627]
+INFO:legacy.config:local_cache_queue_port:      26627
+INFO:legacy.config:swap_space          :      None
+INFO:legacy.config:max_encoder_cache   :      0
+INFO:legacy.config:max_processor_cache :      -1
+INFO:legacy.config:enable_output_caching:      False
+INFO:legacy.config:disable_chunked_mm_input:      False
+INFO:legacy.config:kvcache_storage_backend:      None
+INFO:legacy.config:write_policy        :      write_through
+INFO:legacy.config:write_through_threshold:      2
+INFO:legacy.config:num_cpu_blocks      :      0
+INFO:legacy.config:use_mla_cache       :      False
+INFO:legacy.config:head_num            :      4
+INFO:legacy.config:head_dim            :      128
+INFO:legacy.config:byte_size           :      2
+INFO:legacy.config:kv_factor           :      2
+INFO:legacy.config:bytes_per_token_per_layer:      2048
+INFO:legacy.config:bytes_per_block     :      917504
+INFO:legacy.config:max_block_num_per_seq:      256
+INFO:legacy.config:dec_token_num       :      32
+INFO:legacy.config:total_block_num     :      272
+INFO:legacy.config:prefill_kvcache_block_num:      272
+INFO:legacy.config:=============================================================
+INFO:legacy.config:LocalScheduler Configuration Information :
+INFO:legacy.config:max_size            :      -1
+INFO:legacy.config:ttl                 :      900
+INFO:legacy.config:max_model_len       :      4096
+INFO:legacy.config:enable_chunked_prefill:      False
+INFO:legacy.config:max_num_partial_prefills:      1
+INFO:legacy.config:max_long_partial_prefills:      1
+INFO:legacy.config:long_prefill_token_threshold:      163
+INFO:legacy.config:=============================================================
+INFO:legacy.config:Parallel Configuration Information :
+INFO:legacy.config:sequence_parallel   :      False
+INFO:legacy.config:use_ep              :      False
+INFO:legacy.config:msg_queue_id        :      1
+INFO:legacy.config:tensor_parallel_rank:      0
+INFO:legacy.config:tensor_parallel_size:      2
+INFO:legacy.config:expert_parallel_rank:      0
+INFO:legacy.config:expert_parallel_size:      1
+INFO:legacy.config:data_parallel_rank  :      0
+INFO:legacy.config:data_parallel_size  :      1
+INFO:legacy.config:enable_expert_parallel:      False
+INFO:legacy.config:enable_chunked_moe  :      False
+INFO:legacy.config:chunked_moe_size    :      256
+INFO:legacy.config:local_data_parallel_id:      0
+INFO:legacy.config:engine_worker_queue_port:      [52519]
+INFO:legacy.config:local_engine_worker_queue_port:      52519
+INFO:legacy.config:device_ids          :      0,1
+INFO:legacy.config:first_token_id      :      1
+INFO:legacy.config:engine_pid          :      None
+INFO:legacy.config:do_profile          :      False
+INFO:legacy.config:use_internode_ll_two_stage:      False
+INFO:legacy.config:disable_sequence_parallel_moe:      False
+INFO:legacy.config:shutdown_comm_group_if_worker_idle:      True
+INFO:legacy.config:ep_prefill_use_worst_num_tokens:      False
+INFO:legacy.config:pod_ip              :      None
+INFO:legacy.config:disable_custom_all_reduce:      False
+INFO:legacy.config:enable_flashinfer_allreduce_fusion:      False
+INFO:legacy.config:pd_disaggregation_mode:      None
+INFO:legacy.config:prefill_one_step_stop:      False
+INFO:legacy.config:use_sequence_parallel_moe:      False
+INFO:legacy.config:=============================================================
+INFO:legacy.config:speculative_config  :      {"method_list": ["ngram", "mtp", "naive", "suffix"], "mtp_strategy_list": ["default", "with_ngram"], "mtp_strategy": "default", "num_speculative_tokens": 1, "num_model_steps": 1, "max_candidate_len": 5, "verify_window": 2, "max_ngram_size": 5, "min_ngram_size": 2, "suffix_decoding_max_tree_depth": 64, "suffix_decoding_max_cached_requests": -1, "suffix_decoding_max_spec_factor": 1.0, "suffix_decoding_min_token_prob": 0.1, "model": "ERNIE-4.5-21B-A3B-Paddle", "quantization": "wint8", "num_gpu_block_expand_ratio": 1.0, "model_type": "main", "benchmark_mode": false, "enf_gen_phase_tag": false, "enable_draft_logprob": false, "verify_strategy": "target_match", "accept_policy": "normal", "model_config": {}, "num_extra_cache_layer": 0}
+INFO:legacy.config:eplb_config         :      <fastdeploy.config.EPLBConfig object at 0x7f4d48ed4e80>
+INFO:legacy.config:device_config       :      None
+INFO:legacy.config:load_config         :      {"load_choices": "default_v1", "is_pre_sharded": false, "dynamic_load_weight": false, "load_strategy": "normal", "rsync_config": null, "model_loader_extra_config": null}
+INFO:legacy.config:quant_config        :      None
+INFO:legacy.config:graph_opt_config    :      {"graph_opt_level": 0, "sot_warmup_sizes": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 16, 32, 64, 128], "use_cudagraph": false, "cudagraph_capture_sizes": [8, 4, 2, 1], "flag_cudagraph_capture_sizes_initlized": true, "cudagraph_capture_sizes_prefill": [512, 512, 480, 448, 416, 384, 352, 320, 288, 256, 240, 224, 208, 192, 176, 160, 144, 128, 120, 112, 104, 96, 88, 80, 72, 64, 56, 48, 40, 32, 24, 16, 8, 4, 2, 1], "cudagraph_num_of_warmups": 2, "cudagraph_copy_inputs": false, "cudagraph_splitting_ops": [], "cudagraph_only_prefill": false, "full_cuda_graph": true, "max_capture_size": 8, "real_shape_to_captured_size": {"4": 4, "5": 8, "6": 8, "7": 8, "2": 2, "3": 4, "1": 1, "0": 0, "8": 8}, "real_bsz_to_captured_size": {}, "use_unique_memory_pool": true, "draft_model_use_cudagraph": true, "max_capture_shape_prefill": 512, "max_capture_size_prefill": 512, "real_shape_to_captured_size_prefill": {"480": 480, "481": 512, "482": 512, "483": 512, "484": 512, "485": 512, "486": 512, "487": 512, "488": 512, "489": 512, "490": 512, "491": 512, "492": 512, "493": 512, "494": 512, "495": 512, "496": 512, "497": 512, "498": 512, "499": 512, "500": 512, "501": 512, "502": 512, "503": 512, "504": 512, "505": 512, "506": 512, "507": 512, "508": 512, "509": 512, "510": 512, "511": 512, "448": 448, "449": 480, "450": 480, "451": 480, "452": 480, "453": 480, "454": 480, "455": 480, "456": 480, "457": 480, "458": 480, "459": 480, "460": 480, "461": 480, "462": 480, "463": 480, "464": 480, "465": 480, "466": 480, "467": 480, "468": 480, "469": 480, "470": 480, "471": 480, "472": 480, "473": 480, "474": 480, "475": 480, "476": 480, "477": 480, "478": 480, "479": 480, "416": 416, "417": 448, "418": 448, "419": 448, "420": 448, "421": 448, "422": 448, "423": 448, "424": 448, "425": 448, "426": 448, "427": 448, "428": 448, "429": 448, "430": 448, "431": 448, "432": 448, "433": 448, "434": 448, "435": 448, "436": 448, "437": 448, "438": 448, "439": 448, "440": 448, "441": 448, "442": 448, "443": 448, "444": 448, "445": 448, "446": 448, "447": 448, "384": 384, "385": 416, "386": 416, "387": 416, "388": 416, "389": 416, "390": 416, "391": 416, "392": 416, "393": 416, "394": 416, "395": 416, "396": 416, "397": 416, "398": 416, "399": 416, "400": 416, "401": 416, "402": 416, "403": 416, "404": 416, "405": 416, "406": 416, "407": 416, "408": 416, "409": 416, "410": 416, "411": 416, "412": 416, "413": 416, "414": 416, "415": 416, "352": 352, "353": 384, "354": 384, "355": 384, "356": 384, "357": 384, "358": 384, "359": 384, "360": 384, "361": 384, "362": 384, "363": 384, "364": 384, "365": 384, "366": 384, "367": 384, "368": 384, "369": 384, "370": 384, "371": 384, "372": 384, "373": 384, "374": 384, "375": 384, "376": 384, "377": 384, "378": 384, "379": 384, "380": 384, "381": 384, "382": 384, "383": 384, "320": 320, "321": 352, "322": 352, "323": 352, "324": 352, "325": 352, "326": 352, "327": 352, "328": 352, "329": 352, "330": 352, "331": 352, "332": 352, "333": 352, "334": 352, "335": 352, "336": 352, "337": 352, "338": 352, "339": 352, "340": 352, "341": 352, "342": 352, "343": 352, "344": 352, "345": 352, "346": 352, "347": 352, "348": 352, "349": 352, "350": 352, "351": 352, "288": 288, "289": 320, "290": 320, "291": 320, "292": 320, "293": 320, "294": 320, "295": 320, "296": 320, "297": 320, "298": 320, "299": 320, "300": 320, "301": 320, "302": 320, "303": 320, "304": 320, "305": 320, "306": 320, "307": 320, "308": 320, "309": 320, "310": 320, "311": 320, "312": 320, "313": 320, "314": 320, "315": 320, "316": 320, "317": 320, "318": 320, "319": 320, "256": 256, "257": 288, "258": 288, "259": 288, "260": 288, "261": 288, "262": 288, "263": 288, "264": 288, "265": 288, "266": 288, "267": 288, "268": 288, "269": 288, "270": 288, "271": 288, "272": 288, "273": 288, "274": 288, "275": 288, "276": 288, "277": 288, "278": 288, "279": 288, "280": 288, "281": 288, "282": 288, "283": 288, "284": 288, "285": 288, "286": 288, "287": 288, "240": 240, "241": 256, "242": 256, "243": 256, "244": 256, "245": 256, "246": 256, "247": 256, "248": 256, "249": 256, "250": 256, "251": 256, "252": 256, "253": 256, "254": 256, "255": 256, "224": 224, "225": 240, "226": 240, "227": 240, "228": 240, "229": 240, "230": 240, "231": 240, "232": 240, "233": 240, "234": 240, "235": 240, "236": 240, "237": 240, "238": 240, "239": 240, "208": 208, "209": 224, "210": 224, "211": 224, "212": 224, "213": 224, "214": 224, "215": 224, "216": 224, "217": 224, "218": 224, "219": 224, "220": 224, "221": 224, "222": 224, "223": 224, "192": 192, "193": 208, "194": 208, "195": 208, "196": 208, "197": 208, "198": 208, "199": 208, "200": 208, "201": 208, "202": 208, "203": 208, "204": 208, "205": 208, "206": 208, "207": 208, "176": 176, "177": 192, "178": 192, "179": 192, "180": 192, "181": 192, "182": 192, "183": 192, "184": 192, "185": 192, "186": 192, "187": 192, "188": 192, "189": 192, "190": 192, "191": 192, "160": 160, "161": 176, "162": 176, "163": 176, "164": 176, "165": 176, "166": 176, "167": 176, "168": 176, "169": 176, "170": 176, "171": 176, "172": 176, "173": 176, "174": 176, "175": 176, "144": 144, "145": 160, "146": 160, "147": 160, "148": 160, "149": 160, "150": 160, "151": 160, "152": 160, "153": 160, "154": 160, "155": 160, "156": 160, "157": 160, "158": 160, "159": 160, "128": 128, "129": 144, "130": 144, "131": 144, "132": 144, "133": 144, "134": 144, "135": 144, "136": 144, "137": 144, "138": 144, "139": 144, "140": 144, "141": 144, "142": 144, "143": 144, "120": 120, "121": 128, "122": 128, "123": 128, "124": 128, "125": 128, "126": 128, "127": 128, "112": 112, "113": 120, "114": 120, "115": 120, "116": 120, "117": 120, "118": 120, "119": 120, "104": 104, "105": 112, "106": 112, "107": 112, "108": 112, "109": 112, "110": 112, "111": 112, "96": 96, "97": 104, "98": 104, "99": 104, "100": 104, "101": 104, "102": 104, "103": 104, "88": 88, "89": 96, "90": 96, "91": 96, "92": 96, "93": 96, "94": 96, "95": 96, "80": 80, "81": 88, "82": 88, "83": 88, "84": 88, "85": 88, "86": 88, "87": 88, "72": 72, "73": 80, "74": 80, "75": 80, "76": 80, "77": 80, "78": 80, "79": 80, "64": 64, "65": 72, "66": 72, "67": 72, "68": 72, "69": 72, "70": 72, "71": 72, "56": 56, "57": 64, "58": 64, "59": 64, "60": 64, "61": 64, "62": 64, "63": 64, "48": 48, "49": 56, "50": 56, "51": 56, "52": 56, "53": 56, "54": 56, "55": 56, "40": 40, "41": 48, "42": 48, "43": 48, "44": 48, "45": 48, "46": 48, "47": 48, "32": 32, "33": 40, "34": 40, "35": 40, "36": 40, "37": 40, "38": 40, "39": 40, "24": 24, "25": 32, "26": 32, "27": 32, "28": 32, "29": 32, "30": 32, "31": 32, "16": 16, "17": 24, "18": 24, "19": 24, "20": 24, "21": 24, "22": 24, "23": 24, "8": 8, "9": 16, "10": 16, "11": 16, "12": 16, "13": 16, "14": 16, "15": 16, "4": 4, "5": 8, "6": 8, "7": 8, "2": 2, "3": 4, "1": 1, "0": 0, "512": 512}}
+INFO:legacy.config:early_stop_config   :      {"enable_early_stop": false, "strategy": "repetition", "window_size": 3000, "threshold": 0.99}
+INFO:legacy.config:plas_attention_config:      {"plas_encoder_top_k_left": null, "plas_encoder_top_k_right": null, "plas_decoder_top_k_left": null, "plas_decoder_top_k_right": null, "plas_use_encoder_seq_limit": null, "plas_use_decoder_seq_limit": null, "plas_block_size": 128, "mlp_weight_name": "plas_attention_mlp_weight.safetensors", "plas_max_seq_length": 131072}
+INFO:legacy.config:structured_outputs_config:      {"reasoning_parser": null, "guided_decoding_backend": "off", "disable_any_whitespace": true, "logits_processors": null}
+INFO:legacy.config:router_config       :      {"router": null, "api_server_host": "10.31.12.91", "api_server_port": null, "metrics_port": null}
+INFO:legacy.config:routing_replay_config:      {"enable_routing_replay": false, "routing_store_type": "local", "local_store_dir": "./routing_replay_output", "rdma_store_server": "", "only_last_turn": false, "use_fused_put": false}
+INFO:legacy.config:deploy_modality     :      mixed
+INFO:legacy.config:tokenizer           :      ERNIE-4.5-21B-A3B-Paddle
+INFO:legacy.config:ips                 :      None
+INFO:legacy.config:tool_parser         :      None
+INFO:legacy.config:master_ip           :      0.0.0.0
+INFO:legacy.config:host_ip             :      10.31.12.91
+INFO:legacy.config:nnode               :      1
+INFO:legacy.config:node_rank           :      0
+INFO:legacy.config:limit_mm_per_prompt :      None
+INFO:legacy.config:mm_processor_kwargs :      None
+INFO:legacy.config:use_warmup          :      0
+INFO:legacy.config:max_num_partial_prefills:      1
+INFO:legacy.config:max_long_partial_prefills:      1
+INFO:legacy.config:long_prefill_token_threshold:      163
+INFO:legacy.config:max_prefill_batch   :      3
+INFO:legacy.config:max_chips_per_node  :      16
+INFO:legacy.config:worker_num_per_node :      2
+INFO:legacy.config:is_master           :      True
+INFO:legacy.config:paddle_commit_id    :      502c5f0af401a6cea8054bf5dc89c39080f2dcea
+INFO:legacy.config:local_device_ids    :      ['0', '1']
+INFO:legacy.config:splitwise_version   :      v1
+INFO:legacy.config:register_info       :      {'role': 'mixed', 'host_ip': '10.31.12.91', 'port': None, 'metrics_port': None, 'connector_port': 29402, 'rdma_ports': [41320, 41321], 'engine_worker_queue_port': 52519, 'device_ids': ['0', '1'], 'transfer_protocol': ['ipc', 'rdma'], 'tp_size': 2, 'is_paused': False, 'version': 'init', 'connected_decodes': []}
+INFO:legacy.config:=============================================================
+INFO:legacy.prefix_cache_manager:Prefix cache manager is initialized with 272 gpu blocks and 0 cpu blocks, bytes_per_token_per_layer for each rank: 1024.0
+INFO     2026-06-16 13:54:28,164 3404609 download.py[line:146] Using download source: huggingface
+INFO     2026-06-16 13:54:28,164 3404609 configuration_utils.py[line:425] Loading configuration file ERNIE-4.5-21B-A3B-Paddle/generation_config.json
+/usr/local/lib/python3.10/site-packages/paddleformers/generation/configuration_utils.py:250: UserWarning: using greedy search strategy. However, `temperature` is set to `0.8` -- this flag is only used in sample-based generation modes. You should set `decode_strategy="greedy_search" ` or unset `temperature`. This was detected when initializing the generation config instance, which means the corresponding file may hold incorrect parameterization and should be fixed.
+/usr/local/lib/python3.10/site-packages/paddleformers/generation/configuration_utils.py:255: UserWarning: using greedy search strategy. However, `top_p` is set to `0.8` -- this flag is only used in sample-based generation modes. You should set `decode_strategy="greedy_search" ` or unset `top_p`. This was detected when initializing the generation config instance, which means the corresponding file may hold incorrect parameterization and should be fixed.
+WARNING  2026-06-16 13:54:28,165 3404609 log.py[line:135] PretrainedTokenizer will be deprecated and removed in the next major release. Please migrate to Hugging Face's transformers.PreTrainedTokenizer. use class QWenTokenizer(PaddleTokenizerMixin, hf.PreTrainedTokenizer) to support multisource download and Paddle tokenizer operations.
+INFO     2026-06-16 13:54:30,483 3404609 engine.py[line:159] Waiting for worker processes to be ready...
+Loading Weights:   0%|                                                                                                                                  | 0/100 [00:19<?, ?it/s]INFO:legacy.config:Reset block num, the total_block_num:7021, prefill_kvcache_block_num:7021
+Loading Weights: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:20<00:00,  4.87it/s]
+Loading Layers: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 199.56it/s]
+INFO     2026-06-16 13:54:57,548 3404609 engine.py[line:218] Worker processes are launched with 29.783907890319824 seconds.
+INFO     2026-06-16 13:54:57,549 3404609 engine.py[line:229] Detected 7021 gpu blocks and 0 cpu blocks in cache (block size: 16).
+INFO     2026-06-16 13:54:57,549 3404609 engine.py[line:232] FastDeploy will be serving 8 running requests if each sequence reaches its maximum length: 4096
+[LLM Worker] LLM model loaded, elapsed: 31.12s
+[LLM Worker] Generating response (max_new_tokens=200)...
+Processed prompts:   0%|                                                                              | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]INFO:legacy.prefix_cache_manager:req_id:1b2c2838-ea32-4624-a849-b977c4de65d4 allocate_gpu_blocks: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54], len(self.gpu_free_block_list) 6966
+[2026-06-16 13:54:57] [3404609] [INFO] Prefill batch, dp_rank: 0, #new-seq: 1, #new-token: 874, #cached-token: 0, token usage: 0.01, #free-block: 6966, #evictable-block: 0, #running-req: 1, #queue-req: 0, 
+INFO:legacy.prefix_cache_manager:req_id:1b2c2838-ea32-4624-a849-b977c4de65d4 allocate_gpu_blocks: [55, 56], len(self.gpu_free_block_list) 6964
+INFO:legacy.prefix_cache_manager:req_id:1b2c2838-ea32-4624-a849-b977c4de65d4 allocate_gpu_blocks: [57, 58], len(self.gpu_free_block_list) 6962
+INFO:legacy.prefix_cache_manager:req_id:1b2c2838-ea32-4624-a849-b977c4de65d4 allocate_gpu_blocks: [59, 60], len(self.gpu_free_block_list) 6960
+INFO:legacy.prefix_cache_manager:req_id:1b2c2838-ea32-4624-a849-b977c4de65d4 allocate_gpu_blocks: [61, 62], len(self.gpu_free_block_list) 6958
+INFO:legacy.prefix_cache_manager:req_id:1b2c2838-ea32-4624-a849-b977c4de65d4 allocate_gpu_blocks: [63, 64], len(self.gpu_free_block_list) 6956
+[2026-06-16 13:55:04] [3404609] [INFO] Decode batch, dp_rank: 0, #running-req: 1, #token: 1040, token usage: 0.01, #free-block: 6956, #evictable-block: 0, cuda graph: False, gen throughput (token/s): 3.34, #queue-req: 0, 
+INFO:legacy.prefix_cache_manager:req_id:1b2c2838-ea32-4624-a849-b977c4de65d4 allocate_gpu_blocks: [65, 66], len(self.gpu_free_block_list) 6954
+INFO:legacy.prefix_cache_manager:req_id:1b2c2838-ea32-4624-a849-b977c4de65d4 recycle_gpu_blocks: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66], len(self.gpu_free_block_list) 6954
+Processed prompts: 100%|██████████████████████████████████████████████████████████████████████| 1/1 [00:08<00:00,  8.90s/it, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+[LLM Worker] Extraction done, gen elapsed: 8.91s, raw length: 252, cleaned length: 235
+[ixsmi LLM before release] GPU Memory:
+  0, Iluvatar BI-V150, 15258, 32768
+  1, Iluvatar BI-V150, 15122, 32768
+  2, Iluvatar BI-V150, 64, 32768
+  3, Iluvatar BI-V150, 64, 32768
+  4, Iluvatar BI-V150, 64, 32768
+  5, Iluvatar BI-V150, 64, 32768
+  6, Iluvatar BI-V150, 64, 32768
+  7, Iluvatar BI-V150, 64, 32768
+  8, Iluvatar BI-V150, 64, 32768
+  9, Iluvatar BI-V150, 64, 32768
+  10, Iluvatar BI-V150, 64, 32768
+  11, Iluvatar BI-V150, 64, 32768
+  12, Iluvatar BI-V150, 64, 32768
+  13, Iluvatar BI-V150, 64, 32768
+  14, Iluvatar BI-V150, 64, 32768
+  15, Iluvatar BI-V150, 64, 32768
+[LLM] Shutting down FastDeploy engine workers...
+[LLM] FastDeploy engine workers stopped
+[LLM Worker] LLM model released
+13:55:07 [drug_ocr] INFO: [LLM Step] LLM extraction done, raw length: 252, cleaned length: 235, elapsed: 44.15s
+/usr/local/lib/python3.10/multiprocessing/resource_tracker.py:224: UserWarning: resource_tracker: There appear to be 13 leaked shared_memory objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+/usr/local/lib/python3.10/multiprocessing/resource_tracker.py:237: UserWarning: resource_tracker: '/exist_task_signal.52519': [Errno 2] No such file or directory: '/exist_task_signal.52519'
+  warnings.warn('resource_tracker: %r: %s' % (name, e))
+/usr/local/lib/python3.10/multiprocessing/resource_tracker.py:237: UserWarning: resource_tracker: '/exist_prefill_task_signal.52519': [Errno 2] No such file or directory: '/exist_prefill_task_signal.52519'
+  warnings.warn('resource_tracker: %r: %s' % (name, e))
+/usr/local/lib/python3.10/multiprocessing/resource_tracker.py:237: UserWarning: resource_tracker: '/engine_forward_signal.52519': [Errno 2] No such file or directory: '/engine_forward_signal.52519'
+  warnings.warn('resource_tracker: %r: %s' % (name, e))
+/usr/local/lib/python3.10/multiprocessing/resource_tracker.py:237: UserWarning: resource_tracker: '/kv_cache_status.52519': [Errno 2] No such file or directory: '/kv_cache_status.52519'
+  warnings.warn('resource_tracker: %r: %s' % (name, e))
+/usr/local/lib/python3.10/multiprocessing/resource_tracker.py:237: UserWarning: resource_tracker: '/cache_ready_signal.52519': [Errno 2] No such file or directory: '/cache_ready_signal.52519'
+  warnings.warn('resource_tracker: %r: %s' % (name, e))
+/usr/local/lib/python3.10/multiprocessing/resource_tracker.py:237: UserWarning: resource_tracker: '/model_weights_status.52519': [Errno 2] No such file or directory: '/model_weights_status.52519'
+  warnings.warn('resource_tracker: %r: %s' % (name, e))
+/usr/local/lib/python3.10/multiprocessing/resource_tracker.py:237: UserWarning: resource_tracker: '/worker_healthy_live_signal.52519': [Errno 2] No such file or directory: '/worker_healthy_live_signal.52519'
+  warnings.warn('resource_tracker: %r: %s' % (name, e))
+/usr/local/lib/python3.10/multiprocessing/resource_tracker.py:237: UserWarning: resource_tracker: '/exist_swapped_task_signal.52519': [Errno 2] No such file or directory: '/exist_swapped_task_signal.52519'
+  warnings.warn('resource_tracker: %r: %s' % (name, e))
+/usr/local/lib/python3.10/multiprocessing/resource_tracker.py:237: UserWarning: resource_tracker: '/exist_tasks_intra_signal.52519': [Errno 2] No such file or directory: '/exist_tasks_intra_signal.52519'
+  warnings.warn('resource_tracker: %r: %s' % (name, e))
+[ixsmi after LLM] GPU Memory:
+  0, Iluvatar BI-V150, 64, 32768
+  1, Iluvatar BI-V150, 64, 32768
+  2, Iluvatar BI-V150, 64, 32768
+  3, Iluvatar BI-V150, 64, 32768
+  4, Iluvatar BI-V150, 64, 32768
+  5, Iluvatar BI-V150, 64, 32768
+  6, Iluvatar BI-V150, 64, 32768
+  7, Iluvatar BI-V150, 64, 32768
+  8, Iluvatar BI-V150, 64, 32768
+  9, Iluvatar BI-V150, 64, 32768
+  10, Iluvatar BI-V150, 64, 32768
+  11, Iluvatar BI-V150, 64, 32768
+  12, Iluvatar BI-V150, 64, 32768
+  13, Iluvatar BI-V150, 64, 32768
+  14, Iluvatar BI-V150, 64, 32768
+  15, Iluvatar BI-V150, 64, 32768
+13:55:07 [drug_ocr] INFO: [TTS Step] TTS synthesis...
+13:55:07 [drug_ocr] INFO: [TTS Step] Starting TTS subprocess...
+I0616 13:55:08.309077 3452502 init.cc:254] ENV [CUSTOM_DEVICE_ROOT]=/usr/local/lib/python3.10/site-packages/paddle/paddle_custom_device
+I0616 13:55:08.309111 3452502 init.cc:162] Try loading custom device libs from: [/usr/local/lib/python3.10/site-packages/paddle/paddle_custom_device]
+I0616 13:55:08.461956 3452502 custom_device_load.cc:51] Succeed in loading custom runtime in lib: /usr/local/lib/python3.10/site-packages/paddle/paddle_custom_device/libpaddle-iluvatar-gpu.so
+I0616 13:55:08.461995 3452502 custom_device_load.cc:58] Skipped lib [/usr/local/lib/python3.10/site-packages/paddle/paddle_custom_device/libpaddle-iluvatar-gpu.so]: no custom engine Plugin symbol in this lib.
+I0616 13:55:08.470407 3452502 custom_kernel.cc:68] Succeed in loading 896 custom kernel(s) from loaded lib(s), will be used like native ones.
+I0616 13:55:08.470774 3452502 init.cc:174] Finished in LoadCustomDevice with libs_path: [/usr/local/lib/python3.10/site-packages/paddle/paddle_custom_device]
+I0616 13:55:08.470809 3452502 init.cc:260] CustomDevice: iluvatar_gpu, visible devices count: 16
+/usr/local/lib/python3.10/site-packages/_distutils_hack/__init__.py:30: UserWarning: Setuptools is replacing distutils. Support for replacing an already imported distutils is deprecated. In the future, this condition will fail. Register concerns at https://github.com/pypa/setuptools/issues/new?template=distutils-deprecation.yml
+  warnings.warn(
+/usr/local/corex-4.3.8/lib64/python3/dist-packages/torch/cuda/__init__.py:58: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/usr/local/lib/python3.10/site-packages/paddlenlp/server/http_router/router.py:30: PydanticDeprecatedSince20: `pydantic.config.Extra` is deprecated, use literal values instead (e.g. `extra='allow'`). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.11/migration/
+[TTS Worker] Loading TTS model (PaddleSpeech)...
+[TTS Worker] TTS model loaded, elapsed: 0.00s
+[TTS Worker] Synthesis start, input text length: 235
+/usr/local/lib/python3.10/site-packages/g2pM/g2pM.py:15: ResourceWarning: unclosed file <_io.BufferedReader name='/usr/local/lib/python3.10/site-packages/g2pM/digest_cedict.pkl'>
+/usr/local/lib/python3.10/site-packages/g2pM/g2pM.py:16: ResourceWarning: unclosed file <_io.BufferedReader name='/usr/local/lib/python3.10/site-packages/g2pM/char2idx.pkl'>
+/usr/local/lib/python3.10/site-packages/g2pM/g2pM.py:17: ResourceWarning: unclosed file <_io.BufferedReader name='/usr/local/lib/python3.10/site-packages/g2pM/class2idx.pkl'>
+/usr/local/lib/python3.10/site-packages/g2pM/g2pM.py:18: ResourceWarning: unclosed file <_io.BufferedReader name='/usr/local/lib/python3.10/site-packages/g2pM/np_ckpt.pkl'>
+[2026-06-16 13:55:26,963] [    INFO] - tokenizer config file saved in /root/.paddlenlp/models/bert-base-chinese/tokenizer_config.json
+[2026-06-16 13:55:26,963] [    INFO] - Special tokens file saved in /root/.paddlenlp/models/bert-base-chinese/special_tokens_map.json
+/usr/local/lib/python3.10/site-packages/paddlespeech/t2s/frontend/g2pw/onnx_api.py:98: ResourceWarning: unclosed file <_io.TextIOWrapper name='/root/.paddlespeech/models/G2PWModel_1.1/POLYPHONIC_CHARS.txt' mode='r' encoding='utf-8'>
+/usr/local/lib/python3.10/site-packages/paddlespeech/t2s/frontend/g2pw/onnx_api.py:108: ResourceWarning: unclosed file <_io.TextIOWrapper name='/root/.paddlespeech/models/G2PWModel_1.1/MONOPHONIC_CHARS.txt' mode='r' encoding='utf-8'>
+Building prefix dict from the default dictionary ...
+13:55:31 [jieba] DEBUG: Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+13:55:31 [jieba] DEBUG: Loading model from cache /tmp/jieba.cache
+Loading model cost 0.827 seconds.
+13:55:32 [jieba] DEBUG: Loading model cost 0.827 seconds.
+Prefix dict has been built successfully.
+13:55:32 [jieba] DEBUG: Prefix dict has been built successfully.
+[TTS Worker] Synthesis done, audio duration: 45.84s, sample rate: 24000 Hz
+[TTS Worker] TTS model released
+13:55:38 [drug_ocr] INFO: [TTS Step] TTS synthesis done, audio duration: 45.84s, elapsed: 31.28s
+13:55:38 [drug_ocr] INFO: ============================================================
+13:55:38 [drug_ocr] INFO: Pipeline complete, total elapsed: 118.09s
+13:55:38 [drug_ocr] INFO: ============================================================
+
+============================================================
+OCR Result:
+============================================================
+核准日期：2010年05月07日
+修改日期：2024年09月29日
+久正\(^{®}\) 脂必妥胶囊说明书
+请仔细阅读说明书并在医师指导下使用
+【药品名称】通用名称：脂必妥胶囊
+汉语拼音：Zhibituo Jiaonang
+【成份】红曲。
+【性状】本品为硬胶囊剂，内容物为紫红色至紫褐色的粉末；气微，味微酸。
+【功能主治】健脾消食，除湿祛痰，活血化瘀。用于脾瘀阻滞，症见气短，乏力，头晕，头痛，胸闷，腹胀，食少纳呆等；高脂血症；也可用于高脂血症及动脉粥样硬化引起的其他心脑血管疾病的辅助治疗。
+【规格】每粒装0.35g
+【用法用量】口服。一次3粒，一日2次，早晚饭后服用或遵医嘱。
+【不良反应】文献数据显示，本品可见以下不良反应：恶心、腹胀、腹部不适、胃胀满、胃部不适、反酸、上腹痛、稀便、食欲减退、饥饿感等，有肌痛伴有肌酸激酶、乳酸脱氢酶升高的个案文献报道。
+【禁忌】1. 对本品及所含成分过敏者禁用。
+2. 既往有严重药物不良反应病史者禁用。
+3. 活动性肝炎或无法解释的血清氨基转移酶升高者禁用。
+【注意事项】
+1. 用药期间应定期检查血脂、血清氨基转移酶和肌酸磷酸激酶；有肝病史者服用本品尤其要注意肝功能的监测。
+2. 在本品治疗过程中，如发生血清氨基转移酶增高达到正常高限3倍，或血清肌酸磷酸激酶显著增高时，应停用本品。
+3. 孕妇及哺乳期妇女慎用。
+4. 服药期间避免与其他降脂药同用。
+5. 服药期间注意清淡饮食，忌酒。
+【贮藏】密封。
+【包装】铝塑泡罩包装，4×12粒/板/盒。
+【有效期】18个月
+【执行标准】国家食品药品监督管理局标准YBZ00432010
+【批准文号】国药准字Z20100026
+【药品上市许可持有人】
+名 称：北京华神制药有限公司
+地 址：北京市昌平区东小口镇中滩村110号
+注册地址：北京市昌平区东小口镇中滩村110号
+电话号码：010-84815781
+邮政编码：102218
+【生产企业】企业名称：陕西健民制药有限公司
+生产地址：咸阳市玉泉西路西延段秦都区产业基地
+电话号码：029-33618879
+传真号码：029-33618879
+邮政编码：712000
+网址：www.sxjianmin.cn
+如有问题可与生产企业联系
+
+============================================================
+Extracted Info (Raw - before clean_for_tts):
+============================================================
+
+
+1. 药品名称：脂必妥胶囊
+2. 药品适应症：主要治疗脾瘀阻滞引起的各种问题，比如气短、乏力、头晕、头痛、胸闷、腹胀、吃不下饭等，也用于治疗高脂血症以及高脂血症和动脉粥样硬化引起的心脑血管疾病。
+3. 药品的用法与用量：每天吃两次，每次吃三粒，饭后吃，具体吃法遵医嘱。
+4. 药品的禁忌：对本品或所含成分过敏的人不能吃；有严重药物不良反应病史的人不能吃；有活动性肝炎或血清氨基转移酶升高的人不能吃。
+5. 药品的不良反应：可能会恶心、腹胀、胃部不适、食欲减退等，少数人肌痛且肌酸激酶、乳酸脱氢酶升高。
+
+============================================================
+Extracted Info (Cleaned - for TTS):
+============================================================
+药品名称：脂必妥胶囊
+药品适应症：主要治疗脾瘀阻滞引起的各种问题，比如气短、乏力、头晕、头痛、胸闷、腹胀、吃不下饭等，也用于治疗高脂血症以及高脂血症和动脉粥样硬化引起的心脑血管疾病。
+药品的用法与用量：每天吃两次，每次吃三粒，饭后吃，具体吃法遵医嘱。
+药品的禁忌：对本品或所含成分过敏的人不能吃；有严重药物不良反应病史的人不能吃；有活动性肝炎或血清氨基转移酶升高的人不能吃。
+药品的不良反应：可能会恶心、腹胀、胃部不适、食欲减退等，少数人肌痛且肌酸激酶、乳酸脱氢酶升高。
+
+Audio saved to: output.wav (duration: 45.84s)
+root@n91:/data1/workspace# ixsmi
+Timestamp    Tue Jun 16 13:58:12 2026
++-----------------------------------------------------------------------------+
+|  IX-ML: 4.3.8       Driver Version: 4.3.8       CUDA Version: 10.2          |
+|-------------------------------+----------------------+----------------------|
+| GPU  Name                     | Bus-Id               | Clock-SM  Clock-Mem  |
+| Fan  Temp  Perf  Pwr:Usage/Cap|      Memory-Usage    | GPU-Util  Compute M. |
+|===============================+======================+======================|
+| 0    Iluvatar BI-V150         | 00000000:13:00.0     | 1500MHz   1600MHz    |
+| N/A  36C   P0    N/A / N/A    | 64MiB / 32768MiB     | 0%        Default    |
++-------------------------------+----------------------+----------------------+
+| 1    Iluvatar BI-V150         | 00000000:16:00.0     | 1500MHz   1600MHz    |
+| N/A  34C   P0    103W / 350W  | 64MiB / 32768MiB     | 0%        Default    |
++-------------------------------+----------------------+----------------------+
+| 2    Iluvatar BI-V150         | 00000000:1C:00.0     | 1500MHz   1600MHz    |
+| N/A  34C   P0    N/A / N/A    | 64MiB / 32768MiB     | 0%        Default    |
++-------------------------------+----------------------+----------------------+
+| 3    Iluvatar BI-V150         | 00000000:1F:00.0     | 1500MHz   1600MHz    |
+| N/A  35C   P0    102W / 350W  | 64MiB / 32768MiB     | 0%        Default    |
++-------------------------------+----------------------+----------------------+
+| 4    Iluvatar BI-V150         | 00000000:27:00.0     | 1500MHz   1600MHz    |
+| N/A  35C   P0    N/A / N/A    | 64MiB / 32768MiB     | 0%        Default    |
++-------------------------------+----------------------+----------------------+
+| 5    Iluvatar BI-V150         | 00000000:2A:00.0     | 1500MHz   1600MHz    |
+| N/A  35C   P0    103W / 350W  | 64MiB / 32768MiB     | 0%        Default    |
++-------------------------------+----------------------+----------------------+
+| 6    Iluvatar BI-V150         | 00000000:34:00.0     | 1500MHz   1600MHz    |
+| N/A  36C   P0    N/A / N/A    | 64MiB / 32768MiB     | 0%        Default    |
++-------------------------------+----------------------+----------------------+
+| 7    Iluvatar BI-V150         | 00000000:37:00.0     | 1500MHz   1600MHz    |
+| N/A  36C   P0    102W / 350W  | 64MiB / 32768MiB     | 0%        Default    |
++-------------------------------+----------------------+----------------------+
+| 8    Iluvatar BI-V150         | 00000000:3D:00.0     | 1500MHz   1600MHz    |
+| N/A  35C   P0    N/A / N/A    | 64MiB / 32768MiB     | 0%        Default    |
++-------------------------------+----------------------+----------------------+
+| 9    Iluvatar BI-V150         | 00000000:40:00.0     | 1500MHz   1600MHz    |
+| N/A  36C   P0    102W / 350W  | 64MiB / 32768MiB     | 0%        Default    |
++-------------------------------+----------------------+----------------------+
+| 10   Iluvatar BI-V150         | 00000000:48:00.0     | 1500MHz   1600MHz    |
+| N/A  36C   P0    N/A / N/A    | 64MiB / 32768MiB     | 0%        Default    |
++-------------------------------+----------------------+----------------------+
+| 11   Iluvatar BI-V150         | 00000000:4B:00.0     | 1500MHz   1600MHz    |
+| N/A  35C   P0    102W / 350W  | 64MiB / 32768MiB     | 0%        Default    |
++-------------------------------+----------------------+----------------------+
+| 12   Iluvatar BI-V150         | 00000000:54:00.0     | 1500MHz   1600MHz    |
+| N/A  34C   P0    N/A / N/A    | 64MiB / 32768MiB     | 0%        Default    |
++-------------------------------+----------------------+----------------------+
+| 13   Iluvatar BI-V150         | 00000000:57:00.0     | 1500MHz   1600MHz    |
+| N/A  33C   P0    101W / 350W  | 64MiB / 32768MiB     | 0%        Default    |
++-------------------------------+----------------------+----------------------+
+| 14   Iluvatar BI-V150         | 00000000:64:00.0     | 1500MHz   1600MHz    |
+| N/A  35C   P0    N/A / N/A    | 64MiB / 32768MiB     | 0%        Default    |
++-------------------------------+----------------------+----------------------+
+| 15   Iluvatar BI-V150         | 00000000:67:00.0     | 1500MHz   1600MHz    |
+| N/A  35C   P0    103W / 350W  | 64MiB / 32768MiB     | 0%        Default    |
++-------------------------------+----------------------+----------------------+
+
++-----------------------------------------------------------------------------+
+| Processes:                                                       GPU Memory |
+|  GPU        PID      Process name                                Usage(MiB) |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+root@n91:/data1/workspace# ls -al
+total 363164
+drwxr-xr-x  7 root root      4096 Jun 16 13:55 .
+drwxr-xr-x 18 root root      4096 Jun 15 13:58 ..
+-rw-r--r--  1 root root       795 Jun 13 18:37 clean_today_shm.sh
+-rw-r--r--  1 root root     28219 Jun 16 13:53 drug_ocr_cli.py
+-rw-r--r--  1 root root     28144 Jun 16 13:41 drug_ocr_cli.py.1
+-rw-r--r--  1 root root     22026 Jun 15 18:07 drug_ocr_cli_single_v4.py
+drwxr-xr-x  4 root root      4096 Jun 12 18:06 ERNIE-4.5-21B-A3B-Paddle
+-rw-r--r--  1 root root  18305082 Jun 12 18:54 fastdeploy_iluvatar_gpu-2.6.0.dev0-cp310-cp310-manylinux_2_31_x86_64.whl
+-rwxr-xr-x  1 root root      1916 Jun 15 16:56 kill_benchmark_python.sh
+drwxr-xr-x  3 root root      4096 Jun 16 13:19 log
+-rw-r--r--  1 root root   4400458 Jun 16 13:55 output.wav
+drwxr-xr-x  3 root root      4096 Jun 13 13:38 PaddleOCR-VL-1.6
+-rw-r--r--  1 root root 349031913 Mar 30 01:04 paddlepaddle_iluvatar-3.4.0.dev20260326-cp310-cp310-linux_x86_64.whl
+-rw-r--r--  1 root root       352 Jun 13 12:59 requirements.txt
+drwxr-xr-x  2 root root      4096 Jun 13 13:13 resource
+-rw-r--r--  1 root root       637 Jun 13 20:26 run_demo.py
+-rw-r--r--  1 root root       297 Jun 13 14:25 test_tts.py
+drwxr-xr-x  2 root root      4096 Jun 16 13:18 tmp
+root@n91:/data1/workspace# 
+

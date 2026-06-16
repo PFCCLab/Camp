@@ -40,6 +40,53 @@ import importlib.util
 import os
 import subprocess
 
+def _run_ixsmi(tag=""):
+    """Run ixsmi to print current GPU memory usage."""
+    try:
+        result = subprocess.run(
+            ["ixsmi", "--query-gpu=index,name,memory.used,memory.total", "--format=csv,noheader,nounits"],
+            capture_output=True, text=True, timeout=10,
+        )
+        if result.returncode == 0 and result.stdout.strip():
+            print(f"[ixsmi {tag}] GPU Memory:")
+            for line in result.stdout.strip().splitlines():
+                print(f"  {line.strip()}")
+        else:
+            print(f"[ixsmi {tag}] (no output)")
+    except FileNotFoundError:
+        print(f"[ixsmi {tag}] command not found (ixsmi not installed)")
+    except Exception as e:
+        print(f"[ixsmi {tag}] error: {e}")
+
+
+def _shutdown_fastdeploy_llm(model, label="model"):
+    """Shut down FastDeploy LLM engine and its GPU worker process group."""
+    if model is None:
+        return
+    try:
+        engine = getattr(model, "llm_engine", None)
+        if engine is not None and hasattr(engine, "_exit_sub_services"):
+            print(f"[{label}] Shutting down FastDeploy engine workers...")
+            engine._exit_sub_services()
+            print(f"[{label}] FastDeploy engine workers stopped")
+    except Exception as e:
+        print(f"[{label}] FastDeploy shutdown warning: {e}")
+
+
+def _join_worker_process(process, label, timeout=120):
+    """Wait for a model worker subprocess; force-terminate if it hangs."""
+    process.join(timeout=timeout)
+    if process.is_alive():
+        logger.warning("[%s] Worker did not exit within %s, terminating...", label, timeout)
+        process.terminate()
+        process.join(timeout=10)
+    if process.is_alive():
+        logger.warning("[%s] Worker still alive, killing...", label)
+        process.kill()
+        process.join()
+    process.close()
+
+
 def _find_paddlenlp_dir():
     # Method 1: find_spec (no import, just metadata)
     spec = importlib.util.find_spec("paddlenlp")
@@ -182,7 +229,11 @@ def ocr_worker_process(ocr_model_dir, image_data_list, max_new_tokens, result_qu
         # Put result in queue
         result_queue.put(("success", combined_text))
 
-        # Clean up
+        # Print GPU memory before cleanup
+        _run_ixsmi("OCR before release")
+
+        # Clean up FastDeploy engine workers, then release model
+        _shutdown_fastdeploy_llm(ocr_model, "OCR")
         del ocr_model
         import gc
         gc.collect()
@@ -234,8 +285,7 @@ def ocr_step(
 
     # Wait for result
     status, result = result_queue.get()
-    ocr_process.join()
-    ocr_process.close()
+    _join_worker_process(ocr_process, "OCR")
 
     if status == "error":
         logger.error("[OCR Step] OCR subprocess failed: %s", result)
@@ -262,7 +312,8 @@ def clean_for_tts(text):
         r"\U0001F680-\U0001F6FF"   # transport & map
         r"\U0001F1E0-\U0001F1FF"   # flags
         r"\U00002702-\U000027B0"   # dingbats
-        r"\U000024C2-\U0000324F"   # enclosed alphanumerics (stop before CJK)
+        r"\U000024C2-\U000024FF"   # enclosed alphanumerics
+        r"\U00003200-\U0000324F"   # enclosed CJK letters and months (above CJK punctuation)
         r"\U0001F200-\U0001F251"   # enclosed CJK supplement (above CJK range)
         r"\U0001F900-\U0001F9FF"   # supplemental symbols
         r"\U0001FA00-\U0001FA6F"   # chess symbols
@@ -371,14 +422,19 @@ def llm_worker_process(llm_model_dir, ocr_text, max_new_tokens, result_queue, te
         result = outputs[0].outputs.text
         gen_elapsed = time.perf_counter() - gen_start
 
-        # Clean result
-        result = clean_for_tts(result)
-        print(f"[LLM Worker] Extraction done, gen elapsed: {gen_elapsed:.2f}s, result length: {len(result)}")
+        # Save raw result before cleaning, then clean
+        raw_result = result
+        cleaned_result = clean_for_tts(result)
+        print(f"[LLM Worker] Extraction done, gen elapsed: {gen_elapsed:.2f}s, raw length: {len(raw_result)}, cleaned length: {len(cleaned_result)}")
 
-        # Put result in queue
-        result_queue.put(("success", result))
+        # Put both raw and cleaned results in queue
+        result_queue.put(("success", (raw_result, cleaned_result)))
 
-        # Clean up
+        # Print GPU memory before cleanup
+        _run_ixsmi("LLM before release")
+
+        # Clean up FastDeploy engine workers, then release model
+        _shutdown_fastdeploy_llm(llm_model, "LLM")
         del llm_model
         import gc
         gc.collect()
@@ -410,17 +466,16 @@ def llm_step(
 
     # Wait for result
     status, result = result_queue.get()
-    llm_process.join()
-    llm_process.close()
+    _join_worker_process(llm_process, "LLM")
 
     if status == "error":
         logger.error("[LLM Step] LLM subprocess failed: %s", result)
         raise RuntimeError(f"LLM subprocess failed: {result}")
 
-    extracted_info = result
-    logger.info("[LLM Step] LLM extraction done, result length: %d, elapsed: %.2fs", len(extracted_info), time.perf_counter() - step_start)
+    raw_info, extracted_info = result
+    logger.info("[LLM Step] LLM extraction done, raw length: %d, cleaned length: %d, elapsed: %.2fs", len(raw_info), len(extracted_info), time.perf_counter() - step_start)
 
-    return {"extracted_info": extracted_info}
+    return {"extracted_info_raw": raw_info, "extracted_info": extracted_info}
 
 
 # ============================================================================
@@ -447,18 +502,19 @@ def tts_worker_process(text, output_path, result_queue, reduce_volume=False):
         tts_model(text=text, output=output_path)
 
         if reduce_volume:
-            temp_path = output_path + ".tmp.wav"
-            os.rename(output_path, temp_path)
+            reduced_path = output_path.replace('.wav', '_reduced.wav')
             print("[TTS Worker] Reducing volume by -90dB via ffmpeg...")
             _sp.run(
-                ["ffmpeg", "-i", temp_path, "-af", "volume=-90dB", output_path],
+                ["ffmpeg", "-i", output_path, "-af", "volume=-90dB", reduced_path],
                 check=True, capture_output=True,
             )
-            os.remove(temp_path)
-            print("[TTS Worker] Volume reduction done")
+            print("[TTS Worker] Volume reduction done, reading reduced audio")
+            read_path = reduced_path
+        else:
+            read_path = output_path
 
         # Read audio data
-        sr, wav_data = wav_read(output_path)
+        sr, wav_data = wav_read(read_path)
 
         if wav_data is not None:
             audio_duration = len(wav_data) / sr
@@ -499,8 +555,7 @@ def tts_step(
 
     # Wait for result
     status, result = result_queue.get()
-    tts_process.join()
-    tts_process.close()
+    _join_worker_process(tts_process, "TTS")
 
     if status == "error":
         logger.error("[TTS Step] TTS subprocess failed: %s", result)
@@ -556,6 +611,9 @@ def drug_ocr_pipeline(
     )
     result["ocr_text"] = ocr_result["ocr_text"]
 
+    # Print GPU memory after OCR step (subprocess already exited, but showing state)
+    _run_ixsmi("after OCR")
+
     # Step 2: LLM extraction (runs in subprocess, automatically cleaned up)
     llm_result = llm_step(
         llm_model_dir=llm_model_dir,
@@ -563,7 +621,11 @@ def drug_ocr_pipeline(
         max_new_tokens=llm_max_new_tokens,
         tensor_parallel_size=tensor_parallel_size,
     )
+    result["extracted_info_raw"] = llm_result["extracted_info_raw"]
     result["extracted_info"] = llm_result["extracted_info"]
+
+    # Print GPU memory after LLM step
+    _run_ixsmi("after LLM")
 
     # Step 3: TTS synthesis (runs in subprocess, automatically cleaned up)
     tts_result = tts_step(
@@ -651,7 +713,12 @@ def main():
     print(result["ocr_text"])
 
     print("\n" + "=" * 60)
-    print("Extracted Info:")
+    print("Extracted Info (Raw - before clean_for_tts):")
+    print("=" * 60)
+    print(result["extracted_info_raw"])
+
+    print("\n" + "=" * 60)
+    print("Extracted Info (Cleaned - for TTS):")
     print("=" * 60)
     print(result["extracted_info"])
 
