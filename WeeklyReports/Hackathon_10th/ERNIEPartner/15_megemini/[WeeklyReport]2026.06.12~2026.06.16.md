@@ -35,6 +35,10 @@ megemini
 
    ![alt text](images/after_proc.png)
 
+   另外，使用 4 个 gpu 时，每张卡约 10GB 显存占用
+
+   ![alt text](images/llm_gpu_4.png)
+
    如果需要复现，可以参考以下步骤：
 
    ```markdown

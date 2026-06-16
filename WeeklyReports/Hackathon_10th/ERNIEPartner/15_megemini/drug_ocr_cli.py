@@ -665,7 +665,7 @@ def main():
     parser.add_argument("--overlap", type=float, default=0.1, help="Overlap ratio for image splits (default: 0.1)")
     parser.add_argument("--ocr-tokens", type=int, default=5120, help="OCR max new tokens (default: 5120)")
     parser.add_argument("--llm-tokens", type=int, default=1024, help="LLM max new tokens (default: 1024)")
-    parser.add_argument("--tensor-parallel-size", type=int, default=2, choices=[1, 2], help="Tensor parallel size for LLM (default: 2)")
+    parser.add_argument("--tensor-parallel-size", type=int, default=2, help="Tensor parallel size for LLM (default: 2)")
     parser.add_argument("--reduce-volume", action="store_true", help="Apply ffmpeg volume=-90dB to TTS output audio")
     parser.add_argument("--output-audio", default=None, help="Output audio file path (default: output.wav in current directory)")
     parser.add_argument("--output-text", default=None, help="Output extracted text file path (default: print to stdout only)")
